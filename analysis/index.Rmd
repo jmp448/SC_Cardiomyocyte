@@ -8,4 +8,8 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
+Welcome to my research website.  This site contains the workflow for the single cell cardiomyocyte differentiation project.  It needs to be run out of RCC Midway.  The workflow consists of the following parts:
+
+1. Demuxlet Analysis
+  + Quality control of demuxlet data, taking a look at how many nonsense calls are made for each collection
+  + Check it out at this [link](demuxlet_analysis.html)

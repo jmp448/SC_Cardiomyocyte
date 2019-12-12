@@ -1,0 +1,165 @@
+---
+title: "Demuxlet Analysis"
+output:
+  html_document:
+    df_print: paged
+---
+
+This notebook runs through some checks for quality control of Demuxlet results.
+
+<!-- Note that in order to run this notebook in R, you will need to set the working directory to the parent of the analytics folder, not the analytics folder itself (ie, open the file, set working directory to file, and then run setwd("../") -->
+
+Before running through this, make sure to run `demuxlet_dataload.R` from the `code` folder, as this gets us the raw data that we'll be using for this analysis.
+
+First, we load necessary libraries and pull the data that file saved
+```{r load_libraries}
+library(sjmisc)
+library(ggplot2)
+library(plyr)
+library(reshape2)
+```
+
+```{r load_data}
+load("./data/demuxlet_data.RData")
+```
+
+Now, if we fed Demuxlet more info than necessary (ie, included genotypes of individuals that are not present in the collection), we want to take a look at how frequently demuxlet assigned cells to those absent individuals.
+
+To do so, we first create a dataframe which will tell us (for each collection) the number of assignments to singlet, ambiguous, or doublet, as well as sense (all present individuals) or nonsense (assigned to absent individual)
+
+```{r create_dataframe}
+collex <- c()
+for (colday in 1:3) {
+  for (collection in 1:6) {
+    collex <- c(collex, paste0("CD", colday, "col", collection))
+  }
+}
+counts <- data.frame(row.names=collex)
+counts$singlet_sense <- rep(0, nrow(counts))
+counts$singlet_nonsense <- rep(0, nrow(counts))
+counts$amb_sense <- rep(0, nrow(counts))
+counts$amb_nonsense <- rep(0, nrow(counts))
+counts$doublet_sense <- rep(0, nrow(counts))
+counts$doublet_nonsense <- rep(0, nrow(counts))
+```
+
+Next, to fill in this dataframe we create a function that takes in a demuxlet assignment (eg `SNG-NA18912`) and returns info about the assignment that is easier to use (eg `(SNG, 18912)`).
+
+```{r create_get_inds}
+get_inds <- function(s) {
+  if (substr(s, 1, 3) == "SNG") {
+    ind <- substr(s, 7, 11)
+    return(c("SNG", ind))
+  } else if (substr(s, 1, 3) == "DBL") {
+    ind1 <- substr(s, 7, 11)
+    ind2 <- substr(s, 15, 19)
+    return(c("DBL", ind1, ind2))
+  } else if (substr(s, 1, 3) == "AMB") {
+    ind1 <- substr(s, 7, 11)
+    ind2 <- substr(s, 15, 19)
+    ind3 <- substr(s, 23, 27)
+    ind4 <- substr(s, 31, 35)
+    amb <- sort(c(ind1, ind2, ind3, ind4))
+    amb <- amb[!duplicated(amb)]
+    return(c("AMB", amb))
+  }
+}
+```
+
+Now, we fill in the dataframe.  For each collection, we first decide which individuals are **absent** so that we can label these assignments as *nonsense*.  From there, we read the collection's demuxlet table and fill in the dataframe accordingly.
+
+```{r fill_dataframe}
+for (colday in 1:3) {
+  for (collection in 1:6) {
+    if (collection == 1) {
+      absent <- c("18508", "18511", "18858", "18520")
+    } else if (collection == 2) {
+      absent <- c("19093", "18511", "18912", "18508")
+    } else if (collection == 3 ) {
+      absent <- c("19093", "18858", "18520", "18511")
+    } else if (collection == 4 ) {
+      absent <- c("18858", "18912", "18508", "19093")
+    } else if (collection == 5 ) {
+      absent <- c("18520", "18912", "18511", "18858")
+    } else if (collection == 6 ) {
+      absent <- c("18520", "18508", "19093", "18912")
+    } 
+    # subset since day 0 cells make colday 3 diff from days 1 and 2
+    if ((colday == 1) || (colday == 2)) {
+      absent <- head(absent, -1)
+    } else if (colday == 3) {
+      absent <- absent[c(1,2,4)]
+    }
+    
+    demux <- eval(as.name(paste0("CD", colday, "col", collection, "_demux")))
+    this.col <- (colday-1)*6 + collection
+    for (i in 1:nrow(demux)) {
+      inds <- get_inds(demux$BEST[i])
+      nonsense = !is_empty(intersect(inds, absent))
+      dbl = inds[[1]] == "DBL"
+      amb = inds[[1]] == "AMB"
+      sng = inds[[1]] == "SNG"
+      if (dbl & nonsense) {
+        counts$doublet_nonsense[this.col] <- counts$doublet_nonsense[this.col] + 1
+      } else if (dbl & !nonsense) {
+        counts$doublet_sense[this.col] <- counts$doublet_sense[this.col] + 1
+      } else if (amb & nonsense) {
+        counts$amb_nonsense[this.col] <- counts$amb_nonsense[this.col] + 1
+      } else if (amb & !nonsense) {
+        counts$amb_sense[this.col] <- counts$amb_sense[this.col] + 1
+      } else if (sng & nonsense) {
+        counts$singlet_nonsense[this.col] <- counts$singlet_nonsense[this.col] + 1
+      } else if (sng & !nonsense) {
+        counts$singlet_sense[this.col] <- counts$singlet_sense[this.col] + 1
+      } else {
+        print(paste0("Oops, something's wrong, can't handle", inds))
+      }
+    }
+  }
+}
+counts$colday <- factor(substr(row.names(counts), 3, 3), levels=c("1", "2", "3"))
+counts$collection <- factor(substr(row.names(counts), 7, 7), levels=c("1", "2", "3", "4", "5", "6"))
+```
+
+Now that we have our dataframe, we need to reshape it in a way that makes visualization easier
+
+```{r reshape_dataframe}
+counts2 <- melt(counts, id=c("collection", "colday"), value.name="counts")
+counts2$assignment <- NA
+counts2$sense <- NA
+counts2[counts2$variable %in% c("singlet_sense", "singlet_nonsense"),]$assignment <- "SNG"
+counts2[counts2$variable=="singlet_sense",]$sense <- "sense"
+counts2[counts2$variable=="singlet_nonsense",]$sense <- "nonsense"
+counts2[counts2$variable %in% c("amb_sense", "amb_nonsense"),]$assignment <- "AMB"
+counts2[counts2$variable=="amb_sense",]$sense <- "sense"
+counts2[counts2$variable=="amb_nonsense",]$sense <- "nonsense"
+counts2[counts2$variable %in% c("doublet_sense", "doublet_nonsense"),]$assignment <- "DBL"
+counts2[counts2$variable=="doublet_sense",]$sense <- "sense"
+counts2[counts2$variable=="doublet_nonsense",]$sense <- "nonsense"
+counts2 <- counts2[,!colnames(counts2)=="variable"]
+counts2$assignment <- factor(counts2$assignment, levels=c("SNG", "DBL", "AMB"))
+counts2$sense <- factor(counts2$sense, levels=c("nonsense", "sense"))
+```
+
+Now that our dataframe is ready for plotting, we can subset for each collection day (there are 6 collections over 3 collection days) and take a look
+
+```{r cd1}
+cd1 <- counts2[counts2$colday == 1,!colnames(counts2)=="colday"]
+ggplot(cd1, aes(x = assignment, y = counts, fill = sense)) + 
+  geom_bar(stat = 'identity', position = 'stack') + facet_grid(~collection) +
+  ggtitle("Collection Day 1")
+```
+
+```{r cd2}
+cd2 <- counts2[counts2$colday == 2,!colnames(counts2)=="colday"]
+ggplot(cd2, aes(x = assignment, y = counts, fill = sense)) + 
+  geom_bar(stat = 'identity', position = 'stack') + facet_grid(~collection) +
+  ggtitle("Collection Day 2")
+```
+
+```{r cd3}
+cd3 <- counts2[counts2$colday == 3,!colnames(counts2)=="colday"]
+ggplot(cd3, aes(x = assignment, y = counts, fill = sense)) + 
+  geom_bar(stat = 'identity', position = 'stack') + facet_grid(~collection) +
+  ggtitle("Collection Day 3")
+```

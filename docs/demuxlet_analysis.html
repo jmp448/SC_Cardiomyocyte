@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Demuxlet Analysis</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">SC_Cardiomyocyte</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Demuxlet Analysis</h1>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2019-12-12
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
+</p>
+<p>
+<strong>Knit directory:</strong> <code>SC_Cardiomyocyte/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.5.0). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The R Markdown is untracked by Git. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20191212code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20191212)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20191212code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20191212)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongb9e4607"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> b9e4607 </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongb9e4607" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    data/demuxlet_data.RData
+
+Untracked files:
+    Untracked:  analysis/demuxlet_analysis.Rmd
+    Untracked:  code/demuxlet_dataload.R
+
+Unstaged changes:
+    Modified:   .gitignore
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+<p>
+There are no past versions. Publish this analysis with <code>wflow_publish()</code> to start tracking its development.
+</p>
+<hr>
+</div>
+</div>
+</div>
+<p>This notebook runs through some checks for quality control of Demuxlet results.</p>
+<!-- Note that in order to run this notebook in R, you will need to set the working directory to the parent of the analytics folder, not the analytics folder itself (ie, open the file, set working directory to file, and then run setwd("../") -->
+<p>Before running through this, make sure to run <code>demuxlet_dataload.R</code> from the <code>code</code> folder, as this gets us the raw data that we’ll be using for this analysis.</p>
+<p>First, we load necessary libraries and pull the data that file saved</p>
+<pre class="r"><code>library(sjmisc)
+library(ggplot2)
+library(plyr)
+library(reshape2)</code></pre>
+<pre class="r"><code>load(&quot;./data/demuxlet_data.RData&quot;)</code></pre>
+<p>Now, if we fed Demuxlet more info than necessary (ie, included genotypes of individuals that are not present in the collection), we want to take a look at how frequently demuxlet assigned cells to those absent individuals.</p>
+<p>To do so, we first create a dataframe which will tell us (for each collection) the number of assignments to singlet, ambiguous, or doublet, as well as sense (all present individuals) or nonsense (assigned to absent individual)</p>
+<pre class="r"><code>collex &lt;- c()
+for (colday in 1:3) {
+  for (collection in 1:6) {
+    collex &lt;- c(collex, paste0(&quot;CD&quot;, colday, &quot;col&quot;, collection))
+  }
+}
+counts &lt;- data.frame(row.names=collex)
+counts$singlet_sense &lt;- rep(0, nrow(counts))
+counts$singlet_nonsense &lt;- rep(0, nrow(counts))
+counts$amb_sense &lt;- rep(0, nrow(counts))
+counts$amb_nonsense &lt;- rep(0, nrow(counts))
+counts$doublet_sense &lt;- rep(0, nrow(counts))
+counts$doublet_nonsense &lt;- rep(0, nrow(counts))</code></pre>
+<p>Next, to fill in this dataframe we create a function that takes in a demuxlet assignment (eg <code>SNG-NA18912</code>) and returns info about the assignment that is easier to use (eg <code>(SNG, 18912)</code>).</p>
+<pre class="r"><code>get_inds &lt;- function(s) {
+  if (substr(s, 1, 3) == &quot;SNG&quot;) {
+    ind &lt;- substr(s, 7, 11)
+    return(c(&quot;SNG&quot;, ind))
+  } else if (substr(s, 1, 3) == &quot;DBL&quot;) {
+    ind1 &lt;- substr(s, 7, 11)
+    ind2 &lt;- substr(s, 15, 19)
+    return(c(&quot;DBL&quot;, ind1, ind2))
+  } else if (substr(s, 1, 3) == &quot;AMB&quot;) {
+    ind1 &lt;- substr(s, 7, 11)
+    ind2 &lt;- substr(s, 15, 19)
+    ind3 &lt;- substr(s, 23, 27)
+    ind4 &lt;- substr(s, 31, 35)
+    amb &lt;- sort(c(ind1, ind2, ind3, ind4))
+    amb &lt;- amb[!duplicated(amb)]
+    return(c(&quot;AMB&quot;, amb))
+  }
+}</code></pre>
+<p>Now, we fill in the dataframe. For each collection, we first decide which individuals are <strong>absent</strong> so that we can label these assignments as <em>nonsense</em>. From there, we read the collection’s demuxlet table and fill in the dataframe accordingly.</p>
+<pre class="r"><code>for (colday in 1:3) {
+  for (collection in 1:6) {
+    if (collection == 1) {
+      absent &lt;- c(&quot;18508&quot;, &quot;18511&quot;, &quot;18858&quot;, &quot;18520&quot;)
+    } else if (collection == 2) {
+      absent &lt;- c(&quot;19093&quot;, &quot;18511&quot;, &quot;18912&quot;, &quot;18508&quot;)
+    } else if (collection == 3 ) {
+      absent &lt;- c(&quot;19093&quot;, &quot;18858&quot;, &quot;18520&quot;, &quot;18511&quot;)
+    } else if (collection == 4 ) {
+      absent &lt;- c(&quot;18858&quot;, &quot;18912&quot;, &quot;18508&quot;, &quot;19093&quot;)
+    } else if (collection == 5 ) {
+      absent &lt;- c(&quot;18520&quot;, &quot;18912&quot;, &quot;18511&quot;, &quot;18858&quot;)
+    } else if (collection == 6 ) {
+      absent &lt;- c(&quot;18520&quot;, &quot;18508&quot;, &quot;19093&quot;, &quot;18912&quot;)
+    } 
+    # subset since day 0 cells make colday 3 diff from days 1 and 2
+    if ((colday == 1) || (colday == 2)) {
+      absent &lt;- head(absent, -1)
+    } else if (colday == 3) {
+      absent &lt;- absent[c(1,2,4)]
+    }
+    
+    demux &lt;- eval(as.name(paste0(&quot;CD&quot;, colday, &quot;col&quot;, collection, &quot;_demux&quot;)))
+    this.col &lt;- (colday-1)*6 + collection
+    for (i in 1:nrow(demux)) {
+      inds &lt;- get_inds(demux$BEST[i])
+      nonsense = !is_empty(intersect(inds, absent))
+      dbl = inds[[1]] == &quot;DBL&quot;
+      amb = inds[[1]] == &quot;AMB&quot;
+      sng = inds[[1]] == &quot;SNG&quot;
+      if (dbl &amp; nonsense) {
+        counts$doublet_nonsense[this.col] &lt;- counts$doublet_nonsense[this.col] + 1
+      } else if (dbl &amp; !nonsense) {
+        counts$doublet_sense[this.col] &lt;- counts$doublet_sense[this.col] + 1
+      } else if (amb &amp; nonsense) {
+        counts$amb_nonsense[this.col] &lt;- counts$amb_nonsense[this.col] + 1
+      } else if (amb &amp; !nonsense) {
+        counts$amb_sense[this.col] &lt;- counts$amb_sense[this.col] + 1
+      } else if (sng &amp; nonsense) {
+        counts$singlet_nonsense[this.col] &lt;- counts$singlet_nonsense[this.col] + 1
+      } else if (sng &amp; !nonsense) {
+        counts$singlet_sense[this.col] &lt;- counts$singlet_sense[this.col] + 1
+      } else {
+        print(paste0(&quot;Oops, something&#39;s wrong, can&#39;t handle&quot;, inds))
+      }
+    }
+  }
+}
+counts$colday &lt;- factor(substr(row.names(counts), 3, 3), levels=c(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;))
+counts$collection &lt;- factor(substr(row.names(counts), 7, 7), levels=c(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;))</code></pre>
+<p>Now that we have our dataframe, we need to reshape it in a way that makes visualization easier</p>
+<pre class="r"><code>counts2 &lt;- melt(counts, id=c(&quot;collection&quot;, &quot;colday&quot;), value.name=&quot;counts&quot;)
+counts2$assignment &lt;- NA
+counts2$sense &lt;- NA
+counts2[counts2$variable %in% c(&quot;singlet_sense&quot;, &quot;singlet_nonsense&quot;),]$assignment &lt;- &quot;SNG&quot;
+counts2[counts2$variable==&quot;singlet_sense&quot;,]$sense &lt;- &quot;sense&quot;
+counts2[counts2$variable==&quot;singlet_nonsense&quot;,]$sense &lt;- &quot;nonsense&quot;
+counts2[counts2$variable %in% c(&quot;amb_sense&quot;, &quot;amb_nonsense&quot;),]$assignment &lt;- &quot;AMB&quot;
+counts2[counts2$variable==&quot;amb_sense&quot;,]$sense &lt;- &quot;sense&quot;
+counts2[counts2$variable==&quot;amb_nonsense&quot;,]$sense &lt;- &quot;nonsense&quot;
+counts2[counts2$variable %in% c(&quot;doublet_sense&quot;, &quot;doublet_nonsense&quot;),]$assignment &lt;- &quot;DBL&quot;
+counts2[counts2$variable==&quot;doublet_sense&quot;,]$sense &lt;- &quot;sense&quot;
+counts2[counts2$variable==&quot;doublet_nonsense&quot;,]$sense &lt;- &quot;nonsense&quot;
+counts2 &lt;- counts2[,!colnames(counts2)==&quot;variable&quot;]
+counts2$assignment &lt;- factor(counts2$assignment, levels=c(&quot;SNG&quot;, &quot;DBL&quot;, &quot;AMB&quot;))
+counts2$sense &lt;- factor(counts2$sense, levels=c(&quot;nonsense&quot;, &quot;sense&quot;))</code></pre>
+<p>Now that our dataframe is ready for plotting, we can subset for each collection day (there are 6 collections over 3 collection days) and take a look</p>
+<pre class="r"><code>cd1 &lt;- counts2[counts2$colday == 1,!colnames(counts2)==&quot;colday&quot;]
+ggplot(cd1, aes(x = assignment, y = counts, fill = sense)) + 
+  geom_bar(stat = &#39;identity&#39;, position = &#39;stack&#39;) + facet_grid(~collection) +
+  ggtitle(&quot;Collection Day 1&quot;)</code></pre>
+<p><img src="figure/demuxlet_analysis.Rmd/cd1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>cd2 &lt;- counts2[counts2$colday == 2,!colnames(counts2)==&quot;colday&quot;]
+ggplot(cd2, aes(x = assignment, y = counts, fill = sense)) + 
+  geom_bar(stat = &#39;identity&#39;, position = &#39;stack&#39;) + facet_grid(~collection) +
+  ggtitle(&quot;Collection Day 2&quot;)</code></pre>
+<p><img src="figure/demuxlet_analysis.Rmd/cd2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>cd3 &lt;- counts2[counts2$colday == 3,!colnames(counts2)==&quot;colday&quot;]
+ggplot(cd3, aes(x = assignment, y = counts, fill = sense)) + 
+  geom_bar(stat = &#39;identity&#39;, position = &#39;stack&#39;) + facet_grid(~collection) +
+  ggtitle(&quot;Collection Day 3&quot;)</code></pre>
+<p><img src="figure/demuxlet_analysis.Rmd/cd3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 3.6.1 (2019-07-05)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Scientific Linux 7.4 (Nitrogen)
+
+Matrix products: default
+BLAS/LAPACK: /software/openblas-0.2.19-el7-x86_64/lib/libopenblas_haswellp-r0.2.19.so
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] reshape2_1.4.3 plyr_1.8.4     ggplot2_3.2.1  sjmisc_2.8.1  
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_1.0.3       pillar_1.4.2     compiler_3.6.1   later_1.0.0     
+ [5] git2r_0.26.1     workflowr_1.5.0  forcats_0.4.0    tools_3.6.1     
+ [9] zeallot_0.1.0    digest_0.6.21    evaluate_0.14    tibble_2.1.3    
+[13] gtable_0.3.0     pkgconfig_2.0.3  rlang_0.4.0      yaml_2.2.0      
+[17] haven_2.1.1      xfun_0.8         withr_2.1.2      dplyr_0.8.3     
+[21] stringr_1.4.0    knitr_1.23       fs_1.3.1         vctrs_0.2.0     
+[25] hms_0.5.0        sjlabelled_1.1.0 rprojroot_1.3-2  grid_3.6.1      
+[29] tidyselect_0.2.5 glue_1.3.1       R6_2.4.0         rmarkdown_1.13  
+[33] purrr_0.3.2      magrittr_1.5     backports_1.1.5  scales_1.0.0    
+[37] promises_1.1.0   htmltools_0.4.0  assertthat_0.2.1 insight_0.4.0   
+[41] colorspace_1.4-1 httpuv_1.5.2     labeling_0.3     stringi_1.4.3   
+[45] lazyeval_0.2.2   munsell_0.5.0    crayon_1.3.4    </code></pre>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
