@@ -1,0 +1,28 @@
+---
+title: "Seurat Differential Expression"
+output: html_notebook
+---
+
+Cluster Analysis in Seurat
+
+Load Seurat object
+
+```{r load_library}
+library(Seurat)
+```
+
+```{r load_data}
+sc <- readRDS("./data/seurat_obj_fulldata_sctransform_mitoregress_processed.RDS")
+```
+
+First, let's take a preliminary look at our data, which we previously processed
+```{r umap_diffday}
+DimPlot(sc, group.by = "diffday")
+```
+
+Now, we want to find clusters such that the out-of-place island is a single cluster (then we can run differential expression analysis on it)
+```{r find_clusters}
+sc <- FindNeighbors(sc, dims=1:10)
+sc <- FindClusters(sc, res=0.03)
+DimPlot(sc)
+```

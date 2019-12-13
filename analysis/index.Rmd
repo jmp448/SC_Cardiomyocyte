@@ -13,3 +13,6 @@ Welcome to my research website.  This site contains the workflow for the single 
 1. Demuxlet Analysis
   + Quality control of demuxlet data, taking a look at how many nonsense calls are made for each collection
   + Check it out at this [link](demuxlet_analysis.html)
+
+4. Differential Expression Analysis
+  + To take a look at differential expression analysis using Seurat, click [here](seurat_diffex.html)
