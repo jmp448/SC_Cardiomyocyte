@@ -415,7 +415,7 @@ div.section {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -424,7 +424,7 @@ div.section {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -433,10 +433,10 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2019-12-12
+<strong>Last updated:</strong> 2019-12-13
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>SC_Cardiomyocyte/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -452,12 +452,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown is untracked by Git. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
 </div>
 </div>
 </div>
@@ -524,24 +524,20 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongb9e4607"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> b9e4607 </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetree32f564413dcba15d11d47d909ed732067ce8898etargetblank32f5644a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jmp448/SC_Cardiomyocyte/tree/32f564413dcba15d11d47d909ed732067ce8898e" target="_blank">32f5644</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongb9e4607" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetree32f564413dcba15d11d47d909ed732067ce8898etargetblank32f5644a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
 Ignored files:
+    Ignored:    analysis/seurat_diffex.nb.html
     Ignored:    data/demuxlet_data.RData
-
-Untracked files:
-    Untracked:  analysis/demuxlet_analysis.Rmd
-    Untracked:  code/demuxlet_dataload.R
-
-Unstaged changes:
-    Modified:   .gitignore
+    Ignored:    data/seurat_obj_fulldata_sctransform_mitoregress.RDS
+    Ignored:    data/seurat_obj_fulldata_sctransform_mitoregress_processed.RDS
 
 </code></pre>
 <p>
@@ -554,9 +550,69 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
+
 <p>
-There are no past versions. Publish this analysis with <code>wflow_publish()</code> to start tracking its development.
+These are the previous versions of the R Markdown and HTML files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view them.
 </p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/858b99eff7788af93a9831bfb492b57ed1fac6f9/analysis/demuxlet_analysis.Rmd" target="_blank">858b99e</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2019-12-12
+</td>
+<td>
+First big push
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/858b99eff7788af93a9831bfb492b57ed1fac6f9/docs/demuxlet_analysis.html" target="_blank">858b99e</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2019-12-12
+</td>
+<td>
+First big push
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <hr>
 </div>
 </div>
@@ -677,16 +733,127 @@ ggplot(cd1, aes(x = assignment, y = counts, fill = sense)) +
   geom_bar(stat = &#39;identity&#39;, position = &#39;stack&#39;) + facet_grid(~collection) +
   ggtitle(&quot;Collection Day 1&quot;)</code></pre>
 <p><img src="figure/demuxlet_analysis.Rmd/cd1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-cd1-1">
+Past versions of cd1-1.png
+</button>
+</p>
+<div id="fig-cd1-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/858b99eff7788af93a9831bfb492b57ed1fac6f9/docs/figure/demuxlet_analysis.Rmd/cd1-1.png" target="_blank">858b99e</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2019-12-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>cd2 &lt;- counts2[counts2$colday == 2,!colnames(counts2)==&quot;colday&quot;]
 ggplot(cd2, aes(x = assignment, y = counts, fill = sense)) + 
   geom_bar(stat = &#39;identity&#39;, position = &#39;stack&#39;) + facet_grid(~collection) +
   ggtitle(&quot;Collection Day 2&quot;)</code></pre>
 <p><img src="figure/demuxlet_analysis.Rmd/cd2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-cd2-1">
+Past versions of cd2-1.png
+</button>
+</p>
+<div id="fig-cd2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/858b99eff7788af93a9831bfb492b57ed1fac6f9/docs/figure/demuxlet_analysis.Rmd/cd2-1.png" target="_blank">858b99e</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2019-12-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>cd3 &lt;- counts2[counts2$colday == 3,!colnames(counts2)==&quot;colday&quot;]
 ggplot(cd3, aes(x = assignment, y = counts, fill = sense)) + 
   geom_bar(stat = &#39;identity&#39;, position = &#39;stack&#39;) + facet_grid(~collection) +
   ggtitle(&quot;Collection Day 3&quot;)</code></pre>
 <p><img src="figure/demuxlet_analysis.Rmd/cd3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-cd3-1">
+Past versions of cd3-1.png
+</button>
+</p>
+<div id="fig-cd3-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/858b99eff7788af93a9831bfb492b57ed1fac6f9/docs/figure/demuxlet_analysis.Rmd/cd3-1.png" target="_blank">858b99e</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2019-12-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -717,7 +884,7 @@ other attached packages:
 [1] reshape2_1.4.3 plyr_1.8.4     ggplot2_3.2.1  sjmisc_2.8.1  
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.3       pillar_1.4.2     compiler_3.6.1   later_1.0.0     
+ [1] Rcpp_1.0.3       compiler_3.6.1   pillar_1.4.2     later_1.0.0     
  [5] git2r_0.26.1     workflowr_1.5.0  forcats_0.4.0    tools_3.6.1     
  [9] zeallot_0.1.0    digest_0.6.21    evaluate_0.14    tibble_2.1.3    
 [13] gtable_0.3.0     pkgconfig_2.0.3  rlang_0.4.0      yaml_2.2.0      
@@ -725,10 +892,10 @@ loaded via a namespace (and not attached):
 [21] stringr_1.4.0    knitr_1.23       fs_1.3.1         vctrs_0.2.0     
 [25] hms_0.5.0        sjlabelled_1.1.0 rprojroot_1.3-2  grid_3.6.1      
 [29] tidyselect_0.2.5 glue_1.3.1       R6_2.4.0         rmarkdown_1.13  
-[33] purrr_0.3.2      magrittr_1.5     backports_1.1.5  scales_1.0.0    
-[37] promises_1.1.0   htmltools_0.4.0  assertthat_0.2.1 insight_0.4.0   
-[41] colorspace_1.4-1 httpuv_1.5.2     labeling_0.3     stringi_1.4.3   
-[45] lazyeval_0.2.2   munsell_0.5.0    crayon_1.3.4    </code></pre>
+[33] purrr_0.3.2      magrittr_1.5     whisker_0.3-2    scales_1.0.0    
+[37] backports_1.1.5  promises_1.1.0   htmltools_0.4.0  assertthat_0.2.1
+[41] insight_0.4.0    colorspace_1.4-1 httpuv_1.5.2     labeling_0.3    
+[45] stringi_1.4.3    lazyeval_0.2.2   munsell_0.5.0    crayon_1.3.4    </code></pre>
 </div>
 
 

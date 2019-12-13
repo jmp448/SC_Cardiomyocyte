@@ -11,7 +11,7 @@
 
 
 
-<title>About</title>
+<title>Seurat Differential Expression</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -260,6 +263,90 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -267,6 +354,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -311,7 +408,7 @@ div.section {
 
 
 
-<h1 class="title toc-ignore">About</h1>
+<h1 class="title toc-ignore">Seurat Differential Expression</h1>
 
 </div>
 
@@ -339,7 +436,7 @@ div.section {
 <strong>Last updated:</strong> 2019-12-13
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>SC_Cardiomyocyte/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -361,6 +458,66 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
 <div class="panel-body">
 <p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20191212code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20191212)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20191212code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20191212)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
 </div>
 </div>
 </div>
@@ -421,36 +578,19 @@ Message
 <tbody>
 <tr>
 <td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/858b99eff7788af93a9831bfb492b57ed1fac6f9/docs/about.html" target="_blank">858b99e</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-12
-</td>
-<td>
-First big push
-</td>
-</tr>
-<tr>
-<td>
 Rmd
 </td>
 <td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/b9e46077d9325861b903213790133abe9852b4e9/analysis/about.Rmd" target="_blank">b9e4607</a>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/32f564413dcba15d11d47d909ed732067ce8898e/analysis/seurat_diffex.Rmd" target="_blank">32f5644</a>
 </td>
 <td>
 jmp448
 </td>
 <td>
-2019-12-12
+2019-12-13
 </td>
 <td>
-Start workflowr project.
+Publish demuxlet analytics, and early Seurat
 </td>
 </tr>
 </tbody>
@@ -460,7 +600,103 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<p>Describe your project.</p>
+<p>Cluster Analysis in Seurat</p>
+<p>Load Seurat object</p>
+<pre class="r"><code>library(Seurat)</code></pre>
+<pre><code>Registered S3 method overwritten by &#39;R.oo&#39;:
+  method        from       
+  throw.default R.methodsS3</code></pre>
+<pre><code>Warning in system2(command = python, args = paste0(&quot;\&quot;&quot;, config_script, :
+running command &#39;&#39;/home/jpopp/.virtualenvs/r-reticulate/bin/python&#39; &quot;/home/
+jpopp/R/x86_64-pc-linux-gnu-library/3.6/reticulate/config/config.py&quot; 2&gt;/
+dev/null&#39; had status 1</code></pre>
+<pre class="r"><code>sc &lt;- readRDS(&quot;./data/seurat_obj_fulldata_sctransform_mitoregress_processed.RDS&quot;)</code></pre>
+<p>First, let’s take a preliminary look at our data, which we previously processed</p>
+<pre class="r"><code>DimPlot(sc, group.by = &quot;diffday&quot;)</code></pre>
+<p><img src="figure/seurat_diffex.Rmd/umap_diffday-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Now, we want to find clusters such that the out-of-place island is a single cluster (then we can run differential expression analysis on it)</p>
+<pre class="r"><code>sc &lt;- FindNeighbors(sc, dims=1:10)</code></pre>
+<pre><code>Computing nearest neighbor graph</code></pre>
+<pre><code>Computing SNN</code></pre>
+<pre class="r"><code>sc &lt;- FindClusters(sc, res=0.03)</code></pre>
+<pre><code>Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 103273
+Number of edges: 3073938
+
+Running Louvain algorithm...
+Maximum modularity in 10 random starts: 0.9788
+Number of communities: 3
+Elapsed time: 119 seconds</code></pre>
+<pre class="r"><code>DimPlot(sc)</code></pre>
+<p><img src="figure/seurat_diffex.Rmd/find_clusters-1.png" width="672" style="display: block; margin: auto;" /></p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 3.6.1 (2019-07-05)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Scientific Linux 7.4 (Nitrogen)
+
+Matrix products: default
+BLAS/LAPACK: /software/openblas-0.2.19-el7-x86_64/lib/libopenblas_haswellp-r0.2.19.so
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] Seurat_3.1.1
+
+loaded via a namespace (and not attached):
+  [1] tsne_0.1-3          nlme_3.1-140        bitops_1.0-6       
+  [4] fs_1.3.1            RcppAnnoy_0.0.13    RColorBrewer_1.1-2 
+  [7] httr_1.4.1          rprojroot_1.3-2     sctransform_0.2.0  
+ [10] tools_3.6.1         backports_1.1.5     R6_2.4.0           
+ [13] irlba_2.3.3         KernSmooth_2.23-15  uwot_0.1.4         
+ [16] lazyeval_0.2.2      colorspace_1.4-1    npsurv_0.4-0       
+ [19] gridExtra_2.3       tidyselect_0.2.5    compiler_3.6.1     
+ [22] git2r_0.26.1        plotly_4.9.0        labeling_0.3       
+ [25] caTools_1.17.1.2    scales_1.0.0        lmtest_0.9-37      
+ [28] ggridges_0.5.1      pbapply_1.4-2       stringr_1.4.0      
+ [31] digest_0.6.21       rmarkdown_1.13      R.utils_2.9.0      
+ [34] pkgconfig_2.0.3     htmltools_0.4.0     bibtex_0.4.2       
+ [37] htmlwidgets_1.5.1   rlang_0.4.0         zoo_1.8-6          
+ [40] jsonlite_1.6        ica_1.0-2           gtools_3.8.1       
+ [43] dplyr_0.8.3         R.oo_1.22.0         magrittr_1.5       
+ [46] Matrix_1.2-17       Rcpp_1.0.3          munsell_0.5.0      
+ [49] ape_5.3             reticulate_1.13     lifecycle_0.1.0    
+ [52] R.methodsS3_1.7.1   stringi_1.4.3       whisker_0.3-2      
+ [55] yaml_2.2.0          gbRd_0.4-11         MASS_7.3-51.4      
+ [58] gplots_3.0.1.1      Rtsne_0.15          plyr_1.8.4         
+ [61] grid_3.6.1          parallel_3.6.1      gdata_2.18.0       
+ [64] listenv_0.7.0       promises_1.1.0      ggrepel_0.8.1      
+ [67] crayon_1.3.4        lattice_0.20-38     cowplot_1.0.0      
+ [70] splines_3.6.1       SDMTools_1.1-221.1  zeallot_0.1.0      
+ [73] knitr_1.23          pillar_1.4.2        igraph_1.2.4.1     
+ [76] reshape2_1.4.3      future.apply_1.3.0  codetools_0.2-16   
+ [79] leiden_0.3.1        glue_1.3.1          evaluate_0.14      
+ [82] lsei_1.2-0          metap_1.1           RcppParallel_4.4.4 
+ [85] data.table_1.12.4   png_0.1-7           vctrs_0.2.0        
+ [88] httpuv_1.5.2        Rdpack_0.11-0       gtable_0.3.0       
+ [91] RANN_2.6.1          purrr_0.3.2         tidyr_1.0.0        
+ [94] future_1.14.0       assertthat_0.2.1    ggplot2_3.2.1      
+ [97] xfun_0.8            rsvd_1.0.1          later_1.0.0        
+[100] viridisLite_0.3.0   survival_2.44-1.1   tibble_2.1.3       
+[103] workflowr_1.5.0     cluster_2.1.0       globals_0.12.4     
+[106] fitdistrplus_1.0-14 ROCR_1.0-7         </code></pre>
+</div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
@@ -476,6 +712,8 @@ footer is added to webpages before the MathJax javascript. -->
 </script>
 
 
+</div>
+</div>
 
 </div>
 
