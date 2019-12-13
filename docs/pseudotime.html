@@ -11,7 +11,7 @@
 
 
 
-<title>Project Overview</title>
+<title>Pseudotime Analysis</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -262,6 +265,90 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -269,6 +356,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -319,7 +416,7 @@ div.section {
 
 
 
-<h1 class="title toc-ignore">Project Overview</h1>
+<h1 class="title toc-ignore">Pseudotime Analysis</h1>
 
 </div>
 
@@ -347,7 +444,7 @@ div.section {
 <strong>Last updated:</strong> 2019-12-13
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>SC_Cardiomyocyte/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -375,6 +472,66 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20191212code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20191212)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20191212code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20191212)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
 <a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetreea132684d0f402730932901aebeaa861862244064targetblanka132684a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jmp448/SC_Cardiomyocyte/tree/a132684d0f402730932901aebeaa861862244064" target="_blank">a132684</a> </a>
 </p>
 </div>
@@ -386,7 +543,6 @@ Great! You are using Git for version control. Tracking code development and conn
 <pre><code>
 Ignored files:
     Ignored:    .Rhistory
-    Ignored:    analysis/figure/
     Ignored:    analysis/pseudotime.nb.html
     Ignored:    analysis/seurat_diffex.nb.html
     Ignored:    data/cluster2_markers.RData
@@ -450,7 +606,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/a132684d0f402730932901aebeaa861862244064/analysis/index.Rmd" target="_blank">a132684</a>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/a132684d0f402730932901aebeaa861862244064/analysis/pseudotime.Rmd" target="_blank">a132684</a>
 </td>
 <td>
 jmp448
@@ -462,159 +618,6 @@ jmp448
 Include pseudotime page
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/24a4020ca46b7e1bfc83ff846e3dce1c2992ef71/docs/index.html" target="_blank">24a4020</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-13
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/df8654872b9ceb1f0935877e508bdb629043ade2/analysis/index.Rmd" target="_blank">df86548</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-13
-</td>
-<td>
-wflow_publish(c(“analysis/index.Rmd”))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/acb4d71126f64dfdd455b41826b0336319d571a0/docs/index.html" target="_blank">acb4d71</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-13
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/a3b8f81713da0639b368174e33ce21b6aca27653/analysis/index.Rmd" target="_blank">a3b8f81</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-13
-</td>
-<td>
-New structure, more processing done in code and more viz in public
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/379f4d4d7522844ad45de1e956bb6f35800108d8/docs/index.html" target="_blank">379f4d4</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-13
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/32f564413dcba15d11d47d909ed732067ce8898e/analysis/index.Rmd" target="_blank">32f5644</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-13
-</td>
-<td>
-Publish demuxlet analytics, and early Seurat
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/858b99eff7788af93a9831bfb492b57ed1fac6f9/analysis/index.Rmd" target="_blank">858b99e</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-12
-</td>
-<td>
-First big push
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/858b99eff7788af93a9831bfb492b57ed1fac6f9/docs/index.html" target="_blank">858b99e</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-12
-</td>
-<td>
-First big push
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/b9e46077d9325861b903213790133abe9852b4e9/analysis/index.Rmd" target="_blank">b9e4607</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-12
-</td>
-<td>
-Start workflowr project.
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -622,25 +625,127 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<p>This site contains the workflow for the single cell cardiomyocyte differentiation project. This project is done in collaboration with Reem Elorbany and the <a href="https://giladlab.uchicago.edu/">Gilad lab</a> at the University of Chicago. The workflow consists of the following parts:</p>
-<ol style="list-style-type: decimal">
-<li><a href="quality_control.html">Quality Control</a></li>
-</ol>
-<ul>
-<li>Quality control of demuxlet data, taking a look at how many nonsense calls are made for each collection</li>
-</ul>
-<ol start="2" style="list-style-type: decimal">
-<li><a href="seurat_diffex.html">Clustering, Dimensionality Reduction, Differential Expression Analysis</a></li>
-</ol>
-<ul>
-<li>To take a look at differential expression analysis using <a href="https://satijalab.org/seurat/">Seurat</a></li>
-</ul>
-<ol start="3" style="list-style-type: decimal">
-<li><a href="pseudotime.html">Pseudotime, Trajectory Analysis</a></li>
-</ol>
-<ul>
-<li>Analyze progression through differentiation from iPSC to cardiomyocyte at single-cell resolution using <a href="https://cole-trapnell-lab.github.io/monocle3/docs/introduction/">Monocle</a>.</li>
-</ul>
+<p>In order to examine how single cells progress through differentiation, we utilized <a href="https://cole-trapnell-lab.github.io/monocle3/docs/introduction/">Monocle3</a>, produced by the Trapnell lab.</p>
+<pre class="r"><code>library(monocle3)</code></pre>
+<pre><code>Loading required package: Biobase</code></pre>
+<pre><code>Loading required package: BiocGenerics</code></pre>
+<pre><code>Loading required package: parallel</code></pre>
+<pre><code>
+Attaching package: &#39;BiocGenerics&#39;</code></pre>
+<pre><code>The following objects are masked from &#39;package:parallel&#39;:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB</code></pre>
+<pre><code>The following objects are masked from &#39;package:stats&#39;:
+
+    IQR, mad, sd, var, xtabs</code></pre>
+<pre><code>The following objects are masked from &#39;package:base&#39;:
+
+    anyDuplicated, append, as.data.frame, basename, cbind,
+    colnames, dirname, do.call, duplicated, eval, evalq, Filter,
+    Find, get, grep, grepl, intersect, is.unsorted, lapply, Map,
+    mapply, match, mget, order, paste, pmax, pmax.int, pmin,
+    pmin.int, Position, rank, rbind, Reduce, rownames, sapply,
+    setdiff, sort, table, tapply, union, unique, unsplit, which,
+    which.max, which.min</code></pre>
+<pre><code>Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    &#39;browseVignettes()&#39;. To cite Bioconductor, see
+    &#39;citation(&quot;Biobase&quot;)&#39;, and for packages &#39;citation(&quot;pkgname&quot;)&#39;.</code></pre>
+<pre><code>Loading required package: SingleCellExperiment</code></pre>
+<pre><code>Loading required package: SummarizedExperiment</code></pre>
+<pre><code>Loading required package: GenomicRanges</code></pre>
+<pre><code>Loading required package: stats4</code></pre>
+<pre><code>Loading required package: S4Vectors</code></pre>
+<pre><code>
+Attaching package: &#39;S4Vectors&#39;</code></pre>
+<pre><code>The following object is masked from &#39;package:base&#39;:
+
+    expand.grid</code></pre>
+<pre><code>Loading required package: IRanges</code></pre>
+<pre><code>Loading required package: GenomeInfoDb</code></pre>
+<pre><code>Loading required package: DelayedArray</code></pre>
+<pre><code>Loading required package: matrixStats</code></pre>
+<pre><code>
+Attaching package: &#39;matrixStats&#39;</code></pre>
+<pre><code>The following objects are masked from &#39;package:Biobase&#39;:
+
+    anyMissing, rowMedians</code></pre>
+<pre><code>Loading required package: BiocParallel</code></pre>
+<pre><code>
+Attaching package: &#39;DelayedArray&#39;</code></pre>
+<pre><code>The following objects are masked from &#39;package:matrixStats&#39;:
+
+    colMaxs, colMins, colRanges, rowMaxs, rowMins, rowRanges</code></pre>
+<pre><code>The following objects are masked from &#39;package:base&#39;:
+
+    aperm, apply, rowsum</code></pre>
+<pre><code>
+Attaching package: &#39;monocle3&#39;</code></pre>
+<pre><code>The following objects are masked from &#39;package:Biobase&#39;:
+
+    exprs, fData, fData&lt;-, pData, pData&lt;-</code></pre>
+<pre class="r"><code>cds &lt;- readRDS(&quot;./data/monocle_from_seurat_fulldata_sctransform_mitoregress_graphed.RDS&quot;)</code></pre>
+<p>Using Monocle, we can take a look at each cell’s progression through differentiation in pseudotime.</p>
+<pre class="r"><code>plot_cells(cds, color_cells_by = &quot;pseudotime&quot;, label_cell_groups = F, label_leaves = F, label_branch_points = F, graph_label_size = 0.5)</code></pre>
+<p><img src="figure/pseudotime.Rmd/plot_pseudotime-1.png" width="672" style="display: block; margin: auto;" /></p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 3.6.1 (2019-07-05)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Scientific Linux 7.4 (Nitrogen)
+
+Matrix products: default
+BLAS/LAPACK: /software/openblas-0.2.19-el7-x86_64/lib/libopenblas_haswellp-r0.2.19.so
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+
+attached base packages:
+[1] stats4    parallel  stats     graphics  grDevices utils     datasets 
+[8] methods   base     
+
+other attached packages:
+ [1] monocle3_0.2.0              SingleCellExperiment_1.6.0 
+ [3] SummarizedExperiment_1.14.1 DelayedArray_0.10.0        
+ [5] BiocParallel_1.18.0         matrixStats_0.55.0         
+ [7] GenomicRanges_1.36.0        GenomeInfoDb_1.20.0        
+ [9] IRanges_2.18.1              S4Vectors_0.22.1           
+[11] Biobase_2.44.0              BiocGenerics_0.30.0        
+
+loaded via a namespace (and not attached):
+ [1] tidyselect_0.2.5       xfun_0.8               reshape2_1.4.3        
+ [4] purrr_0.3.2            lattice_0.20-38        colorspace_1.4-1      
+ [7] viridisLite_0.3.0      htmltools_0.4.0        yaml_2.2.0            
+[10] rlang_0.4.0            later_1.0.0            pillar_1.4.2          
+[13] glue_1.3.1             plyr_1.8.4             GenomeInfoDbData_1.2.1
+[16] stringr_1.4.0          zlibbioc_1.30.0        munsell_0.5.0         
+[19] gtable_0.3.0           workflowr_1.5.0        evaluate_0.14         
+[22] labeling_0.3           knitr_1.23             httpuv_1.5.2          
+[25] Rcpp_1.0.3             promises_1.1.0         backports_1.1.5       
+[28] scales_1.0.0           XVector_0.24.0         fs_1.3.1              
+[31] gridExtra_2.3          ggplot2_3.2.1          digest_0.6.21         
+[34] stringi_1.4.3          dplyr_0.8.3            rprojroot_1.3-2       
+[37] grid_3.6.1             tools_3.6.1            bitops_1.0-6          
+[40] magrittr_1.5           RCurl_1.95-4.12        lazyeval_0.2.2        
+[43] tibble_2.1.3           crayon_1.3.4           whisker_0.3-2         
+[46] pkgconfig_2.0.3        Matrix_1.2-17          viridis_0.5.1         
+[49] assertthat_0.2.1       rmarkdown_1.13         R6_2.4.0              
+[52] igraph_1.2.4.1         git2r_0.26.1           compiler_3.6.1        </code></pre>
+</div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
@@ -656,6 +761,8 @@ footer is added to webpages before the MathJax javascript. -->
 </script>
 
 
+</div>
+</div>
 
 </div>
 
