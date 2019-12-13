@@ -1,7 +1,7 @@
-name: "SC_Cardiomyocyte"
+name: SC_Cardiomyocyte
 output_dir: ../docs
 navbar:
-  title: "SC_Cardiomyocyte"
+  title: SC_Cardiomyocyte
   left:
   - text: Home
     href: index.html
@@ -9,6 +9,10 @@ navbar:
     href: about.html
   - text: License
     href: license.html
+  right:
+  - icon: fa-github
+    text: Source code
+    href: https://github.com/jmp448/SC_Cardiomyocyte
 output:
   workflowr::wflow_html:
     toc: yes
