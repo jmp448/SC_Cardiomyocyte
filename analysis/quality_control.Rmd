@@ -1,0 +1,63 @@
+---
+title: "Quality Control"
+output:
+  html_document:
+    df_print: paged
+---
+
+This notebook runs through some checks for quality control of the sequencing and Demuxlet (cell assignment) results.
+
+<!-- Note that in order to run this notebook in R, you will need to set the working directory to the parent of the analytics folder, not the analytics folder itself (ie, open the file, set working directory to file, and then run setwd("../") -->
+
+First, we load necessary libraries and pull the data that file saved
+
+```{r load_libraries}
+library(ggplot2)
+library(Seurat)
+```
+
+In `demuxlet_dataload.R` (in `code/`), we created three dataframes, one for each collection day.  These dataframes tell us, for each collection, how many assignments were made of cells to singlets, doublets, and ambiguous, and among these how many were sense/ nonsense.  
+
+```{r load_data}
+load("./data/demuxlet_data.RData")
+```
+
+First, we want to take a look at how many assignments were made to each, and how many of each assignment type made sense.  We define *sense* as an assignment consisting only of individuals that are actually present in the collection, and *nonsense* as any assignment to an individual not present in the current collection.
+
+```{r demuxlet-cd1}
+ggplot(cd1, aes(x = assignment, y = counts, fill = sense)) + 
+  geom_bar(stat = 'identity', position = 'stack') + facet_grid(~collection) +
+  ggtitle("Collection Day 1")
+```
+
+```{r demuxlet-cd2}
+ggplot(cd2, aes(x = assignment, y = counts, fill = sense)) + 
+  geom_bar(stat = 'identity', position = 'stack') + facet_grid(~collection) +
+  ggtitle("Collection Day 2")
+```
+
+```{r demuxlet-cd3}
+ggplot(cd3, aes(x = assignment, y = counts, fill = sense)) + 
+  geom_bar(stat = 'identity', position = 'stack') + facet_grid(~collection) +
+  ggtitle("Collection Day 3")
+```
+
+Now, let's focus in on the cells that we will actually be using for our analysis, the singlet cells assigned to individuals present in the given collection.  In order to do this, we created a Seurat object in `/code/create_seurat_obj.R`.  The following filtering criteria were used:
+* All cells included must have at least 200 genes expressed
+* All genes included must be present in at least 3 cells per collection
+
+First, we take a look at the number of reads, the number of genes, and the mito counts from each individual:
+
+```{r load_seurat}
+rm(list=ls())
+sc <- readRDS("./data/seurat_obj_fulldata_allmito.RDS")
+```
+
+``` {r mito_ind}
+VlnPlot(sc, features=c("nFeature_RNA","nCount_RNA","percent.mito"),ncol=3, group.by = "individual",pt.size = 0)
+```
+
+``` {r mito_day}
+VlnPlot(sc, features=c("nFeature_RNA","nCount_RNA","percent.mito"),ncol=3, group.by = "diffday",pt.size = 0)
+```
+
