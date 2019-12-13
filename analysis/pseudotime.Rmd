@@ -1,0 +1,17 @@
+---
+title: "Pseudotime Analysis"
+output: html_notebook
+---
+
+In order to examine how single cells progress through differentiation, we utilized [Monocle3](https://cole-trapnell-lab.github.io/monocle3/docs/introduction/), produced by the Trapnell lab.
+
+```{r load_libraries}
+library(monocle3)
+cds <- readRDS("./data/monocle_from_seurat_fulldata_sctransform_mitoregress_graphed.RDS")
+```
+
+Using Monocle, we can take a look at each cell's progression through differentiation in pseudotime.
+
+```{r plot_pseudotime}
+plot_cells(cds, color_cells_by = "pseudotime", label_cell_groups = F, label_leaves = F, label_branch_points = F, graph_label_size = 0.5)
+```
