@@ -344,7 +344,7 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2019-12-13
+<strong>Last updated:</strong> 2020-02-07
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -375,10 +375,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetreea132684d0f402730932901aebeaa861862244064targetblanka132684a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jmp448/SC_Cardiomyocyte/tree/a132684d0f402730932901aebeaa861862244064" target="_blank">a132684</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetree7ca728ca3198fa1302d422e1ebdbf8fdb0c512a4targetblank7ca728ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jmp448/SC_Cardiomyocyte/tree/7ca728ca3198fa1302d422e1ebdbf8fdb0c512a4" target="_blank">7ca728c</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetreea132684d0f402730932901aebeaa861862244064targetblanka132684a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetree7ca728ca3198fa1302d422e1ebdbf8fdb0c512a4targetblank7ca728ca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -386,26 +386,52 @@ Great! You are using Git for version control. Tracking code development and conn
 <pre><code>
 Ignored files:
     Ignored:    .Rhistory
-    Ignored:    analysis/figure/
-    Ignored:    analysis/pseudotime.nb.html
-    Ignored:    analysis/seurat_diffex.nb.html
+    Ignored:    code/.Rhistory
+    Ignored:    data/E1_CollectionInfo.tsv
+    Ignored:    data/E2_CollectionInfo.tsv
+    Ignored:    data/E3_CollectionInfo.tsv
+    Ignored:    data/bg_genes.txt
     Ignored:    data/cluster2_markers.RData
+    Ignored:    data/de_genes.txt
+    Ignored:    data/de_genes_down.txt
+    Ignored:    data/de_genes_up.txt
+    Ignored:    data/demux_exp1.RDS
+    Ignored:    data/demux_exp2.RDS
+    Ignored:    data/demux_exp3.RDS
     Ignored:    data/demuxlet_data.RData
     Ignored:    data/geneinfo.rds
     Ignored:    data/monocle_from_seurat_fulldata_sctransform_mitoregress_graphed.RDS
-    Ignored:    data/seurat_obj_fulldata_allmito.RDS
-    Ignored:    data/seurat_obj_fulldata_sctransform_mitoregress.RDS
-    Ignored:    data/seurat_obj_fulldata_sctransform_mitoregress_processed.RDS
+    Ignored:    data/seurat_combined.RDS
+    Ignored:    data/seurat_filtered.RDS
+    Ignored:    data/seurat_round1_allsinglets.RDS
+    Ignored:    data/seurat_round1_unfiltered.RDS
+    Ignored:    data/seurat_round2_allsinglets.RDS
+    Ignored:    data/seurat_round2_unfiltered.RDS
+    Ignored:    data/seurat_round3_allsinglets.RDS
+    Ignored:    data/seurat_round3_unfiltered.RDS
+    Ignored:    output/gsea/
     Ignored:    wrappers/
 
 Untracked files:
+    Untracked:  analysis/update_workflow.R
     Untracked:  code/create_seurat_object.R
+    Untracked:  code/create_seurat_round1.R
+    Untracked:  code/create_seurat_round2.R
+    Untracked:  code/create_seurat_round3.R
+    Untracked:  code/directory_navigation.R
+    Untracked:  code/filter_seurat.R
+    Untracked:  code/gsea/
+    Untracked:  code/merge_seurat.R
+    Untracked:  code/normalize_seurat.R
+    Untracked:  intermediate_images/
+    Untracked:  junk/
 
 Unstaged changes:
     Modified:   .gitignore
     Deleted:    analysis/demuxlet_analysis.Rmd
-    Modified:   analysis/quality_control.Rmd
-    Modified:   analysis/seurat_diffex.Rmd
+    Deleted:    analysis/pseudotime.Rmd
+    Deleted:    analysis/quality_control.Rmd
+    Deleted:    analysis/seurat_diffex.Rmd
     Modified:   code/demuxlet_dataload.R
 
 </code></pre>
@@ -445,6 +471,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/7ca728ca3198fa1302d422e1ebdbf8fdb0c512a4/analysis/index.Rmd" target="_blank">7ca728c</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-02-07
+</td>
+<td>
+Publish the initial QC files for the complete, combined analysis
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/d8d78ed2d8850ae7d436f7d8519b23124cec8dda/docs/index.html" target="_blank">d8d78ed</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2019-12-13
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -624,22 +684,10 @@ Start workflowr project.
 </div>
 <p>This site contains the workflow for the single cell cardiomyocyte differentiation project. This project is done in collaboration with Reem Elorbany and the <a href="https://giladlab.uchicago.edu/">Gilad lab</a> at the University of Chicago. The workflow consists of the following parts:</p>
 <ol style="list-style-type: decimal">
-<li><a href="quality_control.html">Quality Control</a></li>
+<li><a href="quality_control_123.html">Quality Control</a></li>
 </ol>
 <ul>
-<li>Quality control of demuxlet data, taking a look at how many nonsense calls are made for each collection</li>
-</ul>
-<ol start="2" style="list-style-type: decimal">
-<li><a href="seurat_diffex.html">Clustering, Dimensionality Reduction, Differential Expression Analysis</a></li>
-</ol>
-<ul>
-<li>To take a look at differential expression analysis using <a href="https://satijalab.org/seurat/">Seurat</a></li>
-</ul>
-<ol start="3" style="list-style-type: decimal">
-<li><a href="pseudotime.html">Pseudotime, Trajectory Analysis</a></li>
-</ol>
-<ul>
-<li>Analyze progression through differentiation from iPSC to cardiomyocyte at single-cell resolution using <a href="https://cole-trapnell-lab.github.io/monocle3/docs/introduction/">Monocle</a>.</li>
+<li>Quality control</li>
 </ul>
 
 
