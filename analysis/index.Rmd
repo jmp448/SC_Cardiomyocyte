@@ -10,11 +10,5 @@ editor_options:
 
 This site contains the workflow for the single cell cardiomyocyte differentiation project.  This project is done in collaboration with Reem Elorbany and the [Gilad lab](https://giladlab.uchicago.edu/) at the University of Chicago.  The workflow consists of the following parts:
 
-1. [Quality Control](quality_control.html)
-  + Quality control of demuxlet data, taking a look at how many nonsense calls are made for each collection
-
-2. [Clustering, Dimensionality Reduction, Differential Expression Analysis](seurat_diffex.html)
-  + To take a look at differential expression analysis using [Seurat](https://satijalab.org/seurat/)
-  
-3. [Pseudotime, Trajectory Analysis](pseudotime.html)
-  + Analyze progression through differentiation from iPSC to cardiomyocyte at single-cell resolution using [Monocle](https://cole-trapnell-lab.github.io/monocle3/docs/introduction/).
+1. [Quality Control](quality_control_123.html)
+  + Quality control
