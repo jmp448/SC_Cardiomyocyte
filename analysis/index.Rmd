@@ -10,5 +10,8 @@ editor_options:
 
 This site contains the workflow for the single cell cardiomyocyte differentiation project.  This project is done in collaboration with Reem Elorbany and the [Gilad lab](https://giladlab.uchicago.edu/) at the University of Chicago.  The workflow consists of the following parts:
 
-1. [Quality Control](quality_control_123.html)
+1. [Quality Control](quality_control.html)
   + Quality control
+  
+2. [Dimensionality Reduction](dim_reduce.Rmd)
+  + Dimensionality reduction
