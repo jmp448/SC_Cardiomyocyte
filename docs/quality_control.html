@@ -441,7 +441,7 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2019-12-13
+<strong>Last updated:</strong> 2020-02-12
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -532,27 +532,72 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetreea3b8f81713da0639b368174e33ce21b6aca27653targetblanka3b8f81a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jmp448/SC_Cardiomyocyte/tree/a3b8f81713da0639b368174e33ce21b6aca27653" target="_blank">a3b8f81</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetreecc2c48a59ff8ca035d59e0bad63520caa4867a40targetblankcc2c48aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jmp448/SC_Cardiomyocyte/tree/cc2c48a59ff8ca035d59e0bad63520caa4867a40" target="_blank">cc2c48a</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetreea3b8f81713da0639b368174e33ce21b6aca27653targetblanka3b8f81a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetreecc2c48a59ff8ca035d59e0bad63520caa4867a40targetblankcc2c48aa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
 Ignored files:
-    Ignored:    analysis/seurat_diffex.nb.html
+    Ignored:    .Rhistory
+    Ignored:    analysis/dim_reduce.nb.html
+    Ignored:    analysis/figure/
+    Ignored:    code/.Rhistory
+    Ignored:    data/E1_CollectionInfo.tsv
+    Ignored:    data/E2_CollectionInfo.tsv
+    Ignored:    data/E3_CollectionInfo.tsv
+    Ignored:    data/bg_genes.txt
+    Ignored:    data/cluster2_markers.RData
+    Ignored:    data/de_genes.txt
+    Ignored:    data/de_genes_down.txt
+    Ignored:    data/de_genes_up.txt
+    Ignored:    data/demux_exp1.RDS
+    Ignored:    data/demux_exp2.RDS
+    Ignored:    data/demux_exp3.RDS
     Ignored:    data/demuxlet_data.RData
-    Ignored:    data/seurat_obj_fulldata_allmito.RDS
-    Ignored:    data/seurat_obj_fulldata_sctransform_mitoregress.RDS
-    Ignored:    data/seurat_obj_fulldata_sctransform_mitoregress_processed.RDS
+    Ignored:    data/geneinfo.rds
+    Ignored:    data/monocle_from_seurat_fulldata_sctransform_mitoregress_graphed.RDS
+    Ignored:    data/seurat_combined.RDS
+    Ignored:    data/seurat_filtered.RDS
+    Ignored:    data/seurat_normalized.RDS
+    Ignored:    data/seurat_pca.RDS
+    Ignored:    data/seurat_round1_allsinglets.RDS
+    Ignored:    data/seurat_round1_unfiltered.RDS
+    Ignored:    data/seurat_round2_allsinglets.RDS
+    Ignored:    data/seurat_round2_unfiltered.RDS
+    Ignored:    data/seurat_round3_allsinglets.RDS
+    Ignored:    data/seurat_round3_unfiltered.RDS
+    Ignored:    data/seurat_umap.RDS
+    Ignored:    output/gsea/
+    Ignored:    wrappers/
 
 Untracked files:
+    Untracked:  analysis/dim_reduce.Rmd
+    Untracked:  analysis/update_workflow.R
     Untracked:  code/create_seurat_object.R
+    Untracked:  code/create_seurat_round1.R
+    Untracked:  code/create_seurat_round2.R
+    Untracked:  code/create_seurat_round3.R
+    Untracked:  code/directory_navigation.R
+    Untracked:  code/filter_seurat.R
+    Untracked:  code/gsea/
+    Untracked:  code/merge_seurat.R
+    Untracked:  code/normalize_seurat.R
+    Untracked:  code/pca_seurat.R
+    Untracked:  code/umap_seurat.R
+    Untracked:  intermediate_images/
+    Untracked:  junk/
 
 Unstaged changes:
+    Modified:   .gitignore
     Deleted:    analysis/demuxlet_analysis.Rmd
+    Modified:   analysis/index.Rmd
+    Deleted:    analysis/pseudotime.Rmd
+    Deleted:    analysis/quality_control_123.Rmd
+    Deleted:    analysis/seurat_diffex.Rmd
     Modified:   code/demuxlet_dataload.R
 
 </code></pre>
@@ -597,6 +642,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/cc2c48a59ff8ca035d59e0bad63520caa4867a40/analysis/quality_control.Rmd" target="_blank">cc2c48a</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-02-12
+</td>
+<td>
+wflow_publish(“./analysis/quality_control.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/acb4d71126f64dfdd455b41826b0336319d571a0/docs/quality_control.html" target="_blank">acb4d71</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2019-12-13
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/a3b8f81713da0639b368174e33ce21b6aca27653/analysis/quality_control.Rmd" target="_blank">a3b8f81</a>
 </td>
 <td>
@@ -616,41 +695,625 @@ New structure, more processing done in code and more viz in public
 </div>
 </div>
 </div>
-<p>This notebook runs through some checks for quality control of the sequencing and Demuxlet (cell assignment) results.</p>
+<p>This notebook runs through some checks for quality control of the sequencing and Demuxlet (cell assignment) results. Seurat object construction based on the pipeline created by Reem Elorbany <a href="https://relorbany.github.io/Exp1_prelim_analysis/scCM_round1_lowpass_combined.html">here</a>.</p>
 <!-- Note that in order to run this notebook in R, you will need to set the working directory to the parent of the analytics folder, not the analytics folder itself (ie, open the file, set working directory to file, and then run setwd("../") -->
 <p>First, we load necessary libraries and pull the data that file saved</p>
 <pre class="r"><code>library(ggplot2)
-library(Seurat)</code></pre>
-<pre><code>Registered S3 method overwritten by &#39;R.oo&#39;:
-  method        from       
-  throw.default R.methodsS3</code></pre>
+library(ggridges)</code></pre>
+<pre><code>
+Attaching package: &#39;ggridges&#39;</code></pre>
+<pre><code>The following object is masked from &#39;package:ggplot2&#39;:
+
+    scale_discrete_manual</code></pre>
+<pre class="r"><code>suppressMessages(library(Seurat))</code></pre>
 <pre><code>Warning in system2(command = python, args = paste0(&quot;\&quot;&quot;, config_script, :
 running command &#39;&#39;/home/jpopp/.virtualenvs/r-reticulate/bin/python&#39; &quot;/home/
 jpopp/R/x86_64-pc-linux-gnu-library/3.6/reticulate/config/config.py&quot; 2&gt;/
 dev/null&#39; had status 1</code></pre>
 <p>In <code>demuxlet_dataload.R</code> (in <code>code/</code>), we created three dataframes, one for each collection day. These dataframes tell us, for each collection, how many assignments were made of cells to singlets, doublets, and ambiguous, and among these how many were sense/ nonsense.</p>
-<pre class="r"><code>load(&quot;./data/demuxlet_data.RData&quot;)</code></pre>
-<p>First, we want to take a look at how many assignments were made to each, and how many of each assignment type made sense. We define <em>sense</em> as an assignment consisting only of individuals that are actually present in the collection, and <em>nonsense</em> as any assignment to an individual not present in the current collection.</p>
-<pre class="r"><code>ggplot(cd1, aes(x = assignment, y = counts, fill = sense)) + 
-  geom_bar(stat = &#39;identity&#39;, position = &#39;stack&#39;) + facet_grid(~collection) +
-  ggtitle(&quot;Collection Day 1&quot;)</code></pre>
-<p><img src="figure/quality_control.Rmd/demuxlet-cd1-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>ggplot(cd2, aes(x = assignment, y = counts, fill = sense)) + 
-  geom_bar(stat = &#39;identity&#39;, position = &#39;stack&#39;) + facet_grid(~collection) +
-  ggtitle(&quot;Collection Day 2&quot;)</code></pre>
-<p><img src="figure/quality_control.Rmd/demuxlet-cd2-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>ggplot(cd3, aes(x = assignment, y = counts, fill = sense)) + 
-  geom_bar(stat = &#39;identity&#39;, position = &#39;stack&#39;) + facet_grid(~collection) +
-  ggtitle(&quot;Collection Day 3&quot;)</code></pre>
-<p><img src="figure/quality_control.Rmd/demuxlet-cd3-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Now, let’s focus in on the cells that we will actually be using for our analysis, the singlet cells assigned to individuals present in the given collection. In order to do this, we created a Seurat object in <code>/code/create_seurat_obj.R</code>. The following filtering criteria were used: * All cells included must have at least 200 genes expressed * All genes included must be present in at least 3 cells per collection</p>
-<p>First, we take a look at the number of reads, the number of genes, and the mito counts from each individual:</p>
-<pre class="r"><code>rm(list=ls())
-sc &lt;- readRDS(&quot;./data/seurat_obj_fulldata_allmito.RDS&quot;)</code></pre>
-<pre class="r"><code>VlnPlot(sc, features=c(&quot;nFeature_RNA&quot;,&quot;nCount_RNA&quot;,&quot;percent.mito&quot;),ncol=3, group.by = &quot;individual&quot;,pt.size = 0)</code></pre>
-<p><img src="figure/quality_control.Rmd/mito_ind-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>VlnPlot(sc, features=c(&quot;nFeature_RNA&quot;,&quot;nCount_RNA&quot;,&quot;percent.mito&quot;),ncol=3, group.by = &quot;diffday&quot;,pt.size = 0)</code></pre>
-<p><img src="figure/quality_control.Rmd/mito_day-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>demux1 &lt;- readRDS(&quot;./data/demux_exp1.RDS&quot;)
+demux2 &lt;- readRDS(&quot;./data/demux_exp2.RDS&quot;)
+demux3 &lt;- readRDS(&quot;./data/demux_exp3.RDS&quot;)</code></pre>
+<p>Now, we want to break down that ‘other’ category. How many assignments were made to singlet vs doublet vs ambiguous, and how many of each assignment type made sense? We define <em>sense</em> as an assignment consisting only of individuals that are actually present in the collection, and <em>nonsense</em> as any assignment to an individual not present in the current collection.</p>
+<pre class="r"><code>ggplot(demux1, aes(x = collection, y = counts, fill = assignment)) + 
+  geom_bar(stat = &#39;identity&#39;, position = &#39;stack&#39;) + 
+  facet_grid(~colday) + ggtitle(&quot;Round 1 of Collections&quot;)</code></pre>
+<p><img src="figure/quality_control.Rmd/demuxlet-exp1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(demux2, aes(x = collection, y = counts, fill = assignment)) + 
+  geom_bar(stat = &#39;identity&#39;, position = &#39;stack&#39;) + 
+  facet_grid(~colday) + ggtitle(&quot;Round 2 of Collections&quot;)</code></pre>
+<p><img src="figure/quality_control.Rmd/demuxlet-exp2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(demux3, aes(x = collection, y = counts, fill = assignment)) + 
+  geom_bar(stat = &#39;identity&#39;, position = &#39;stack&#39;) + 
+  facet_grid(~colday) + ggtitle(&quot;Round 3 of Collections&quot;)</code></pre>
+<p><img src="figure/quality_control.Rmd/demuxlet-exp3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Now we’re going to take a look at some other qc metrics</p>
+<pre class="r"><code>sc1 &lt;- readRDS(&quot;./data/seurat_round1_allsinglets.RDS&quot;)
+sc2 &lt;- readRDS(&quot;./data/seurat_round2_allsinglets.RDS&quot;)
+sc3 &lt;- readRDS(&quot;./data/seurat_round3_allsinglets.RDS&quot;)</code></pre>
+<p>Let’s take a look at the distributions of the read counts</p>
+<pre class="r"><code>exp1 &lt;- cbind(data.frame(sc1$nCount_RNA), c(data.frame(sc1$nFeature_RNA, data.frame(sc1$percent.mito), data.frame(sc1$diffday), data.frame(sc1$individual))))
+exp2 &lt;- cbind(data.frame(sc2$nCount_RNA), c(data.frame(sc2$nFeature_RNA, data.frame(sc2$percent.mito), data.frame(sc2$diffday), data.frame(sc2$individual))))
+exp3 &lt;- cbind(data.frame(sc3$nCount_RNA), c(data.frame(sc3$nFeature_RNA), data.frame(sc3$percent.mito), data.frame(sc3$diffday), data.frame(sc3$individual)))</code></pre>
+<p>I’ll also make a combined df</p>
+<pre class="r"><code>colnames(exp1) &lt;- c(&quot;nCount_RNA&quot;, &quot;nFeature_RNA&quot;, &quot;percent.mito&quot;, &quot;diffday&quot;, &quot;individual&quot;)
+exp1$exp &lt;- rep(1, nrow(exp1))
+colnames(exp2) &lt;- c(&quot;nCount_RNA&quot;, &quot;nFeature_RNA&quot;, &quot;percent.mito&quot;, &quot;diffday&quot;, &quot;individual&quot;)
+exp2$exp &lt;- rep(2, nrow(exp2))
+colnames(exp3) &lt;- c(&quot;nCount_RNA&quot;, &quot;nFeature_RNA&quot;, &quot;percent.mito&quot;, &quot;diffday&quot;, &quot;individual&quot;)
+exp3$exp &lt;- rep(3, nrow(exp3))
+exp123 &lt;- rbind(exp1, exp2, exp3)</code></pre>
+<p>With this we can create our plots</p>
+<p>Quality control for all three rounds of experiments combined (19 individuals)</p>
+<pre class="r"><code>max.98 &lt;- quantile(exp123$nCount_RNA, 0.98)
+ggplot(exp123, aes(x = nCount_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle(&quot;Read counts by individual (all)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 114</code></pre>
+<pre><code>Warning: Removed 11508 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp123, aes(x = nCount_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~diffday)+
+  ggtitle(&quot;Read counts by individual, separated by diffday (all)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 172</code></pre>
+<pre><code>Picking joint bandwidth of 184</code></pre>
+<pre><code>Picking joint bandwidth of 208</code></pre>
+<pre><code>Picking joint bandwidth of 138</code></pre>
+<pre><code>Picking joint bandwidth of 135</code></pre>
+<pre><code>Picking joint bandwidth of 137</code></pre>
+<pre><code>Picking joint bandwidth of 165</code></pre>
+<pre><code>Warning: Removed 11508 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-4-2.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>max.98 &lt;- quantile(exp123$nCount_RNA, 0.98)
+ggplot(exp123, aes(x = nCount_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle(&quot;Read counts by diffday (all)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 88.5</code></pre>
+<pre><code>Warning: Removed 11508 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-4-3.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp123, aes(x = nCount_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~individual) +
+  ggtitle(&quot;Read counts by diffday, separated by individual (all)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 108</code></pre>
+<pre><code>Picking joint bandwidth of 131</code></pre>
+<pre><code>Picking joint bandwidth of 112</code></pre>
+<pre><code>Picking joint bandwidth of 78</code></pre>
+<pre><code>Picking joint bandwidth of 107</code></pre>
+<pre><code>Picking joint bandwidth of 124</code></pre>
+<pre><code>Picking joint bandwidth of 142</code></pre>
+<pre><code>Picking joint bandwidth of 170</code></pre>
+<pre><code>Picking joint bandwidth of 218</code></pre>
+<pre><code>Picking joint bandwidth of 157</code></pre>
+<pre><code>Picking joint bandwidth of 155</code></pre>
+<pre><code>Picking joint bandwidth of 248</code></pre>
+<pre><code>Picking joint bandwidth of 194</code></pre>
+<pre><code>Picking joint bandwidth of 171</code></pre>
+<pre><code>Picking joint bandwidth of 205</code></pre>
+<pre><code>Picking joint bandwidth of 181</code></pre>
+<pre><code>Picking joint bandwidth of 196</code></pre>
+<pre><code>Picking joint bandwidth of 186</code></pre>
+<pre><code>Picking joint bandwidth of 206</code></pre>
+<pre><code>Warning: Removed 11508 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-4-4.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>max.98 &lt;- quantile(exp123$nFeature_RNA, 0.98)
+ggplot(exp123, aes(x = nFeature_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle(&quot;Gene counts by individual (all)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 58.1</code></pre>
+<pre><code>Warning: Removed 11498 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-4-5.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp123, aes(x = nFeature_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~diffday) +
+  ggtitle(&quot;Gene counts by individual, separated by diffday (all)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 81.3</code></pre>
+<pre><code>Picking joint bandwidth of 89.3</code></pre>
+<pre><code>Picking joint bandwidth of 92</code></pre>
+<pre><code>Picking joint bandwidth of 68.7</code></pre>
+<pre><code>Picking joint bandwidth of 69.7</code></pre>
+<pre><code>Picking joint bandwidth of 69.4</code></pre>
+<pre><code>Picking joint bandwidth of 82.7</code></pre>
+<pre><code>Warning: Removed 11498 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-4-6.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>max.98 &lt;- quantile(exp123$nFeature_RNA, 0.98)
+ggplot(exp123, aes(x = nFeature_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle(&quot;Gene counts by diffday (all)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 45.8</code></pre>
+<pre><code>Warning: Removed 11498 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-4-7.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp123, aes(x = nFeature_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~individual) +
+  ggtitle(&quot;Gene counts by diffday, separated by individual (all)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 54.8</code></pre>
+<pre><code>Picking joint bandwidth of 66.7</code></pre>
+<pre><code>Picking joint bandwidth of 56.9</code></pre>
+<pre><code>Picking joint bandwidth of 43.9</code></pre>
+<pre><code>Picking joint bandwidth of 50.5</code></pre>
+<pre><code>Picking joint bandwidth of 64.1</code></pre>
+<pre><code>Picking joint bandwidth of 70.3</code></pre>
+<pre><code>Picking joint bandwidth of 77</code></pre>
+<pre><code>Picking joint bandwidth of 98.7</code></pre>
+<pre><code>Picking joint bandwidth of 80.9</code></pre>
+<pre><code>Picking joint bandwidth of 75.4</code></pre>
+<pre><code>Picking joint bandwidth of 109</code></pre>
+<pre><code>Picking joint bandwidth of 90.9</code></pre>
+<pre><code>Picking joint bandwidth of 85.6</code></pre>
+<pre><code>Picking joint bandwidth of 99.2</code></pre>
+<pre><code>Picking joint bandwidth of 92.6</code></pre>
+<pre><code>Picking joint bandwidth of 94.6</code></pre>
+<pre><code>Picking joint bandwidth of 85.6</code></pre>
+<pre><code>Picking joint bandwidth of 105</code></pre>
+<pre><code>Warning: Removed 11498 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-4-8.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp123, aes(x = percent.mito, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 20)) +
+  ggtitle(&quot;Mito counts by individual (all)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 1.49</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-4-9.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp123, aes(x = percent.mito, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 50)) +
+  facet_grid(~diffday) +
+  ggtitle(&quot;Mito counts by individual, separated by diffday (all)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 2.22</code></pre>
+<pre><code>Picking joint bandwidth of 2.02</code></pre>
+<pre><code>Picking joint bandwidth of 1.68</code></pre>
+<pre><code>Picking joint bandwidth of 2.65</code></pre>
+<pre><code>Picking joint bandwidth of 1.92</code></pre>
+<pre><code>Picking joint bandwidth of 2.09</code></pre>
+<pre><code>Picking joint bandwidth of 2.29</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-4-10.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp123, aes(x = percent.mito, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 20)) +
+  ggtitle(&quot;Mito counts by diffday (all)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 1.23</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-4-11.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp123, aes(x = percent.mito, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 50)) +
+  facet_grid(~individual) +
+  ggtitle(&quot;Mito counts by diffday, separated by individual (all)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 1.93</code></pre>
+<pre><code>Picking joint bandwidth of 1.9</code></pre>
+<pre><code>Picking joint bandwidth of 1.84</code></pre>
+<pre><code>Picking joint bandwidth of 1.87</code></pre>
+<pre><code>Picking joint bandwidth of 1.67</code></pre>
+<pre><code>Picking joint bandwidth of 1.64</code></pre>
+<pre><code>Picking joint bandwidth of 2.59</code></pre>
+<pre><code>Picking joint bandwidth of 3.09</code></pre>
+<pre><code>Picking joint bandwidth of 2.19</code></pre>
+<pre><code>Picking joint bandwidth of 2.25</code></pre>
+<pre><code>Picking joint bandwidth of 2.24</code></pre>
+<pre><code>Picking joint bandwidth of 1.77</code></pre>
+<pre><code>Picking joint bandwidth of 1.66</code></pre>
+<pre><code>Picking joint bandwidth of 2.1</code></pre>
+<pre><code>Picking joint bandwidth of 1.94</code></pre>
+<pre><code>Picking joint bandwidth of 3.39</code></pre>
+<pre><code>Picking joint bandwidth of 2.13</code></pre>
+<pre><code>Picking joint bandwidth of 2.1</code></pre>
+<pre><code>Picking joint bandwidth of 2.04</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-4-12.png" width="672" style="display: block; margin: auto;" /> Quality control for exclusively the first round of experiments (6 individuals)</p>
+<pre class="r"><code>max.98 &lt;- quantile(exp1$nCount_RNA, 0.98)
+ggplot(exp1, aes(x = nCount_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98))+
+  ggtitle(&quot;Read counts by individual (round 1)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 71.7</code></pre>
+<pre><code>Warning: Removed 6251 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp1, aes(x = nCount_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~diffday) +
+  ggtitle(&quot;Read counts by individual, separated by diffday (round 1)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 48.1</code></pre>
+<pre><code>Picking joint bandwidth of 131</code></pre>
+<pre><code>Picking joint bandwidth of 191</code></pre>
+<pre><code>Picking joint bandwidth of 85.3</code></pre>
+<pre><code>Picking joint bandwidth of 102</code></pre>
+<pre><code>Picking joint bandwidth of 86</code></pre>
+<pre><code>Picking joint bandwidth of 129</code></pre>
+<pre><code>Warning: Removed 6251 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-5-2.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>max.98 &lt;- quantile(exp1$nCount_RNA, 0.98)
+ggplot(exp1, aes(x = nCount_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle(&quot;Read counts by diffday (round 1)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 82</code></pre>
+<pre><code>Warning: Removed 6251 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-5-3.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp1, aes(x = nCount_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~individual) +
+  ggtitle(&quot;Read counts by diffday, separated by individual (round 1)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 108</code></pre>
+<pre><code>Picking joint bandwidth of 132</code></pre>
+<pre><code>Picking joint bandwidth of 113</code></pre>
+<pre><code>Picking joint bandwidth of 78.2</code></pre>
+<pre><code>Picking joint bandwidth of 107</code></pre>
+<pre><code>Picking joint bandwidth of 124</code></pre>
+<pre><code>Warning: Removed 6251 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-5-4.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>max.98 &lt;- quantile(exp1$nFeature_RNA, 0.98)
+ggplot(exp1, aes(x = nFeature_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle(&quot;Gene counts by individual (round 1)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 39.8</code></pre>
+<pre><code>Warning: Removed 6248 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-5-5.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp1, aes(x = nFeature_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~diffday) +
+  ggtitle(&quot;Gene counts by individual, separated by diffday (round 1)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 27.2</code></pre>
+<pre><code>Picking joint bandwidth of 67.2</code></pre>
+<pre><code>Picking joint bandwidth of 85.7</code></pre>
+<pre><code>Picking joint bandwidth of 48.4</code></pre>
+<pre><code>Picking joint bandwidth of 55.1</code></pre>
+<pre><code>Picking joint bandwidth of 47.1</code></pre>
+<pre><code>Picking joint bandwidth of 65.1</code></pre>
+<pre><code>Warning: Removed 6248 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-5-6.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>max.98 &lt;- quantile(exp1$nFeature_RNA, 0.98)
+ggplot(exp1, aes(x = nFeature_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle(&quot;Gene counts by diffday (round 1)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 43.3</code></pre>
+<pre><code>Warning: Removed 6248 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-5-7.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp1, aes(x = nFeature_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~individual) + 
+  ggtitle(&quot;Gene counts by diffday, separated by individual (round 1)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 55</code></pre>
+<pre><code>Picking joint bandwidth of 67.4</code></pre>
+<pre><code>Picking joint bandwidth of 57.2</code></pre>
+<pre><code>Picking joint bandwidth of 44.5</code></pre>
+<pre><code>Picking joint bandwidth of 50.8</code></pre>
+<pre><code>Picking joint bandwidth of 64.4</code></pre>
+<pre><code>Warning: Removed 6248 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-5-8.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp1, aes(x = percent.mito, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 20)) +
+  ggtitle(&quot;Mito counts by individual (round 1)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 1.35</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-5-9.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp1, aes(x = percent.mito, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 50)) +
+  facet_grid(~diffday) +
+  ggtitle(&quot;Mito counts by individual, separated by diffday (round 1)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 1.92</code></pre>
+<pre><code>Picking joint bandwidth of 1.79</code></pre>
+<pre><code>Picking joint bandwidth of 1.39</code></pre>
+<pre><code>Picking joint bandwidth of 1.75</code></pre>
+<pre><code>Picking joint bandwidth of 1.61</code></pre>
+<pre><code>Picking joint bandwidth of 2.04</code></pre>
+<pre><code>Picking joint bandwidth of 2.16</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-5-10.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp1, aes(x = percent.mito, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 20)) +
+  ggtitle(&quot;Mito counts by diffday (round 1)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 1.38</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-5-11.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp1, aes(x = percent.mito, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 50)) +
+  facet_grid(~individual) +
+  ggtitle(&quot;Mito counts by diffday, separated by individual (round 1)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 1.93</code></pre>
+<pre><code>Picking joint bandwidth of 1.9</code></pre>
+<pre><code>Picking joint bandwidth of 1.84</code></pre>
+<pre><code>Picking joint bandwidth of 1.87</code></pre>
+<pre><code>Picking joint bandwidth of 1.67</code></pre>
+<pre><code>Picking joint bandwidth of 1.64</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-5-12.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Quality Control for Round 2</p>
+<pre class="r"><code>max.98 &lt;- quantile(exp2$nCount_RNA, 0.98)
+ggplot(exp2, aes(x = nCount_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98))+
+  ggtitle(&quot;Read counts by individual (round 2)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 130</code></pre>
+<pre><code>Warning: Removed 2877 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp2, aes(x = nCount_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~diffday) +
+  ggtitle(&quot;Read counts by individual, separated by diffday (round 2)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 213</code></pre>
+<pre><code>Picking joint bandwidth of 219</code></pre>
+<pre><code>Picking joint bandwidth of 223</code></pre>
+<pre><code>Picking joint bandwidth of 148</code></pre>
+<pre><code>Picking joint bandwidth of 150</code></pre>
+<pre><code>Picking joint bandwidth of 149</code></pre>
+<pre><code>Picking joint bandwidth of 184</code></pre>
+<pre><code>Warning: Removed 2877 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-6-2.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>max.98 &lt;- quantile(exp2$nCount_RNA, 0.98)
+ggplot(exp2, aes(x = nCount_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle(&quot;Read counts by diffday (round 2)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 134</code></pre>
+<pre><code>Warning: Removed 2877 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-6-3.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp2, aes(x = nCount_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~individual) +
+  ggtitle(&quot;Read counts by diffday, separated by individual (round 2)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 142</code></pre>
+<pre><code>Picking joint bandwidth of 170</code></pre>
+<pre><code>Picking joint bandwidth of 218</code></pre>
+<pre><code>Picking joint bandwidth of 157</code></pre>
+<pre><code>Picking joint bandwidth of 155</code></pre>
+<pre><code>Picking joint bandwidth of 248</code></pre>
+<pre><code>Picking joint bandwidth of 195</code></pre>
+<pre><code>Warning: Removed 2877 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-6-4.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>max.98 &lt;- quantile(exp2$nFeature_RNA, 0.98)
+ggplot(exp2, aes(x = nFeature_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle(&quot;Gene counts by individual (round 2)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 64.2</code></pre>
+<pre><code>Warning: Removed 2878 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-6-5.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp2, aes(x = nFeature_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~diffday) +
+  ggtitle(&quot;Gene counts by individual, separated by diffday (round 2)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 94</code></pre>
+<pre><code>Picking joint bandwidth of 99.6</code></pre>
+<pre><code>Picking joint bandwidth of 98.2</code></pre>
+<pre><code>Picking joint bandwidth of 68.5</code></pre>
+<pre><code>Picking joint bandwidth of 76.5</code></pre>
+<pre><code>Picking joint bandwidth of 71.9</code></pre>
+<pre><code>Picking joint bandwidth of 91.3</code></pre>
+<pre><code>Warning: Removed 2878 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-6-6.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>max.98 &lt;- quantile(exp2$nFeature_RNA, 0.98)
+ggplot(exp2, aes(x = nFeature_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle(&quot;Gene counts by diffday (round 2)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 65.8</code></pre>
+<pre><code>Warning: Removed 2878 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-6-7.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp2, aes(x = nFeature_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~individual) +
+  ggtitle(&quot;Gene counts by diffday, separated by individual (round 2)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 70.1</code></pre>
+<pre><code>Picking joint bandwidth of 76.9</code></pre>
+<pre><code>Picking joint bandwidth of 98.2</code></pre>
+<pre><code>Picking joint bandwidth of 80.6</code></pre>
+<pre><code>Picking joint bandwidth of 75.1</code></pre>
+<pre><code>Picking joint bandwidth of 108</code></pre>
+<pre><code>Picking joint bandwidth of 90.4</code></pre>
+<pre><code>Warning: Removed 2878 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-6-8.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp2, aes(x = percent.mito, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 20)) +
+  ggtitle(&quot;Mito counts by individual (round 2)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 1.54</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-6-9.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp2, aes(x = percent.mito, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 50)) +
+  facet_grid(~diffday) +
+  ggtitle(&quot;Mito counts by individual, separated by diffday (round 2)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 2.74</code></pre>
+<pre><code>Picking joint bandwidth of 2.06</code></pre>
+<pre><code>Picking joint bandwidth of 1.56</code></pre>
+<pre><code>Picking joint bandwidth of 3.17</code></pre>
+<pre><code>Picking joint bandwidth of 1.94</code></pre>
+<pre><code>Picking joint bandwidth of 2.09</code></pre>
+<pre><code>Picking joint bandwidth of 2.23</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-6-10.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp2, aes(x = percent.mito, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 20)) +
+  ggtitle(&quot;Mito counts by diffday (round 2)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 1.48</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-6-11.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp2, aes(x = percent.mito, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 50)) +
+  facet_grid(~individual) +
+  ggtitle(&quot;Mito counts by diffday, separated by individual (round 2)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 2.59</code></pre>
+<pre><code>Picking joint bandwidth of 3.09</code></pre>
+<pre><code>Picking joint bandwidth of 2.19</code></pre>
+<pre><code>Picking joint bandwidth of 2.25</code></pre>
+<pre><code>Picking joint bandwidth of 2.24</code></pre>
+<pre><code>Picking joint bandwidth of 1.77</code></pre>
+<pre><code>Picking joint bandwidth of 1.66</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-6-12.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Quality Control for Round 3</p>
+<pre class="r"><code>max.98 &lt;- quantile(exp3$nCount_RNA, 0.98)
+ggplot(exp3, aes(x = nCount_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle(&quot;Read counts by individual (round 3)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 137</code></pre>
+<pre><code>Warning: Removed 2380 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp3, aes(x = nCount_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~diffday) +
+  ggtitle(&quot;Read counts by individual, separated by diffday (round 3)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 248</code></pre>
+<pre><code>Picking joint bandwidth of 198</code></pre>
+<pre><code>Picking joint bandwidth of 206</code></pre>
+<pre><code>Picking joint bandwidth of 177</code></pre>
+<pre><code>Picking joint bandwidth of 149</code></pre>
+<pre><code>Picking joint bandwidth of 173</code></pre>
+<pre><code>Picking joint bandwidth of 178</code></pre>
+<pre><code>Warning: Removed 2380 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-7-2.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>max.98 &lt;- quantile(exp3$nCount_RNA, 0.98)
+ggplot(exp3, aes(x = nCount_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle(&quot;Read counts by diffday (round 3)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 138</code></pre>
+<pre><code>Warning: Removed 2380 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-7-3.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp3, aes(x = nCount_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~individual) +
+  ggtitle(&quot;Read counts by diffday, separated by individual (round 3)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 170</code></pre>
+<pre><code>Picking joint bandwidth of 204</code></pre>
+<pre><code>Picking joint bandwidth of 180</code></pre>
+<pre><code>Picking joint bandwidth of 195</code></pre>
+<pre><code>Picking joint bandwidth of 185</code></pre>
+<pre><code>Picking joint bandwidth of 205</code></pre>
+<pre><code>Warning: Removed 2380 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-7-4.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>max.98 &lt;- quantile(exp3$nFeature_RNA, 0.98)
+ggplot(exp3, aes(x = nFeature_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle(&quot;Gene counts by individual (round 3)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 69</code></pre>
+<pre><code>Warning: Removed 2380 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-7-5.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp3, aes(x = nFeature_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~diffday) +
+  ggtitle(&quot;Gene counts by individual, separated by diffday (round 3)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 118</code></pre>
+<pre><code>Picking joint bandwidth of 98.3</code></pre>
+<pre><code>Picking joint bandwidth of 91.3</code></pre>
+<pre><code>Picking joint bandwidth of 89.1</code></pre>
+<pre><code>Picking joint bandwidth of 76</code></pre>
+<pre><code>Picking joint bandwidth of 88.4</code></pre>
+<pre><code>Picking joint bandwidth of 90</code></pre>
+<pre><code>Warning: Removed 2380 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-7-6.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>max.98 &lt;- quantile(exp3$nFeature_RNA, 0.98)
+ggplot(exp3, aes(x = nFeature_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle(&quot;Gene counts by diffday (round 3)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 69.3</code></pre>
+<pre><code>Warning: Removed 2380 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-7-7.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp3, aes(x = nFeature_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~individual) +
+  ggtitle(&quot;Gene counts by diffday, separated by individual (round 3)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 84.7</code></pre>
+<pre><code>Picking joint bandwidth of 98.7</code></pre>
+<pre><code>Picking joint bandwidth of 91.8</code></pre>
+<pre><code>Picking joint bandwidth of 94</code></pre>
+<pre><code>Picking joint bandwidth of 84.9</code></pre>
+<pre><code>Picking joint bandwidth of 104</code></pre>
+<pre><code>Warning: Removed 2380 rows containing non-finite values
+(stat_density_ridges).</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-7-8.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>max.98 &lt;- quantile(exp3$percent.mito, 0.98)
+ggplot(exp3, aes(x = percent.mito, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 20)) +
+  ggtitle(&quot;Mito counts by individual (round 3)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 1.57</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-7-9.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp3, aes(x = percent.mito, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 50)) +
+  facet_grid(~diffday) +
+  ggtitle(&quot;Mito counts by individual, separated by diffday (round 3)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 1.91</code></pre>
+<pre><code>Picking joint bandwidth of 2.2</code></pre>
+<pre><code>Picking joint bandwidth of 2.1</code></pre>
+<pre><code>Picking joint bandwidth of 2.94</code></pre>
+<pre><code>Picking joint bandwidth of 2.2</code></pre>
+<pre><code>Picking joint bandwidth of 2.14</code></pre>
+<pre><code>Picking joint bandwidth of 2.48</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-7-10.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp3, aes(x = percent.mito, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 20)) +
+  ggtitle(&quot;Mito counts by diffday (round 3)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 1.54</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-7-11.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(exp3, aes(x = percent.mito, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 50)) +
+  facet_grid(~individual) +
+  ggtitle(&quot;Mito counts by diffday, separated by individual (round 3)&quot;)</code></pre>
+<pre><code>Picking joint bandwidth of 2.1</code></pre>
+<pre><code>Picking joint bandwidth of 1.94</code></pre>
+<pre><code>Picking joint bandwidth of 3.39</code></pre>
+<pre><code>Picking joint bandwidth of 2.13</code></pre>
+<pre><code>Picking joint bandwidth of 2.1</code></pre>
+<pre><code>Picking joint bandwidth of 2.04</code></pre>
+<p><img src="figure/quality_control.Rmd/unnamed-chunk-7-12.png" width="672" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -678,7 +1341,7 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] Seurat_3.1.1  ggplot2_3.2.1
+[1] Seurat_3.1.1   ggridges_0.5.1 ggplot2_3.2.1 
 
 loaded via a namespace (and not attached):
   [1] tsne_0.1-3          nlme_3.1-140        bitops_1.0-6       
@@ -689,14 +1352,14 @@ loaded via a namespace (and not attached):
  [16] lazyeval_0.2.2      colorspace_1.4-1    npsurv_0.4-0       
  [19] withr_2.1.2         gridExtra_2.3       tidyselect_0.2.5   
  [22] compiler_3.6.1      git2r_0.26.1        plotly_4.9.0       
- [25] labeling_0.3        caTools_1.17.1.2    scales_1.0.0       
- [28] lmtest_0.9-37       ggridges_0.5.1      pbapply_1.4-2      
- [31] stringr_1.4.0       digest_0.6.21       rmarkdown_1.13     
- [34] R.utils_2.9.0       pkgconfig_2.0.3     htmltools_0.4.0    
- [37] bibtex_0.4.2        htmlwidgets_1.5.1   rlang_0.4.0        
+ [25] labeling_0.3        caTools_1.17.1.2    scales_1.1.0       
+ [28] lmtest_0.9-37       pbapply_1.4-2       stringr_1.4.0      
+ [31] digest_0.6.21       rmarkdown_1.13      R.utils_2.9.0      
+ [34] pkgconfig_2.0.3     htmltools_0.4.0     bibtex_0.4.2       
+ [37] htmlwidgets_1.5.1   rlang_0.4.0         farver_2.0.1       
  [40] zoo_1.8-6           jsonlite_1.6        ica_1.0-2          
  [43] gtools_3.8.1        dplyr_0.8.3         R.oo_1.22.0        
- [46] magrittr_1.5        Matrix_1.2-17       Rcpp_1.0.3         
+ [46] magrittr_1.5        Matrix_1.2-18       Rcpp_1.0.3         
  [49] munsell_0.5.0       ape_5.3             reticulate_1.13    
  [52] lifecycle_0.1.0     R.methodsS3_1.7.1   stringi_1.4.3      
  [55] whisker_0.3-2       yaml_2.2.0          gbRd_0.4-11        
