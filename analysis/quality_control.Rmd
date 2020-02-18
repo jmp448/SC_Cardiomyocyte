@@ -11,13 +11,11 @@ This notebook runs through some checks for quality control of the sequencing and
 
 First, we load necessary libraries and pull the data that file saved
 
-```{r load_libraries}
+```{r include=FALSE}
 library(ggplot2)
 library(ggridges)
 suppressMessages(library(Seurat))
 ```
-
-In `demuxlet_dataload.R` (in `code/`), we created three dataframes, one for each collection day.  These dataframes tell us, for each collection, how many assignments were made of cells to singlets, doublets, and ambiguous, and among these how many were sense/ nonsense.  
 
 ```{r load_data}
 demux1 <- readRDS("./data/demux_exp1.RDS")
@@ -25,7 +23,7 @@ demux2 <- readRDS("./data/demux_exp2.RDS")
 demux3 <- readRDS("./data/demux_exp3.RDS")
 ```
 
-Now, we want to break down that 'other' category.  How many assignments were made to singlet vs doublet vs ambiguous, and how many of each assignment type made sense?  We define *sense* as an assignment consisting only of individuals that are actually present in the collection, and *nonsense* as any assignment to an individual not present in the current collection.
+Take a look at assignments per collection
 
 ```{r demuxlet-exp1}
 ggplot(demux1, aes(x = collection, y = counts, fill = assignment)) + 
@@ -74,7 +72,7 @@ exp123 <- rbind(exp1, exp2, exp3)
 With this we can create our plots
 
 Quality control for all three rounds of experiments combined (19 individuals)
-```{r}
+```{r message=FALSE, warning=FALSE}
 max.98 <- quantile(exp123$nCount_RNA, 0.98)
 ggplot(exp123, aes(x = nCount_RNA, y = individual, height=..density..)) +
   geom_density_ridges() +
@@ -147,7 +145,7 @@ ggplot(exp123, aes(x = percent.mito, y = diffday, height=..density..)) +
 
 ```
 Quality control for exclusively the first round of experiments (6 individuals)
-```{r}
+```{r message=FALSE, warning=FALSE}
 max.98 <- quantile(exp1$nCount_RNA, 0.98)
 ggplot(exp1, aes(x = nCount_RNA, y = individual, height=..density..)) +
   geom_density_ridges() +
@@ -220,7 +218,7 @@ ggplot(exp1, aes(x = percent.mito, y = diffday, height=..density..)) +
 ```
 
 Quality Control for Round 2
-```{r}
+```{r message=FALSE, warning=FALSE}
 max.98 <- quantile(exp2$nCount_RNA, 0.98)
 ggplot(exp2, aes(x = nCount_RNA, y = individual, height=..density..)) +
   geom_density_ridges() +
@@ -293,7 +291,7 @@ ggplot(exp2, aes(x = percent.mito, y = diffday, height=..density..)) +
 ```
 
 Quality Control for Round 3
-```{r}
+```{r message=FALSE, warning=FALSE}
 max.98 <- quantile(exp3$nCount_RNA, 0.98)
 ggplot(exp3, aes(x = nCount_RNA, y = individual, height=..density..)) +
   geom_density_ridges() +

@@ -1,0 +1,39 @@
+---
+title: "Dimensionality Reduction"
+output: html_notebook
+---
+```{r message=FALSE, warning=FALSE}
+library(Seurat)
+```
+
+```{r}
+sc <- readRDS("./data/seurat_umap.RDS")
+```
+
+```{r}
+PCAPlot(sc, group.by="diffday")
+PCAPlot(sc, group.by="individual")
+PCAPlot(sc, group.by="exp")
+```
+
+```{r}
+DimPlot(sc, group.by="diffday")
+DimPlot(sc, group.by="diffday", split.by="individual", ncol=4)
+DimPlot(sc, group.by="diffday", split.by="exp")
+```
+```{r}
+DimPlot(sc, group.by="individual")
+DimPlot(sc, group.by="exp")
+```
+
+```{r}
+FeaturePlot(sc, features="TNNT2")
+```
+
+```{r}
+FeaturePlot(sc, features="NANOG")
+```
+
+```{r}
+FeaturePlot(sc, features="percent.mito")
+```
