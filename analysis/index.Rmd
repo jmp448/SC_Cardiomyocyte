@@ -13,5 +13,5 @@ This site contains the workflow for the single cell cardiomyocyte differentiatio
 1. [Quality Control](quality_control.html)
   + Quality control
   
-2. [Dimensionality Reduction](dim_reduce.Rmd)
+2. [Dimensionality Reduction](dim_reduce.html)
   + Dimensionality reduction
