@@ -1,0 +1,338 @@
+---
+title: "Quality Control of Doublet-Filtered Data"
+output:
+  html_document:
+    df_print: paged
+---
+
+<!-- Note that in order to run this notebook in R, you will need to set the working directory to the parent of the analytics folder, not the analytics folder itself (ie, open the file, set working directory to file, and then run setwd("../") -->
+
+```{r include=FALSE}
+library(ggplot2)
+library(ggridges)
+suppressMessages(library(Seurat))
+```
+
+Here's a look at the data after attempting to filter out doublets and removing cells with less than 250 features
+```{r}
+sc <- readRDS("./data/seurat_filter2.RDS")
+sc1 <- subset(sc, subset=(exp==1))
+sc2 <- subset(sc, subset=(exp==2))
+sc3 <- subset(sc, subset=(exp==3))
+rm(sc)
+```
+
+Let's take a look at the distributions of the read counts 
+```{r}
+exp1 <- cbind(data.frame(sc1$nCount_RNA), c(data.frame(sc1$nFeature_RNA, data.frame(sc1$percent.mito), data.frame(sc1$diffday), data.frame(sc1$individual))))
+exp2 <- cbind(data.frame(sc2$nCount_RNA), c(data.frame(sc2$nFeature_RNA, data.frame(sc2$percent.mito), data.frame(sc2$diffday), data.frame(sc2$individual))))
+exp3 <- cbind(data.frame(sc3$nCount_RNA), c(data.frame(sc3$nFeature_RNA), data.frame(sc3$percent.mito), data.frame(sc3$diffday), data.frame(sc3$individual)))
+```
+
+I'll also make a combined df
+```{r}
+colnames(exp1) <- c("nCount_RNA", "nFeature_RNA", "percent.mito", "diffday", "individual")
+exp1$exp <- rep(1, nrow(exp1))
+colnames(exp2) <- c("nCount_RNA", "nFeature_RNA", "percent.mito", "diffday", "individual")
+exp2$exp <- rep(2, nrow(exp2))
+colnames(exp3) <- c("nCount_RNA", "nFeature_RNA", "percent.mito", "diffday", "individual")
+exp3$exp <- rep(3, nrow(exp3))
+exp123 <- rbind(exp1, exp2, exp3)
+```
+
+
+With this we can create our plots
+
+Quality control for all three rounds of experiments combined (19 individuals)
+```{r message=FALSE, warning=FALSE}
+max.98 <- quantile(exp123$nCount_RNA, 0.98)
+ggplot(exp123, aes(x = nCount_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle("Read counts by individual (all)")
+
+ggplot(exp123, aes(x = nCount_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~diffday)+
+  ggtitle("Read counts by individual, separated by diffday (all)")
+
+max.98 <- quantile(exp123$nCount_RNA, 0.98)
+ggplot(exp123, aes(x = nCount_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle("Read counts by diffday (all)")
+
+ggplot(exp123, aes(x = nCount_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~individual) +
+  ggtitle("Read counts by diffday, separated by individual (all)")
+
+max.98 <- quantile(exp123$nFeature_RNA, 0.98)
+ggplot(exp123, aes(x = nFeature_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle("Gene counts by individual (all)")
+
+ggplot(exp123, aes(x = nFeature_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~diffday) +
+  ggtitle("Gene counts by individual, separated by diffday (all)")
+
+max.98 <- quantile(exp123$nFeature_RNA, 0.98)
+ggplot(exp123, aes(x = nFeature_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle("Gene counts by diffday (all)")
+
+ggplot(exp123, aes(x = nFeature_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~individual) +
+  ggtitle("Gene counts by diffday, separated by individual (all)")
+
+ggplot(exp123, aes(x = percent.mito, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 20)) +
+  ggtitle("Mito counts by individual (all)")
+
+ggplot(exp123, aes(x = percent.mito, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 50)) +
+  facet_grid(~diffday) +
+  ggtitle("Mito counts by individual, separated by diffday (all)")
+
+ggplot(exp123, aes(x = percent.mito, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 20)) +
+  ggtitle("Mito counts by diffday (all)")
+
+ggplot(exp123, aes(x = percent.mito, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 50)) +
+  facet_grid(~individual) +
+  ggtitle("Mito counts by diffday, separated by individual (all)")
+
+```
+Quality control for exclusively the first round of experiments (6 individuals)
+```{r message=FALSE, warning=FALSE}
+max.98 <- quantile(exp1$nCount_RNA, 0.98)
+ggplot(exp1, aes(x = nCount_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98))+
+  ggtitle("Read counts by individual (round 1)")
+
+ggplot(exp1, aes(x = nCount_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~diffday) +
+  ggtitle("Read counts by individual, separated by diffday (round 1)")
+
+max.98 <- quantile(exp1$nCount_RNA, 0.98)
+ggplot(exp1, aes(x = nCount_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle("Read counts by diffday (round 1)")
+
+ggplot(exp1, aes(x = nCount_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~individual) +
+  ggtitle("Read counts by diffday, separated by individual (round 1)")
+
+max.98 <- quantile(exp1$nFeature_RNA, 0.98)
+ggplot(exp1, aes(x = nFeature_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle("Gene counts by individual (round 1)")
+
+ggplot(exp1, aes(x = nFeature_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~diffday) +
+  ggtitle("Gene counts by individual, separated by diffday (round 1)")
+
+max.98 <- quantile(exp1$nFeature_RNA, 0.98)
+ggplot(exp1, aes(x = nFeature_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle("Gene counts by diffday (round 1)")
+
+ggplot(exp1, aes(x = nFeature_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~individual) + 
+  ggtitle("Gene counts by diffday, separated by individual (round 1)")
+
+ggplot(exp1, aes(x = percent.mito, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 20)) +
+  ggtitle("Mito counts by individual (round 1)")
+
+ggplot(exp1, aes(x = percent.mito, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 50)) +
+  facet_grid(~diffday) +
+  ggtitle("Mito counts by individual, separated by diffday (round 1)")
+
+ggplot(exp1, aes(x = percent.mito, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 20)) +
+  ggtitle("Mito counts by diffday (round 1)")
+
+ggplot(exp1, aes(x = percent.mito, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 50)) +
+  facet_grid(~individual) +
+  ggtitle("Mito counts by diffday, separated by individual (round 1)")
+```
+
+Quality Control for Round 2
+```{r message=FALSE, warning=FALSE}
+max.98 <- quantile(exp2$nCount_RNA, 0.98)
+ggplot(exp2, aes(x = nCount_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98))+
+  ggtitle("Read counts by individual (round 2)")
+
+ggplot(exp2, aes(x = nCount_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~diffday) +
+  ggtitle("Read counts by individual, separated by diffday (round 2)")
+
+max.98 <- quantile(exp2$nCount_RNA, 0.98)
+ggplot(exp2, aes(x = nCount_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle("Read counts by diffday (round 2)")
+
+ggplot(exp2, aes(x = nCount_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~individual) +
+  ggtitle("Read counts by diffday, separated by individual (round 2)")
+
+max.98 <- quantile(exp2$nFeature_RNA, 0.98)
+ggplot(exp2, aes(x = nFeature_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle("Gene counts by individual (round 2)")
+
+ggplot(exp2, aes(x = nFeature_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~diffday) +
+  ggtitle("Gene counts by individual, separated by diffday (round 2)")
+
+max.98 <- quantile(exp2$nFeature_RNA, 0.98)
+ggplot(exp2, aes(x = nFeature_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle("Gene counts by diffday (round 2)")
+
+ggplot(exp2, aes(x = nFeature_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~individual) +
+  ggtitle("Gene counts by diffday, separated by individual (round 2)")
+
+ggplot(exp2, aes(x = percent.mito, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 20)) +
+  ggtitle("Mito counts by individual (round 2)")
+
+ggplot(exp2, aes(x = percent.mito, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 50)) +
+  facet_grid(~diffday) +
+  ggtitle("Mito counts by individual, separated by diffday (round 2)")
+
+ggplot(exp2, aes(x = percent.mito, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 20)) +
+  ggtitle("Mito counts by diffday (round 2)")
+
+ggplot(exp2, aes(x = percent.mito, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 50)) +
+  facet_grid(~individual) +
+  ggtitle("Mito counts by diffday, separated by individual (round 2)")
+```
+
+Quality Control for Round 3
+```{r message=FALSE, warning=FALSE}
+max.98 <- quantile(exp3$nCount_RNA, 0.98)
+ggplot(exp3, aes(x = nCount_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle("Read counts by individual (round 3)")
+
+ggplot(exp3, aes(x = nCount_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~diffday) +
+  ggtitle("Read counts by individual, separated by diffday (round 3)")
+
+max.98 <- quantile(exp3$nCount_RNA, 0.98)
+ggplot(exp3, aes(x = nCount_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle("Read counts by diffday (round 3)")
+
+ggplot(exp3, aes(x = nCount_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~individual) +
+  ggtitle("Read counts by diffday, separated by individual (round 3)")
+
+max.98 <- quantile(exp3$nFeature_RNA, 0.98)
+ggplot(exp3, aes(x = nFeature_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle("Gene counts by individual (round 3)")
+
+ggplot(exp3, aes(x = nFeature_RNA, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~diffday) +
+  ggtitle("Gene counts by individual, separated by diffday (round 3)")
+
+max.98 <- quantile(exp3$nFeature_RNA, 0.98)
+ggplot(exp3, aes(x = nFeature_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  ggtitle("Gene counts by diffday (round 3)")
+
+ggplot(exp3, aes(x = nFeature_RNA, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, max.98), breaks=seq(0, max.98, max.98)) +
+  facet_grid(~individual) +
+  ggtitle("Gene counts by diffday, separated by individual (round 3)")
+
+max.98 <- quantile(exp3$percent.mito, 0.98)
+ggplot(exp3, aes(x = percent.mito, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 20)) +
+  ggtitle("Mito counts by individual (round 3)")
+
+ggplot(exp3, aes(x = percent.mito, y = individual, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 50)) +
+  facet_grid(~diffday) +
+  ggtitle("Mito counts by individual, separated by diffday (round 3)")
+
+ggplot(exp3, aes(x = percent.mito, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 20)) +
+  ggtitle("Mito counts by diffday (round 3)")
+
+ggplot(exp3, aes(x = percent.mito, y = diffday, height=..density..)) +
+  geom_density_ridges() +
+  scale_x_continuous(limits = c(0, 100), breaks=seq(0, 100, 50)) +
+  facet_grid(~individual) +
+  ggtitle("Mito counts by diffday, separated by individual (round 3)")
+
+```
