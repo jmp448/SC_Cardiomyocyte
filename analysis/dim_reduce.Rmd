@@ -8,7 +8,6 @@ library(Seurat)
 
 ```{r}
 sc <- readRDS("./data/seurat_umap.RDS")
-sc2 <- readRDS("./data/seurat_filter2_umap.RDS")
 ```
 
 Before doublet filtering...
@@ -18,24 +17,10 @@ PCAPlot(sc, group.by="individual")
 PCAPlot(sc, group.by="exp")
 ```
 
-After doublet filtering, and with SCTransform rather than scaling...
-```{r}
-PCAPlot(sc2, group.by="diffday")
-PCAPlot(sc2, group.by="individual")
-PCAPlot(sc2, group.by="exp")
-```
-
-Before
 ```{r}
 DimPlot(sc, group.by="diffday")
 DimPlot(sc, group.by="diffday", split.by="individual", ncol=4)
 DimPlot(sc, group.by="diffday", split.by="exp")
-```
-After
-```{r}
-DimPlot(sc2, group.by="diffday")
-DimPlot(sc2, group.by="diffday", split.by="individual", ncol=4)
-DimPlot(sc2, group.by="diffday", split.by="exp")
 ```
 
 Before
@@ -44,21 +29,5 @@ DimPlot(sc, group.by="individual")
 DimPlot(sc, group.by="exp")
 DimPlot(sc, group.by="collection")
 DimPlot(sc, group.by="sample")
-```
-After
-```{r}
-DimPlot(sc2, group.by="individual")
-DimPlot(sc2, group.by="exp")
-DimPlot(sc2, group.by="collection")
-DimPlot(sc2, group.by="sample")
-```
-
-```{r}
-FeaturePlot(sc, features="TNNT2")
-FeaturePlot(sc2, features="TNNT2")
-```
-
-
-```{r}
-FeaturePlot(sc, features="percent.mito")
+DimPlot(sc, group.by="cd")
 ```

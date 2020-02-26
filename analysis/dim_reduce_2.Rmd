@@ -1,0 +1,80 @@
+---
+title: "Dimensionality Reduction - Extra Doublet Filtered"
+output: html_notebook
+---
+```{r message=FALSE, warning=FALSE}
+library(Seurat)
+```
+
+```{r}
+sc <- readRDS("./data/seurat_filter2_umap.RDS")
+```
+
+```{r}
+PCAPlot(sc, group.by="diffday")
+PCAPlot(sc, group.by="individual")
+PCAPlot(sc, group.by="exp")
+```
+
+Before
+```{r}
+DimPlot(sc, group.by="diffday")
+DimPlot(sc, group.by="diffday", split.by="individual", ncol=4)
+DimPlot(sc, group.by="diffday", split.by="exp")
+```
+
+```{r}
+DimPlot(sc, group.by="individual")
+DimPlot(sc, group.by="exp")
+DimPlot(sc, group.by="collection")
+DimPlot(sc, group.by="sample")
+DimPlot(sc, group.by="cd")
+```
+
+Stem cell markers
+```{r}
+FeaturePlot(sc, features="POU5F1")
+```
+
+Mesoderm markers TBXT and MIXL1, and cardiac mesoderm marker MESP1
+```{r}
+FeaturePlot(sc, features=c("TBXT", "MIXL1", "MESP1"))
+```
+
+Early cardiomyocyte markers
+```{r}
+FeaturePlot(sc, features=c("KDR", "ISL1", "GATA4"))
+```
+
+Later cardiomyocyte markers
+```{r}
+FeaturePlot(sc, features=c("NKX2-5", "TBX5", "MEF2C"))
+```
+
+Cardiomyocyte myofilament genes
+```{r}
+FeaturePlot(sc, features=c("TNNT2", "MYH6"))
+```
+
+```{r}
+FeaturePlot(sc, features="percent.mito")
+```
+
+Take a look at one apoptosis marker gene
+```{r}
+FeaturePlot(sc, features="BAX")
+```
+
+Now let's see in UMAP what the PC's are focusing on
+```{r}
+FeaturePlot(sc, features="PC_1")
+FeaturePlot(sc, features="PC_2")
+FeaturePlot(sc, features="PC_3")
+FeaturePlot(sc, features="PC_4")
+FeaturePlot(sc, features="PC_5")
+```
+
+What is PC5 picking up on?
+```{r}
+VizDimLoadings(sc, dims=5, reduction="pca")
+```

@@ -14,5 +14,6 @@ This site contains the workflow for the single cell cardiomyocyte differentiatio
   + [Before filtering](quality_control.html)
   + [After filtering](quality_control_doublet_filtered.html) out same-individual doublets
   
-2. [Dimensionality Reduction](dim_reduce.html)
-  + Dimensionality reduction
+2. Dimensionality Reduction
+  + [Dimensionality reduction](dim_reduce.html)
+  + [Dimensionality reduction](dim_reduce_2.html) after filtering out doublets
