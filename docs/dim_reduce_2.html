@@ -11,7 +11,7 @@
 
 
 
-<title>Project Overview</title>
+<title>Dimensionality Reduction - Extra Doublet Filtered</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -262,6 +265,90 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -269,6 +356,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -319,7 +416,7 @@ div.section {
 
 
 
-<h1 class="title toc-ignore">Project Overview</h1>
+<h1 class="title toc-ignore">Dimensionality Reduction - Extra Doublet Filtered</h1>
 
 </div>
 
@@ -347,7 +444,7 @@ div.section {
 <strong>Last updated:</strong> 2020-02-26
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>SC_Cardiomyocyte/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -369,6 +466,66 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
 <div class="panel-body">
 <p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20191212code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20191212)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20191212code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20191212)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
 </div>
 </div>
 </div>
@@ -493,7 +650,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/ff6ff9ea01a0e89b844e3f872434996393baf511/analysis/index.Rmd" target="_blank">ff6ff9e</a>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/ff6ff9ea01a0e89b844e3f872434996393baf511/analysis/dim_reduce_2.Rmd" target="_blank">ff6ff9e</a>
 </td>
 <td>
 jmp448
@@ -505,346 +662,6 @@ jmp448
 wflow_publish(c(“dim_reduce.Rmd”, “dim_reduce_2.Rmd”, “index.Rmd”))
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/dc354cd75779f223dd62ab406df45699c2fec2fc/docs/index.html" target="_blank">dc354cd</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2020-02-26
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/008fd75150116d0367f9ac240c7d014c6d507cbc/analysis/index.Rmd" target="_blank">008fd75</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2020-02-26
-</td>
-<td>
-wflow_publish(c(“analysis/quality_control_doublet_filtered.Rmd”,
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/aade88b76fa1e730000150d458e216f566645e09/docs/index.html" target="_blank">aade88b</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2020-02-18
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/b022184ecf3a4b94489beb43b9fd9e602dfa68bb/analysis/index.Rmd" target="_blank">b022184</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2020-02-18
-</td>
-<td>
-wflow_publish(“index.Rmd”)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/a212857e26e9cfbfdfe0caa139b28e52a0136ce5/docs/index.html" target="_blank">a212857</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2020-02-18
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/ab05694f7b1007b58715eb44f068b07bb02f05b7/docs/index.html" target="_blank">ab05694</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2020-02-12
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/d2cdbd1d383774acfc9ed2bfdaeb2a411b514f5d/analysis/index.Rmd" target="_blank">d2cdbd1</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2020-02-12
-</td>
-<td>
-wflow_publish(“./analysis/index.Rmd”)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/dce3f2d8d976cef997a6d479a91317c8f659e557/docs/index.html" target="_blank">dce3f2d</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2020-02-07
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/7ca728ca3198fa1302d422e1ebdbf8fdb0c512a4/analysis/index.Rmd" target="_blank">7ca728c</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2020-02-07
-</td>
-<td>
-Publish the initial QC files for the complete, combined analysis
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/d8d78ed2d8850ae7d436f7d8519b23124cec8dda/docs/index.html" target="_blank">d8d78ed</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-13
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/a132684d0f402730932901aebeaa861862244064/analysis/index.Rmd" target="_blank">a132684</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-13
-</td>
-<td>
-Include pseudotime page
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/24a4020ca46b7e1bfc83ff846e3dce1c2992ef71/docs/index.html" target="_blank">24a4020</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-13
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/df8654872b9ceb1f0935877e508bdb629043ade2/analysis/index.Rmd" target="_blank">df86548</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-13
-</td>
-<td>
-wflow_publish(c(“analysis/index.Rmd”))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/acb4d71126f64dfdd455b41826b0336319d571a0/docs/index.html" target="_blank">acb4d71</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-13
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/a3b8f81713da0639b368174e33ce21b6aca27653/analysis/index.Rmd" target="_blank">a3b8f81</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-13
-</td>
-<td>
-New structure, more processing done in code and more viz in public
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/379f4d4d7522844ad45de1e956bb6f35800108d8/docs/index.html" target="_blank">379f4d4</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-13
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/32f564413dcba15d11d47d909ed732067ce8898e/analysis/index.Rmd" target="_blank">32f5644</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-13
-</td>
-<td>
-Publish demuxlet analytics, and early Seurat
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/858b99eff7788af93a9831bfb492b57ed1fac6f9/analysis/index.Rmd" target="_blank">858b99e</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-12
-</td>
-<td>
-First big push
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/858b99eff7788af93a9831bfb492b57ed1fac6f9/docs/index.html" target="_blank">858b99e</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-12
-</td>
-<td>
-First big push
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/b9e46077d9325861b903213790133abe9852b4e9/analysis/index.Rmd" target="_blank">b9e4607</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2019-12-12
-</td>
-<td>
-Start workflowr project.
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -852,21 +669,131 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<p>This site contains the workflow for the single cell cardiomyocyte differentiation project. This project is done in collaboration with Reem Elorbany and the <a href="https://giladlab.uchicago.edu/">Gilad lab</a> at the University of Chicago. The workflow consists of the following parts:</p>
-<ol style="list-style-type: decimal">
-<li>Quality Control</li>
-</ol>
-<ul>
-<li><a href="quality_control.html">Before filtering</a></li>
-<li><a href="quality_control_doublet_filtered.html">After filtering</a> out same-individual doublets</li>
-</ul>
-<ol start="2" style="list-style-type: decimal">
-<li>Dimensionality Reduction</li>
-</ol>
-<ul>
-<li><a href="dim_reduce.html">Dimensionality reduction</a></li>
-<li><a href="dim_reduce_2.html">Dimensionality reduction</a> after filtering out doublets</li>
-</ul>
+<pre class="r"><code>library(Seurat)</code></pre>
+<pre class="r"><code>sc &lt;- readRDS(&quot;./data/seurat_filter2_umap.RDS&quot;)</code></pre>
+<pre class="r"><code>PCAPlot(sc, group.by=&quot;diffday&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>PCAPlot(sc, group.by=&quot;individual&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-3-2.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>PCAPlot(sc, group.by=&quot;exp&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-3-3.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Before</p>
+<pre class="r"><code>DimPlot(sc, group.by=&quot;diffday&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>DimPlot(sc, group.by=&quot;diffday&quot;, split.by=&quot;individual&quot;, ncol=4)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-4-2.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>DimPlot(sc, group.by=&quot;diffday&quot;, split.by=&quot;exp&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-4-3.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>DimPlot(sc, group.by=&quot;individual&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>DimPlot(sc, group.by=&quot;exp&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-5-2.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>DimPlot(sc, group.by=&quot;collection&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-5-3.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>DimPlot(sc, group.by=&quot;sample&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-5-4.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>DimPlot(sc, group.by=&quot;cd&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-5-5.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Stem cell markers</p>
+<pre class="r"><code>FeaturePlot(sc, features=&quot;POU5F1&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Mesoderm markers TBXT and MIXL1, and cardiac mesoderm marker MESP1</p>
+<pre class="r"><code>FeaturePlot(sc, features=c(&quot;TBXT&quot;, &quot;MIXL1&quot;, &quot;MESP1&quot;))</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Early cardiomyocyte markers</p>
+<pre class="r"><code>FeaturePlot(sc, features=c(&quot;KDR&quot;, &quot;ISL1&quot;, &quot;GATA4&quot;))</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Later cardiomyocyte markers</p>
+<pre class="r"><code>FeaturePlot(sc, features=c(&quot;NKX2-5&quot;, &quot;TBX5&quot;, &quot;MEF2C&quot;))</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Cardiomyocyte myofilament genes</p>
+<pre class="r"><code>FeaturePlot(sc, features=c(&quot;TNNT2&quot;, &quot;MYH6&quot;))</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>FeaturePlot(sc, features=&quot;percent.mito&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Take a look at one apoptosis marker gene</p>
+<pre class="r"><code>FeaturePlot(sc, features=&quot;BAX&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Now let’s see in UMAP what the PC’s are focusing on</p>
+<pre class="r"><code>FeaturePlot(sc, features=&quot;PC_1&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>FeaturePlot(sc, features=&quot;PC_2&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-13-2.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>FeaturePlot(sc, features=&quot;PC_3&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-13-3.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>FeaturePlot(sc, features=&quot;PC_4&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-13-4.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>FeaturePlot(sc, features=&quot;PC_5&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-13-5.png" width="672" style="display: block; margin: auto;" /></p>
+<p>What is PC5 picking up on?</p>
+<pre class="r"><code>VizDimLoadings(sc, dims=5, reduction=&quot;pca&quot;)</code></pre>
+<p><img src="figure/dim_reduce_2.Rmd/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 3.6.1 (2019-07-05)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Scientific Linux 7.4 (Nitrogen)
+
+Matrix products: default
+BLAS/LAPACK: /software/openblas-0.2.19-el7-x86_64/lib/libopenblas_haswellp-r0.2.19.so
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] Seurat_3.1.3
+
+loaded via a namespace (and not attached):
+  [1] tsne_0.1-3          nlme_3.1-140        bitops_1.0-6       
+  [4] fs_1.3.1            RcppAnnoy_0.0.13    RColorBrewer_1.1-2 
+  [7] httr_1.4.1          rprojroot_1.3-2     sctransform_0.2.0  
+ [10] tools_3.6.1         backports_1.1.5     R6_2.4.0           
+ [13] irlba_2.3.3         KernSmooth_2.23-15  uwot_0.1.5         
+ [16] lazyeval_0.2.2      colorspace_1.4-1    npsurv_0.4-0       
+ [19] gridExtra_2.3       tidyselect_0.2.5    compiler_3.6.1     
+ [22] git2r_0.26.1        plotly_4.9.0        labeling_0.3       
+ [25] caTools_1.17.1.2    scales_1.1.0        lmtest_0.9-37      
+ [28] ggridges_0.5.1      pbapply_1.4-2       stringr_1.4.0      
+ [31] digest_0.6.21       rmarkdown_1.13      pkgconfig_2.0.3    
+ [34] htmltools_0.4.0     bibtex_0.4.2        htmlwidgets_1.5.1  
+ [37] rlang_0.4.0         farver_2.0.1        zoo_1.8-6          
+ [40] jsonlite_1.6        ica_1.0-2           gtools_3.8.1       
+ [43] dplyr_0.8.3         magrittr_1.5        Matrix_1.2-18      
+ [46] Rcpp_1.0.3          munsell_0.5.0       ape_5.3            
+ [49] reticulate_1.13     lifecycle_0.1.0     stringi_1.4.3      
+ [52] whisker_0.3-2       yaml_2.2.0          gbRd_0.4-11        
+ [55] MASS_7.3-51.4       gplots_3.0.1.1      Rtsne_0.15         
+ [58] plyr_1.8.4          grid_3.6.1          parallel_3.6.1     
+ [61] gdata_2.18.0        listenv_0.7.0       promises_1.1.0     
+ [64] ggrepel_0.8.1       crayon_1.3.4        lattice_0.20-38    
+ [67] cowplot_1.0.0       splines_3.6.1       zeallot_0.1.0      
+ [70] knitr_1.23          pillar_1.4.2        igraph_1.2.4.1     
+ [73] reshape2_1.4.3      future.apply_1.3.0  codetools_0.2-16   
+ [76] leiden_0.3.1        glue_1.3.1          evaluate_0.14      
+ [79] lsei_1.2-0          metap_1.1           RcppParallel_4.4.4 
+ [82] data.table_1.12.4   png_0.1-7           vctrs_0.2.0        
+ [85] httpuv_1.5.2        Rdpack_0.11-0       gtable_0.3.0       
+ [88] RANN_2.6.1          purrr_0.3.2         tidyr_1.0.0        
+ [91] future_1.14.0       assertthat_0.2.1    ggplot2_3.2.1      
+ [94] xfun_0.8            rsvd_1.0.1          later_1.0.0        
+ [97] viridisLite_0.3.0   survival_2.44-1.1   tibble_2.1.3       
+[100] workflowr_1.5.0     cluster_2.1.0       globals_0.12.4     
+[103] fitdistrplus_1.0-14 ROCR_1.0-7         </code></pre>
+</div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
@@ -882,6 +809,8 @@ footer is added to webpages before the MathJax javascript. -->
 </script>
 
 
+</div>
+</div>
 
 </div>
 

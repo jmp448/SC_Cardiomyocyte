@@ -532,10 +532,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetree008fd75150116d0367f9ac240c7d014c6d507cbctargetblank008fd75a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jmp448/SC_Cardiomyocyte/tree/008fd75150116d0367f9ac240c7d014c6d507cbc" target="_blank">008fd75</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetreeff6ff9ea01a0e89b844e3f872434996393baf511targetblankff6ff9ea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jmp448/SC_Cardiomyocyte/tree/ff6ff9ea01a0e89b844e3f872434996393baf511" target="_blank">ff6ff9e</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetree008fd75150116d0367f9ac240c7d014c6d507cbctargetblank008fd75a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetreeff6ff9ea01a0e89b844e3f872434996393baf511targetblankff6ff9ea" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -545,6 +545,9 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    analysis/CM_focus.nb.html
     Ignored:    analysis/dim_reduce.nb.html
+    Ignored:    analysis/dim_reduce_2.nb.html
+    Ignored:    analysis/figure/
+    Ignored:    analysis/site_libs/
     Ignored:    code/.Rhistory
     Ignored:    data/E1_CollectionInfo.tsv
     Ignored:    data/E2_CollectionInfo.tsv
@@ -649,6 +652,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/ff6ff9ea01a0e89b844e3f872434996393baf511/analysis/dim_reduce.Rmd" target="_blank">ff6ff9e</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-02-26
+</td>
+<td>
+wflow_publish(c(“dim_reduce.Rmd”, “dim_reduce_2.Rmd”, “index.Rmd”))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/dc354cd75779f223dd62ab406df45699c2fec2fc/docs/dim_reduce.html" target="_blank">dc354cd</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-02-26
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/008fd75150116d0367f9ac240c7d014c6d507cbc/analysis/dim_reduce.Rmd" target="_blank">008fd75</a>
 </td>
 <td>
@@ -703,8 +740,7 @@ wflow_publish(c(“quality_control.Rmd”,
 </div>
 </div>
 <pre class="r"><code>library(Seurat)</code></pre>
-<pre class="r"><code>sc &lt;- readRDS(&quot;./data/seurat_umap.RDS&quot;)
-sc2 &lt;- readRDS(&quot;./data/seurat_filter2_umap.RDS&quot;)</code></pre>
+<pre class="r"><code>sc &lt;- readRDS(&quot;./data/seurat_umap.RDS&quot;)</code></pre>
 <p>Before doublet filtering…</p>
 <pre class="r"><code>PCAPlot(sc, group.by=&quot;diffday&quot;)</code></pre>
 <p><img src="figure/dim_reduce.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
@@ -823,8 +859,7 @@ jmp448
 </table>
 </div>
 </div>
-<p>After doublet filtering, and with SCTransform rather than scaling…</p>
-<pre class="r"><code>PCAPlot(sc2, group.by=&quot;diffday&quot;)</code></pre>
+<pre class="r"><code>DimPlot(sc, group.by=&quot;diffday&quot;)</code></pre>
 <p><img src="figure/dim_reduce.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
@@ -850,6 +885,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/dc354cd75779f223dd62ab406df45699c2fec2fc/docs/figure/dim_reduce.Rmd/unnamed-chunk-4-1.png" target="_blank">dc354cd</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-02-26
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/450c3ef3dbcc488fdce55bfa0b4ea74bed02c9d1/docs/figure/dim_reduce.Rmd/unnamed-chunk-4-1.png" target="_blank">450c3ef</a>
 </td>
 <td>
@@ -863,7 +909,7 @@ jmp448
 </table>
 </div>
 </div>
-<pre class="r"><code>PCAPlot(sc2, group.by=&quot;individual&quot;)</code></pre>
+<pre class="r"><code>DimPlot(sc, group.by=&quot;diffday&quot;, split.by=&quot;individual&quot;, ncol=4)</code></pre>
 <p><img src="figure/dim_reduce.Rmd/unnamed-chunk-4-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-2">
@@ -889,6 +935,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/dc354cd75779f223dd62ab406df45699c2fec2fc/docs/figure/dim_reduce.Rmd/unnamed-chunk-4-2.png" target="_blank">dc354cd</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-02-26
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/450c3ef3dbcc488fdce55bfa0b4ea74bed02c9d1/docs/figure/dim_reduce.Rmd/unnamed-chunk-4-2.png" target="_blank">450c3ef</a>
 </td>
 <td>
@@ -902,7 +959,7 @@ jmp448
 </table>
 </div>
 </div>
-<pre class="r"><code>PCAPlot(sc2, group.by=&quot;exp&quot;)</code></pre>
+<pre class="r"><code>DimPlot(sc, group.by=&quot;diffday&quot;, split.by=&quot;exp&quot;)</code></pre>
 <p><img src="figure/dim_reduce.Rmd/unnamed-chunk-4-3.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-3">
@@ -928,6 +985,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/dc354cd75779f223dd62ab406df45699c2fec2fc/docs/figure/dim_reduce.Rmd/unnamed-chunk-4-3.png" target="_blank">dc354cd</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-02-26
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/450c3ef3dbcc488fdce55bfa0b4ea74bed02c9d1/docs/figure/dim_reduce.Rmd/unnamed-chunk-4-3.png" target="_blank">450c3ef</a>
 </td>
 <td>
@@ -942,7 +1010,7 @@ jmp448
 </div>
 </div>
 <p>Before</p>
-<pre class="r"><code>DimPlot(sc, group.by=&quot;diffday&quot;)</code></pre>
+<pre class="r"><code>DimPlot(sc, group.by=&quot;individual&quot;)</code></pre>
 <p><img src="figure/dim_reduce.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-1">
@@ -968,6 +1036,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/dc354cd75779f223dd62ab406df45699c2fec2fc/docs/figure/dim_reduce.Rmd/unnamed-chunk-5-1.png" target="_blank">dc354cd</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-02-26
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/450c3ef3dbcc488fdce55bfa0b4ea74bed02c9d1/docs/figure/dim_reduce.Rmd/unnamed-chunk-5-1.png" target="_blank">450c3ef</a>
 </td>
 <td>
@@ -981,7 +1060,7 @@ jmp448
 </table>
 </div>
 </div>
-<pre class="r"><code>DimPlot(sc, group.by=&quot;diffday&quot;, split.by=&quot;individual&quot;, ncol=4)</code></pre>
+<pre class="r"><code>DimPlot(sc, group.by=&quot;exp&quot;)</code></pre>
 <p><img src="figure/dim_reduce.Rmd/unnamed-chunk-5-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-2">
@@ -1007,6 +1086,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/dc354cd75779f223dd62ab406df45699c2fec2fc/docs/figure/dim_reduce.Rmd/unnamed-chunk-5-2.png" target="_blank">dc354cd</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-02-26
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/450c3ef3dbcc488fdce55bfa0b4ea74bed02c9d1/docs/figure/dim_reduce.Rmd/unnamed-chunk-5-2.png" target="_blank">450c3ef</a>
 </td>
 <td>
@@ -1020,105 +1110,14 @@ jmp448
 </table>
 </div>
 </div>
-<pre class="r"><code>DimPlot(sc, group.by=&quot;diffday&quot;, split.by=&quot;exp&quot;)</code></pre>
-<p><img src="figure/dim_reduce.Rmd/unnamed-chunk-5-3.png" width="672" style="display: block; margin: auto;" /> After</p>
-<pre class="r"><code>DimPlot(sc2, group.by=&quot;diffday&quot;)</code></pre>
-<p><img src="figure/dim_reduce.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
-Past versions of unnamed-chunk-6-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-6-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/450c3ef3dbcc488fdce55bfa0b4ea74bed02c9d1/docs/figure/dim_reduce.Rmd/unnamed-chunk-6-1.png" target="_blank">450c3ef</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2020-02-18
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<pre class="r"><code>DimPlot(sc2, group.by=&quot;diffday&quot;, split.by=&quot;individual&quot;, ncol=4)</code></pre>
-<p><img src="figure/dim_reduce.Rmd/unnamed-chunk-6-2.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>DimPlot(sc2, group.by=&quot;diffday&quot;, split.by=&quot;exp&quot;)</code></pre>
-<p><img src="figure/dim_reduce.Rmd/unnamed-chunk-6-3.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Before</p>
-<pre class="r"><code>DimPlot(sc, group.by=&quot;individual&quot;)</code></pre>
-<p><img src="figure/dim_reduce.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-7-1">
-Past versions of unnamed-chunk-7-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-7-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/450c3ef3dbcc488fdce55bfa0b4ea74bed02c9d1/docs/figure/dim_reduce.Rmd/unnamed-chunk-7-1.png" target="_blank">450c3ef</a>
-</td>
-<td>
-jmp448
-</td>
-<td>
-2020-02-18
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<pre class="r"><code>DimPlot(sc, group.by=&quot;exp&quot;)</code></pre>
-<p><img src="figure/dim_reduce.Rmd/unnamed-chunk-7-2.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>DimPlot(sc, group.by=&quot;collection&quot;)</code></pre>
-<p><img src="figure/dim_reduce.Rmd/unnamed-chunk-7-3.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>DimPlot(sc, group.by=&quot;sample&quot;)</code></pre>
-<p><img src="figure/dim_reduce.Rmd/unnamed-chunk-7-4.png" width="672" style="display: block; margin: auto;" /> After</p>
-<pre class="r"><code>DimPlot(sc2, group.by=&quot;individual&quot;)</code></pre>
-<p><img src="figure/dim_reduce.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/dim_reduce.Rmd/unnamed-chunk-5-3.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-8-1">
-Past versions of unnamed-chunk-8-1.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-3">
+Past versions of unnamed-chunk-5-3.png
 </button>
 </p>
-<div id="fig-unnamed-chunk-8-1" class="collapse">
+<div id="fig-unnamed-chunk-5-3" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -1137,31 +1136,23 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/450c3ef3dbcc488fdce55bfa0b4ea74bed02c9d1/docs/figure/dim_reduce.Rmd/unnamed-chunk-8-1.png" target="_blank">450c3ef</a>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/dc354cd75779f223dd62ab406df45699c2fec2fc/docs/figure/dim_reduce.Rmd/unnamed-chunk-5-3.png" target="_blank">dc354cd</a>
 </td>
 <td>
 jmp448
 </td>
 <td>
-2020-02-18
+2020-02-26
 </td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<pre class="r"><code>DimPlot(sc2, group.by=&quot;exp&quot;)</code></pre>
-<p><img src="figure/dim_reduce.Rmd/unnamed-chunk-8-2.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>DimPlot(sc2, group.by=&quot;collection&quot;)</code></pre>
-<p><img src="figure/dim_reduce.Rmd/unnamed-chunk-8-3.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>DimPlot(sc2, group.by=&quot;sample&quot;)</code></pre>
-<p><img src="figure/dim_reduce.Rmd/unnamed-chunk-8-4.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>FeaturePlot(sc, features=&quot;TNNT2&quot;)</code></pre>
-<p><img src="figure/dim_reduce.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>FeaturePlot(sc2, features=&quot;TNNT2&quot;)</code></pre>
-<p><img src="figure/dim_reduce.Rmd/unnamed-chunk-9-2.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>FeaturePlot(sc, features=&quot;percent.mito&quot;)</code></pre>
-<p><img src="figure/dim_reduce.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>DimPlot(sc, group.by=&quot;sample&quot;)</code></pre>
+<p><img src="figure/dim_reduce.Rmd/unnamed-chunk-5-4.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>DimPlot(sc, group.by=&quot;cd&quot;)</code></pre>
+<p><img src="figure/dim_reduce.Rmd/unnamed-chunk-5-5.png" width="672" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
