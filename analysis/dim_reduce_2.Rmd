@@ -56,6 +56,13 @@ Cardiomyocyte myofilament genes
 FeaturePlot(sc, features=c("TNNT2", "MYH6"))
 ```
 
+What's the deal with the lower left section? Tons of late-day cells that are not expression the cardiomyocyte markers.  Maybe epicardium?  Looking at an epicardium marker gene
+```{r}
+FeaturePlot(sc, features="IGF2")
+```
+Not super convincing, will have to come back to this
+
+Now let's see if we can pick out the stressed/ dying cells
 ```{r}
 FeaturePlot(sc, features="percent.mito")
 ```
@@ -64,6 +71,7 @@ Take a look at one apoptosis marker gene
 ```{r}
 FeaturePlot(sc, features="BAX")
 ```
+Not too helpful
 
 Now let's see in UMAP what the PC's are focusing on
 ```{r}
@@ -77,4 +85,20 @@ FeaturePlot(sc, features="PC_5")
 What is PC5 picking up on?
 ```{r}
 VizDimLoadings(sc, dims=5, reduction="pca")
+```
+
+Lots of mito on the negative side there, is PC5 negatively correlated with mito counts in general or is this just a special set of genes?
+```{r}
+FeatureScatter(sc, feature1="percent.mito", feature2="PC_5")
+```
+PC5 seems like a tentative candidate as a proxy for cell vitality - need to explore this (GSEA?)
+
+PC1 seems like it's picking up on extent of cardiomyocyte differentiation, and note that this also does seem to have some correlation with percent mito
+```{r}
+FeatureScatter(sc, feature1="percent.mito", feature2="PC_1")
+```
+
+Let's verify whether PC1 is picking up on cardiomyocyte differentiation
+```{r}
+VizDimLoadings(sc, dims=1, reduction="pca")
 ```
