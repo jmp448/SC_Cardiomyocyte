@@ -1,0 +1,325 @@
+---
+title: "Doublet Analysis - Collection Day 1"
+output: html_notebook
+---
+```{r message=FALSE, warning=FALSE}
+library(Seurat)
+```
+
+# Collection Day 1
+Differentiation days 11, 15, and 0
+## Round 1
+```{r}
+dir <- "./collections/e1cd3"
+```
+### Collection 1
+```{r}
+scd <- readRDS(paste0(dir, "col1_dub"))
+sc <- readRDS(paste0(dir, "col1_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 2
+```{r}
+scd <- readRDS(paste0(dir, "col2_dub"))
+sc <- readRDS(paste0(dir, "col2_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 3
+```{r}
+scd <- readRDS(paste0(dir, "col3_dub"))
+sc <- readRDS(paste0(dir, "col3_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 4
+```{r}
+scd <- readRDS(paste0(dir, "col4_dub"))
+sc <- readRDS(paste0(dir, "col4_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 5
+```{r}
+scd <- readRDS(paste0(dir, "col5_dub"))
+sc <- readRDS(paste0(dir, "col5_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 6
+```{r}
+scd <- readRDS(paste0(dir, "col6_dub"))
+sc <- readRDS(paste0(dir, "col6_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
+
+## Round 2
+```{r}
+dir <- "./collections/e2cd3"
+```
+### Collection 1
+```{r}
+scd <- readRDS(paste0(dir, "col1_dub"))
+sc <- readRDS(paste0(dir, "col1_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 2
+```{r}
+scd <- readRDS(paste0(dir, "col2_dub"))
+sc <- readRDS(paste0(dir, "col2_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 3
+```{r}
+scd <- readRDS(paste0(dir, "col3_dub"))
+sc <- readRDS(paste0(dir, "col3_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 4
+```{r}
+scd <- readRDS(paste0(dir, "col4_dub"))
+sc <- readRDS(paste0(dir, "col4_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 5
+```{r}
+scd <- readRDS(paste0(dir, "col5_dub"))
+sc <- readRDS(paste0(dir, "col5_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 6
+```{r}
+scd <- readRDS(paste0(dir, "col6_dub"))
+sc <- readRDS(paste0(dir, "col6_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 7
+```{r}
+scd <- readRDS(paste0(dir, "col7_dub"))
+sc <- readRDS(paste0(dir, "col7_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
+
+## Round 3
+```{r}
+dir <- "./collections/e3cd3"
+```
+### Collection 1
+```{r}
+scd <- readRDS(paste0(dir, "col1_dub"))
+sc <- readRDS(paste0(dir, "col1_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 2
+```{r}
+scd <- readRDS(paste0(dir, "col2_dub"))
+sc <- readRDS(paste0(dir, "col2_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 3
+```{r}
+scd <- readRDS(paste0(dir, "col3_dub"))
+sc <- readRDS(paste0(dir, "col3_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 4
+```{r}
+scd <- readRDS(paste0(dir, "col4_dub"))
+sc <- readRDS(paste0(dir, "col4_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 5
+```{r}
+scd <- readRDS(paste0(dir, "col5_dub"))
+sc <- readRDS(paste0(dir, "col5_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 6
+```{r}
+scd <- readRDS(paste0(dir, "col6_dub"))
+sc <- readRDS(paste0(dir, "col6_nodub"))
+```
+#### Doublets
+```{r}
+DimPlot(scd, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+```
+#### No Doublets 
+```{r}
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(sc, features="percent.mito")
+```
