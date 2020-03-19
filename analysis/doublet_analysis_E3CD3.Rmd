@@ -1,0 +1,70 @@
+---
+title: "Doublet Analysis - Round 3, Collection Day 3"
+output: html_notebook
+---
+```{r message=FALSE, warning=FALSE}
+library(Seurat)
+dir <- "./collections/e3cd3"
+```
+
+# Round 1
+## Collection Day 1
+### Collection 1
+```{r}
+scd <- readRDS(paste0(dir, "col1_dub"))
+sc <- readRDS(paste0(dir, "col1_nodub"))
+DimPlot(scd, group.by="demux.sng1")
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 2
+```{r}
+scd <- readRDS(paste0(dir, "col2_dub"))
+sc <- readRDS(paste0(dir, "col2_nodub"))
+DimPlot(scd, group.by="demux.sng1")
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 3
+```{r}
+scd <- readRDS(paste0(dir, "col3_dub"))
+sc <- readRDS(paste0(dir, "col3_nodub"))
+DimPlot(scd, group.by="demux.sng1")
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 4
+```{r}
+scd <- readRDS(paste0(dir, "col4_dub"))
+sc <- readRDS(paste0(dir, "col4_nodub"))
+DimPlot(scd, group.by="demux.sng1")
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 5
+```{r}
+scd <- readRDS(paste0(dir, "col5_dub"))
+sc <- readRDS(paste0(dir, "col5_nodub"))
+DimPlot(scd, group.by="demux.sng1")
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+FeaturePlot(sc, features="percent.mito")
+```
+
+### Collection 6
+```{r}
+scd <- readRDS(paste0(dir, "col6_dub"))
+sc <- readRDS(paste0(dir, "col6_nodub"))
+DimPlot(scd, group.by="demux.sng1")
+DimPlot(sc, group.by="demux.sng1")
+FeaturePlot(scd, features="percent.mito")
+FeaturePlot(sc, features="percent.mito")
+```
