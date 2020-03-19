@@ -17,3 +17,17 @@ This site contains the workflow for the single cell cardiomyocyte differentiatio
 2. Dimensionality Reduction
   + [Dimensionality reduction](dim_reduce.html)
   + [Dimensionality reduction](dim_reduce_2.html) after filtering out doublets
+  
+3. Doublet Analysis
+  + Round 1
+    + [Collection Day 1](doublet_analysis_E1CD1.html)
+    + [Collection Day 2](doublet_analysis_E1CD2.html)
+    + [Collection Day 3](doublet_analysis_E1CD3.html)
+  + Round 2
+    + [Collection Day 1](doublet_analysis_E2CD1.html)
+    + [Collection Day 2](doublet_analysis_E2CD2.html)
+    + [Collection Day 3](doublet_analysis_E2CD3.html)
+  + Round 3
+    + [Collection Day 1](doublet_analysis_E3CD1.html)
+    + [Collection Day 2](doublet_analysis_E3CD2.html)
+    + [Collection Day 3](doublet_analysis_E3CD3.html)
