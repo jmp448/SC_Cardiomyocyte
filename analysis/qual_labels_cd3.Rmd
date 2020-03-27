@@ -1,0 +1,144 @@
+---
+title: "Quality Labels Collection Day 3"
+output: html_notebook
+---
+
+Load seurat
+```{r, message=F, warning=F}
+library(Seurat)
+```
+
+```{r}
+dir <- "./collections/e1"
+```
+### Collection 1
+```{r}
+fname <- paste0(dir, "cd3col1")
+sc <- readRDS(fname)
+```
+
+```{r}
+DimPlot(sc, group.by="diffday")
+FeaturePlot(sc, features=c("percent.mito"))
+FeaturePlot(sc, features=c("demux.dbl.prb"))
+FeaturePlot(sc, features=c("TNNT2"))
+FeaturePlot(sc, features=c("nCount_RNA"))
+FeaturePlot(sc, features=c("nFeature_RNA"))
+DimPlot(sc, group.by="seurat_clusters")
+```
+
+The ugly: 0 (both), 10 (mito)
+```{r}
+sc$ugly <- sc$seurat_clusters %in% c(0, 10)
+DimPlot(sc, group.by="ugly")
+```
+
+### Collection 2
+```{r}
+fname <- paste0(dir, "cd3col2")
+sc <- readRDS(fname)
+```
+
+```{r}
+DimPlot(sc, group.by="diffday")
+FeaturePlot(sc, features=c("percent.mito"))
+FeaturePlot(sc, features=c("demux.dbl.prb"))
+FeaturePlot(sc, features=c("TNNT2"))
+FeaturePlot(sc, features=c("nCount_RNA"))
+FeaturePlot(sc, features=c("nFeature_RNA"))
+DimPlot(sc, group.by="seurat_clusters")
+```
+
+The ugly: 0 (doublets), 4 (mito), 9 (both)
+```{r}
+sc$ugly <- sc$seurat_clusters %in% c(0, 4, 9)
+DimPlot(sc, group.by="ugly")
+```
+
+### Collection 3
+```{r}
+fname <- paste0(dir, "cd3col3")
+sc <- readRDS(fname)
+```
+
+```{r}
+DimPlot(sc, group.by="diffday")
+FeaturePlot(sc, features=c("percent.mito"))
+FeaturePlot(sc, features=c("demux.dbl.prb"))
+FeaturePlot(sc, features=c("TNNT2"))
+FeaturePlot(sc, features=c("nCount_RNA"))
+FeaturePlot(sc, features=c("nFeature_RNA"))
+DimPlot(sc, group.by="seurat_clusters")
+```
+
+The ugly: 6 (doublets), 10 (mito)
+```{r}
+sc$ugly <- sc$seurat_clusters %in% c(6, 10)
+DimPlot(sc, group.by="ugly")
+```
+
+### Collection 4
+```{r}
+fname <- paste0(dir, "cd3col4")
+sc <- readRDS(fname)
+```
+
+```{r}
+DimPlot(sc, group.by="diffday")
+FeaturePlot(sc, features=c("percent.mito"))
+FeaturePlot(sc, features=c("demux.dbl.prb"))
+FeaturePlot(sc, features=c("TNNT2"))
+FeaturePlot(sc, features=c("nCount_RNA"))
+FeaturePlot(sc, features=c("nFeature_RNA"))
+DimPlot(sc, group.by="seurat_clusters")
+```
+
+The ugly: 0 (doublets), 4 (mito)
+```{r}
+sc$ugly <- sc$seurat_clusters %in% c(0, 4)
+DimPlot(sc, group.by="ugly")
+```
+
+### Collection 5
+```{r}
+fname <- paste0(dir, "cd3col5")
+sc <- readRDS(fname)
+```
+
+```{r}
+DimPlot(sc, group.by="diffday")
+FeaturePlot(sc, features=c("percent.mito"))
+FeaturePlot(sc, features=c("demux.dbl.prb"))
+FeaturePlot(sc, features=c("TNNT2"))
+FeaturePlot(sc, features=c("nCount_RNA"))
+FeaturePlot(sc, features=c("nFeature_RNA"))
+DimPlot(sc, group.by="seurat_clusters")
+```
+
+The ugly: 0 (doublets), 6 (mito)
+```{r}
+sc$ugly <- sc$seurat_clusters %in% c(0, 6)
+DimPlot(sc, group.by="ugly")
+```
+
+### Collection 6
+```{r}
+fname <- paste0(dir, "cd3col6")
+sc <- readRDS(fname)
+```
+
+```{r}
+DimPlot(sc, group.by="diffday")
+FeaturePlot(sc, features=c("percent.mito"))
+FeaturePlot(sc, features=c("demux.dbl.prb"))
+FeaturePlot(sc, features=c("TNNT2"))
+FeaturePlot(sc, features=c("nCount_RNA"))
+FeaturePlot(sc, features=c("nFeature_RNA"))
+DimPlot(sc, group.by="seurat_clusters")
+```
+
+The ugly: 0 (doublets), 12 (mito)
+```{r}
+sc$ugly <- sc$seurat_clusters %in% c(0, 12)
+DimPlot(sc, group.by="ugly")
+```
