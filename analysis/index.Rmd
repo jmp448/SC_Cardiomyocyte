@@ -22,3 +22,8 @@ This site contains the workflow for the single cell cardiomyocyte differentiatio
   + [Collection Day 1](doublet_analysis_CD1.html)
   + [Collection Day 2](doublet_analysis_CD2.html)
   + [Collection Day 3](doublet_analysis_CD3.html)
+  
+4. Quality Control Classifier - labeling data
+  + [Collection Day 1](qual_labels_cd1.html)
+  + [Collection Day 2](qual_labels_cd2.html)
+  + [Collection Day 3](qual_labels_cd3.html)
