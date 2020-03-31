@@ -27,3 +27,4 @@ This site contains the workflow for the single cell cardiomyocyte differentiatio
   + [Collection Day 1](qual_labels_cd1.html)
   + [Collection Day 2](qual_labels_cd2.html)
   + [Collection Day 3](qual_labels_cd3.html)
+  + [Assessment](quality_filter_analysis.html)
