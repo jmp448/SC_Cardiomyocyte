@@ -1,0 +1,170 @@
+---
+title: "Assessment of Quality Filters"
+output:
+  html_document:
+    df_print: paged
+---
+
+
+```{r include=FALSE}
+library(ggplot2)
+suppressMessages(library(Seurat))
+```
+
+```{r}
+sc_no_filt <- readRDS("./collections/e1comb.processed.rds")
+DimPlot(sc_no_filt, group.by="diffday")
+DimPlot(sc_no_filt, group.by="quality")
+```
+
+```{r}
+sc_filt <- readRDS("./collections/e1comb_filt.processed.rds")
+DimPlot(sc_filt, group.by="diffday")
+```
+
+```{r}
+FeaturePlot(sc_filt,features="TNNT2")
+```
+
+```{r}
+FeaturePlot(sc_filt, features="IGF2")
+```
+
+```{r}
+FeaturePlot(sc_filt, features=c("demux.dbl.prb", "percent.mito"))
+```
+
+## Gene Set Enrichment Analysis
+
+What gene sets are the low-quality cells enriched for?
+```{r}
+qual.enrichment <- read.table("./output/gsea/quality/low/hallmark.txt", skip=3, sep="\t", header=T)
+qual.enrichment[qual.enrichment$bonferroni.adjusted<=0.05,]
+```
+
+Are there any interesting enrichments in the high-quality cells?
+```{r}
+qual.enrichment <- read.table("./output/gsea/quality/high/hallmark.txt", skip=3, sep="\t", header=T)
+qual.enrichment <- qual.enrichment[order(qual.enrichment$bonferroni.adjusted),]
+qual.enrichment[qual.enrichment$bonferroni.adjusted<=0.05,]
+```
+
+## Cell Cycle Effects
+Does it seem like cell cycle scores are having a large effect on this?  Using Seurat tools
+```{r}
+s.genes <- cc.genes$s.genes
+g2m.genes <- cc.genes$g2m.genes
+sc_no_filt <- CellCycleScoring(sc_no_filt, s.features=s.genes, g2m.features=g2m.genes, set.ident=F)
+sc_no_filt$CC.Difference <- sc_no_filt$S.Score - sc_no_filt$G2M.Score
+```
+
+Does the CC difference (differentiates between cycling and non-cycling cells, but not between stages in the cycle) seem to correspond with the low quality cells? How about G2M?
+```{r}
+DimPlot(sc_no_filt, group.by="quality")
+FeaturePlot(sc_no_filt, features="CC.Difference")
+FeaturePlot(sc_no_filt, features="G2M.Score")
+```
+
+Looking at this more quantitatively
+```{r}
+cell.cycle.fx <- data.frame(sc_no_filt$CC.Difference)
+colnames(cell.cycle.fx) <- "cc.diff"
+cell.cycle.fx$g2m <- sc_no_filt$G2M.Score
+cell.cycle.fx$quality <- sc_no_filt$quality
+g2m.good <- cell.cycle.fx[cell.cycle.fx$quality==T, "g2m"]
+g2m.bad <- cell.cycle.fx[cell.cycle.fx$quality==F, "g2m"]
+ccdiff.good <- cell.cycle.fx[cell.cycle.fx$quality==T, "cc.diff"]
+ccdiff.bad <- cell.cycle.fx[cell.cycle.fx$quality==F, "cc.diff"]
+
+t.ccdiff <- t.test(ccdiff.good, ccdiff.bad)
+t.ccdiff
+t.ccdiff$p.value
+
+t.g2m <- t.test(g2m.good, g2m.bad, alternative = "less")
+t.g2m
+t.g2m$p.value
+
+ggplot(cell.cycle.fx, aes(x=cc.diff, fill=quality)) + geom_density(alpha=.3)
+ggplot(cell.cycle.fx, aes(x=g2m, fill=quality)) + geom_density(alpha=.3)
+```
+
+Sanity check, is this way more pronounced for, say, percent mito and doublet probability?
+```{r}
+confounder.fx <- data.frame(sc_no_filt$percent.mito)
+colnames(confounder.fx) <- "mito"
+confounder.fx$dbl <- sc_no_filt$demux.dbl.prb
+confounder.fx$quality <- sc_no_filt$quality
+mito.good <- confounder.fx[confounder.fx$quality==T, "mito"]
+mito.bad <- confounder.fx[confounder.fx$quality==F, "mito"]
+dbl.good <- confounder.fx[confounder.fx$quality==T, "dbl"]
+dbl.bad <- confounder.fx[confounder.fx$quality==F, "dbl"]
+
+t.mito <- t.test(mito.good, mito.bad, alternative="less")
+t.mito
+t.mito$p.value
+
+t.dbl <- t.test(dbl.good, dbl.bad, alternative = "less")
+t.dbl
+t.dbl$p.value
+
+ggplot(confounder.fx, aes(x=mito, fill=quality)) + geom_density(alpha=.3)
+ggplot(confounder.fx, aes(x=dbl, fill=quality)) + geom_density(alpha=.3)
+```
+
+## Close-Up
+```{r}
+col6 <- readRDS("./collections/e1cd1col6")
+DimPlot(col6, group.by="diffday")
+```
+
+```{r warning=F, message=F}
+s.genes <- cc.genes$s.genes
+g2m.genes <- cc.genes$g2m.genes
+col6_cc <- CellCycleScoring(col6, s.features=s.genes, g2m.features=g2m.genes, set.ident=F)
+col6_cc$CC.Difference <- col6_cc$S.Score - col6_cc$G2M.Score
+col6_cc <- FindVariableFeatures(col6_cc)
+col6_cc <- ScaleData(col6_cc, vars.to.regress = "CC.Difference")
+col6_cc <- RunPCA(col6_cc)
+col6_cc <- FindNeighbors(col6_cc, reduction = "pca")
+col6_cc <- FindClusters(col6_cc)
+col6_cc <- RunUMAP(col6_cc, dims=1:10)
+```
+
+```{r}
+DimPlot(col6_cc, group.by="diffday")
+```
+
+If anything, it got bigger.  Does gene set enrichment look any different in this close-up?
+```{r}
+col6 <- FindClusters(col6)
+DimPlot(col6)
+```
+```{r}
+markers <- FindMarkers(col6, ident.1=0)
+hiq.markers <- rownames(markers)[markers$avg_logFC<0]
+loq.markers <- rownames(markers)[markers$avg_logFC>0]
+bg <- rownames(col6)[!rownames(col6) %in% rownames(markers)]
+write.table(hiq.markers, file="./data/col6_hiqual_markers.txt", row.names=F, col.names=F, quote=F)
+write.table(loq.markers, file="./data/col6_loqual_markers.txt", row.names=F, col.names=F, quote=F)
+write.table(bg, file="./data/col6_bg_genes.txt", row.names=F, col.names=F, quote=F)
+```
+
+Look at enrichment of the low quality cluster
+```{r}
+qual.enrichment <- read.table("./output/gsea/col6_quality/low/hallmark.txt", skip=3, sep="\t", header=T)
+qual.enrichment <- qual.enrichment[order(qual.enrichment$bonferroni.adjusted),]
+qual.enrichment[qual.enrichment$bonferroni.adjusted<=0.05,]
+```
+
+No enrichment.  What are the marker genes?
+```{r}
+loq.markers
+```
+The HIST group are histone proteins, and MT-denotes a mitochondrial read
+
+Enrichment for the high quality genes?
+```{r}
+qual.enrichment <- read.table("./output/gsea/col6_quality/high/hallmark.txt", skip=3, sep="\t", header=T)
+qual.enrichment <- qual.enrichment[order(qual.enrichment$bonferroni.adjusted),]
+qual.enrichment[qual.enrichment$bonferroni.adjusted<=0.05,]
+```
