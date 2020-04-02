@@ -111,7 +111,7 @@ ggplot(confounder.fx, aes(x=mito, fill=quality)) + geom_density(alpha=.3)
 ggplot(confounder.fx, aes(x=dbl, fill=quality)) + geom_density(alpha=.3)
 ```
 
-## Close-Up
+## Close-Up CD1Col6
 ```{r}
 col6 <- readRDS("./collections/e1cd1col6")
 DimPlot(col6, group.by="diffday")
@@ -168,3 +168,84 @@ qual.enrichment <- read.table("./output/gsea/col6_quality/high/hallmark.txt", sk
 qual.enrichment <- qual.enrichment[order(qual.enrichment$bonferroni.adjusted),]
 qual.enrichment[qual.enrichment$bonferroni.adjusted<=0.05,]
 ```
+
+## Close-Up CD3Col4
+```{r}
+col4 <- readRDS("./collections/e1cd3col4")
+DimPlot(col4, group.by="diffday")
+```
+
+Maybe that day 0 arc is what's driving the observed cell-cycle effects
+```{r}
+s.genes <- cc.genes$s.genes
+g2m.genes <- cc.genes$g2m.genes
+col4 <- CellCycleScoring(col4, s.features=s.genes, g2m.features=g2m.genes, set.ident=F)
+col4$CC.Difference <- col4$S.Score - col4$G2M.Score
+FeaturePlot(col4, features="CC.Difference")
+FeaturePlot(col4, features="G2M.Score")
+```
+
+Maybe not.  Due diligence
+```{r}
+cell.cycle.fx <- data.frame(col4$CC.Difference)
+colnames(cell.cycle.fx) <- "cc.diff"
+cell.cycle.fx$g2m <- col4$G2M.Score
+cell.cycle.fx$clust <- col4$seurat_clusters != 4
+g2m.good <- cell.cycle.fx[cell.cycle.fx$clust==T, "g2m"]
+g2m.bad <- cell.cycle.fx[cell.cycle.fx$clust==F, "g2m"]
+ccdiff.good <- cell.cycle.fx[cell.cycle.fx$clust==T, "cc.diff"]
+ccdiff.bad <- cell.cycle.fx[cell.cycle.fx$clust==F, "cc.diff"]
+
+t.ccdiff <- t.test(ccdiff.good, ccdiff.bad)
+t.ccdiff
+t.ccdiff$p.value
+
+t.g2m <- t.test(g2m.good, g2m.bad, alternative = "less")
+t.g2m
+t.g2m$p.value
+
+ggplot(cell.cycle.fx, aes(x=cc.diff, fill=clust)) + geom_density(alpha=.3)
+ggplot(cell.cycle.fx, aes(x=g2m, fill=clust)) + geom_density(alpha=.3)
+```
+
+GSEA
+```{r eval=FALSE}
+Idents(col4) <- col4$seurat_clusters
+markers <- FindMarkers(col4, ident.1=4)
+hiq.markers <- rownames(markers)[markers$avg_logFC<0]
+loq.markers <- rownames(markers)[markers$avg_logFC>0]
+bg <- rownames(col4)[!rownames(col4) %in% rownames(markers)]
+write.table(hiq.markers, file="../data/col4_hiqual_markers.txt", row.names=F, col.names=F, quote=F)
+write.table(loq.markers, file="../data/col4_loqual_markers.txt", row.names=F, col.names=F, quote=F)
+write.table(bg, file="../data/col4_bg_genes.txt", row.names=F, col.names=F, quote=F)
+```
+
+```{r}
+qual.enrichment <- read.table("./output/gsea/cd3col4/low/sc.txt", skip=3, sep="\t", header=T)
+qual.enrichment <- qual.enrichment[order(qual.enrichment$bonferroni.adjusted),]
+qual.enrichment[qual.enrichment$bonferroni.adjusted<=0.05,]
+```
+
+Bingo! Does using Seurat's regression tools help get rid of this?
+```{r warning=F, message=F}
+col4_cc <- FindVariableFeatures(col4)
+col4_cc <- ScaleData(col4_cc, vars.to.regress = "CC.Difference")
+col4_cc <- RunPCA(col4_cc)
+col4_cc <- FindNeighbors(col4_cc, reduction = "pca")
+col4_cc <- FindClusters(col4_cc)
+col4_cc <- RunUMAP(col4_cc, dims=1:10)
+DimPlot(col4_cc, group.by="diffday")
+```
+
+Nope, how about just regressing out G2M score
+```{r warning=F, message=F}
+col4_cc <- FindVariableFeatures(col4)
+col4_cc <- ScaleData(col4_cc, vars.to.regress = c("G2M.Score"))
+col4_cc <- RunPCA(col4_cc)
+col4_cc <- FindNeighbors(col4_cc, reduction = "pca")
+col4_cc <- FindClusters(col4_cc)
+col4_cc <- RunUMAP(col4_cc, dims=1:10)
+DimPlot(col4_cc, group.by="diffday")
+```
+
+No - this just doesn't seem to be working.  But I expect the enrichment for G2M markers stems from these arcs, which appear in each collection on collection day 3 (makes sense, we're mixing highly proliferative iPSCs and cardiomyocytes)
