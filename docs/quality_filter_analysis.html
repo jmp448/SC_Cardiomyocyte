@@ -441,7 +441,7 @@ div.section {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-03-31
+<strong>Last updated:</strong> 2020-04-02
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -532,10 +532,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetree2cbb44a7daf195b1dacc9f17cc9e4d60792953b0targetblank2cbb44aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jmp448/SC_Cardiomyocyte/tree/2cbb44a7daf195b1dacc9f17cc9e4d60792953b0" target="_blank">2cbb44a</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetree1d5952c2cc8aabbe7d4feb8a48f5c8482a43e4cetargetblank1d5952ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jmp448/SC_Cardiomyocyte/tree/1d5952c2cc8aabbe7d4feb8a48f5c8482a43e4ce" target="_blank">1d5952c</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetree2cbb44a7daf195b1dacc9f17cc9e4d60792953b0targetblank2cbb44aa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjmp448SCCardiomyocytetree1d5952c2cc8aabbe7d4feb8a48f5c8482a43e4cetargetblank1d5952ca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -558,7 +558,6 @@ Ignored files:
     Ignored:    analysis/doublet_analysis_E3CD1.nb.html
     Ignored:    analysis/doublet_analysis_E3CD2.nb.html
     Ignored:    analysis/doublet_analysis_E3CD3.nb.html
-    Ignored:    analysis/figure/
     Ignored:    analysis/qual_labels.nb.html
     Ignored:    analysis/qual_labels_cd1.nb.html
     Ignored:    analysis/qual_labels_cd2.nb.html
@@ -570,6 +569,9 @@ Ignored files:
     Ignored:    data/README.html
     Ignored:    data/bg_genes.txt
     Ignored:    data/cluster2_markers.RData
+    Ignored:    data/col4_bg_genes.txt
+    Ignored:    data/col4_hiqual_markers.txt
+    Ignored:    data/col4_loqual_markers.txt
     Ignored:    data/col6_bg_genes.txt
     Ignored:    data/col6_hiqual_markers.txt
     Ignored:    data/col6_loqual_markers.txt
@@ -640,7 +642,6 @@ Unstaged changes:
     Modified:   analysis/dim_reduce_2.Rmd
     Modified:   analysis/doublet_analysis_CD1.Rmd
     Deleted:    analysis/doublet_analysis_E1CD1.Rmd
-    Modified:   analysis/index.Rmd
     Deleted:    analysis/pseudotime.Rmd
     Deleted:    analysis/quality_control_123.Rmd
     Deleted:    analysis/seurat_diffex.Rmd
@@ -689,6 +690,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/1d5952c2cc8aabbe7d4feb8a48f5c8482a43e4ce/analysis/quality_filter_analysis.Rmd" target="_blank">1d5952c</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-04-02
+</td>
+<td>
+wflow_publish(“analysis/quality_filter_analysis.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jmp448/SC_Cardiomyocyte/0e32174075ebd4f36affb9c1dc24266e7009d02e/docs/quality_filter_analysis.html" target="_blank">0e32174</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-03-31
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/2cbb44a7daf195b1dacc9f17cc9e4d60792953b0/analysis/quality_filter_analysis.Rmd" target="_blank">2cbb44a</a>
 </td>
 <td>
@@ -711,17 +746,239 @@ wflow_publish(“analysis/quality_filter_analysis.Rmd”)
 <pre class="r"><code>sc_no_filt &lt;- readRDS(&quot;./collections/e1comb.processed.rds&quot;)
 DimPlot(sc_no_filt, group.by=&quot;diffday&quot;)</code></pre>
 <p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
+Past versions of unnamed-chunk-2-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/0e32174075ebd4f36affb9c1dc24266e7009d02e/docs/figure/quality_filter_analysis.Rmd/unnamed-chunk-2-1.png" target="_blank">0e32174</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>DimPlot(sc_no_filt, group.by=&quot;quality&quot;)</code></pre>
 <p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-2-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-2">
+Past versions of unnamed-chunk-2-2.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-2-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/0e32174075ebd4f36affb9c1dc24266e7009d02e/docs/figure/quality_filter_analysis.Rmd/unnamed-chunk-2-2.png" target="_blank">0e32174</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>sc_filt &lt;- readRDS(&quot;./collections/e1comb_filt.processed.rds&quot;)
 DimPlot(sc_filt, group.by=&quot;diffday&quot;)</code></pre>
 <p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
+Past versions of unnamed-chunk-3-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-3-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/0e32174075ebd4f36affb9c1dc24266e7009d02e/docs/figure/quality_filter_analysis.Rmd/unnamed-chunk-3-1.png" target="_blank">0e32174</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>FeaturePlot(sc_filt,features=&quot;TNNT2&quot;)</code></pre>
 <p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
+Past versions of unnamed-chunk-4-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-4-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/0e32174075ebd4f36affb9c1dc24266e7009d02e/docs/figure/quality_filter_analysis.Rmd/unnamed-chunk-4-1.png" target="_blank">0e32174</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>FeaturePlot(sc_filt, features=&quot;IGF2&quot;)</code></pre>
 <p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-1">
+Past versions of unnamed-chunk-5-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-5-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/0e32174075ebd4f36affb9c1dc24266e7009d02e/docs/figure/quality_filter_analysis.Rmd/unnamed-chunk-5-1.png" target="_blank">0e32174</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>FeaturePlot(sc_filt, features=c(&quot;demux.dbl.prb&quot;, &quot;percent.mito&quot;))</code></pre>
 <p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
+Past versions of unnamed-chunk-6-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-6-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/0e32174075ebd4f36affb9c1dc24266e7009d02e/docs/figure/quality_filter_analysis.Rmd/unnamed-chunk-6-1.png" target="_blank">0e32174</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div id="gene-set-enrichment-analysis" class="section level2">
 <h2>Gene Set Enrichment Analysis</h2>
 <p>What gene sets are the low-quality cells enriched for?</p>
@@ -782,10 +1039,121 @@ not searching for symbol synonyms</code></pre>
 <p>Does the CC difference (differentiates between cycling and non-cycling cells, but not between stages in the cycle) seem to correspond with the low quality cells? How about G2M?</p>
 <pre class="r"><code>DimPlot(sc_no_filt, group.by=&quot;quality&quot;)</code></pre>
 <p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-1">
+Past versions of unnamed-chunk-10-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/0e32174075ebd4f36affb9c1dc24266e7009d02e/docs/figure/quality_filter_analysis.Rmd/unnamed-chunk-10-1.png" target="_blank">0e32174</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>FeaturePlot(sc_no_filt, features=&quot;CC.Difference&quot;)</code></pre>
 <p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-10-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-2">
+Past versions of unnamed-chunk-10-2.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/0e32174075ebd4f36affb9c1dc24266e7009d02e/docs/figure/quality_filter_analysis.Rmd/unnamed-chunk-10-2.png" target="_blank">0e32174</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>FeaturePlot(sc_no_filt, features=&quot;G2M.Score&quot;)</code></pre>
 <p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-10-3.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-3">
+Past versions of unnamed-chunk-10-3.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-3" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/0e32174075ebd4f36affb9c1dc24266e7009d02e/docs/figure/quality_filter_analysis.Rmd/unnamed-chunk-10-3.png" target="_blank">0e32174</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Looking at this more quantitatively</p>
 <pre class="r"><code>cell.cycle.fx &lt;- data.frame(sc_no_filt$CC.Difference)
 colnames(cell.cycle.fx) &lt;- &quot;cc.diff&quot;
@@ -828,8 +1196,82 @@ sample estimates:
 <pre><code>[1] 0</code></pre>
 <pre class="r"><code>ggplot(cell.cycle.fx, aes(x=cc.diff, fill=quality)) + geom_density(alpha=.3)</code></pre>
 <p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-11-1">
+Past versions of unnamed-chunk-11-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-11-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/0e32174075ebd4f36affb9c1dc24266e7009d02e/docs/figure/quality_filter_analysis.Rmd/unnamed-chunk-11-1.png" target="_blank">0e32174</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>ggplot(cell.cycle.fx, aes(x=g2m, fill=quality)) + geom_density(alpha=.3)</code></pre>
 <p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-11-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-11-2">
+Past versions of unnamed-chunk-11-2.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-11-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/0e32174075ebd4f36affb9c1dc24266e7009d02e/docs/figure/quality_filter_analysis.Rmd/unnamed-chunk-11-2.png" target="_blank">0e32174</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Sanity check, is this way more pronounced for, say, percent mito and doublet probability?</p>
 <pre class="r"><code>confounder.fx &lt;- data.frame(sc_no_filt$percent.mito)
 colnames(confounder.fx) &lt;- &quot;mito&quot;
@@ -872,14 +1314,125 @@ mean of x mean of y
 <pre><code>[1] 0</code></pre>
 <pre class="r"><code>ggplot(confounder.fx, aes(x=mito, fill=quality)) + geom_density(alpha=.3)</code></pre>
 <p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-12-1">
+Past versions of unnamed-chunk-12-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-12-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/0e32174075ebd4f36affb9c1dc24266e7009d02e/docs/figure/quality_filter_analysis.Rmd/unnamed-chunk-12-1.png" target="_blank">0e32174</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>ggplot(confounder.fx, aes(x=dbl, fill=quality)) + geom_density(alpha=.3)</code></pre>
 <p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-12-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-12-2">
+Past versions of unnamed-chunk-12-2.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-12-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/0e32174075ebd4f36affb9c1dc24266e7009d02e/docs/figure/quality_filter_analysis.Rmd/unnamed-chunk-12-2.png" target="_blank">0e32174</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-03-31
+</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="close-up" class="section level2">
-<h2>Close-Up</h2>
+</div>
+</div>
+<div id="close-up-cd1col6" class="section level2">
+<h2>Close-Up CD1Col6</h2>
 <pre class="r"><code>col6 &lt;- readRDS(&quot;./collections/e1cd1col6&quot;)
 DimPlot(col6, group.by=&quot;diffday&quot;)</code></pre>
 <p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-13-1">
+Past versions of unnamed-chunk-13-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-13-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/0e32174075ebd4f36affb9c1dc24266e7009d02e/docs/figure/quality_filter_analysis.Rmd/unnamed-chunk-13-1.png" target="_blank">0e32174</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>s.genes &lt;- cc.genes$s.genes
 g2m.genes &lt;- cc.genes$g2m.genes
 col6_cc &lt;- CellCycleScoring(col6, s.features=s.genes, g2m.features=g2m.genes, set.ident=F)
@@ -901,6 +1454,43 @@ Elapsed time: 1 seconds</code></pre>
 <pre class="r"><code>col6_cc &lt;- RunUMAP(col6_cc, dims=1:10)</code></pre>
 <pre class="r"><code>DimPlot(col6_cc, group.by=&quot;diffday&quot;)</code></pre>
 <p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-15-1">
+Past versions of unnamed-chunk-15-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-15-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/0e32174075ebd4f36affb9c1dc24266e7009d02e/docs/figure/quality_filter_analysis.Rmd/unnamed-chunk-15-1.png" target="_blank">0e32174</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>If anything, it got bigger. Does gene set enrichment look any different in this close-up?</p>
 <pre class="r"><code>col6 &lt;- FindClusters(col6)</code></pre>
 <pre><code>Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
@@ -914,6 +1504,43 @@ Number of communities: 12
 Elapsed time: 1 seconds</code></pre>
 <pre class="r"><code>DimPlot(col6)</code></pre>
 <p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-16-1">
+Past versions of unnamed-chunk-16-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-16-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/jmp448/SC_Cardiomyocyte/blob/0e32174075ebd4f36affb9c1dc24266e7009d02e/docs/figure/quality_filter_analysis.Rmd/unnamed-chunk-16-1.png" target="_blank">0e32174</a>
+</td>
+<td>
+jmp448
+</td>
+<td>
+2020-03-31
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>markers &lt;- FindMarkers(col6, ident.1=0)
 hiq.markers &lt;- rownames(markers)[markers$avg_logFC&lt;0]
 loq.markers &lt;- rownames(markers)[markers$avg_logFC&gt;0]
@@ -974,6 +1601,314 @@ qual.enrichment[qual.enrichment$bonferroni.adjusted&lt;=0.05,]</code></pre>
 8                                                       PRDX3,MGST3,GPX4,COX8A,APLP2,COX6A1
 38                                                               IFITM3,TGFB2,H1F0,LUM,GPX4
 16                                                                   IFITM3,IFITM1,B2M,BST2</code></pre>
+</div>
+<div id="close-up-cd3col4" class="section level2">
+<h2>Close-Up CD3Col4</h2>
+<pre class="r"><code>col4 &lt;- readRDS(&quot;./collections/e1cd3col4&quot;)
+DimPlot(col4, group.by=&quot;diffday&quot;)</code></pre>
+<p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Maybe that day 0 arc is what’s driving the observed cell-cycle effects</p>
+<pre class="r"><code>s.genes &lt;- cc.genes$s.genes
+g2m.genes &lt;- cc.genes$g2m.genes
+col4 &lt;- CellCycleScoring(col4, s.features=s.genes, g2m.features=g2m.genes, set.ident=F)</code></pre>
+<pre><code>Warning: The following features are not present in the object: MLF1IP, not
+searching for symbol synonyms</code></pre>
+<pre><code>Warning: The following features are not present in the object: FAM64A, HN1,
+not searching for symbol synonyms</code></pre>
+<pre class="r"><code>col4$CC.Difference &lt;- col4$S.Score - col4$G2M.Score
+FeaturePlot(col4, features=&quot;CC.Difference&quot;)</code></pre>
+<p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>FeaturePlot(col4, features=&quot;G2M.Score&quot;)</code></pre>
+<p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-22-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Maybe not. Due diligence</p>
+<pre class="r"><code>cell.cycle.fx &lt;- data.frame(col4$CC.Difference)
+colnames(cell.cycle.fx) &lt;- &quot;cc.diff&quot;
+cell.cycle.fx$g2m &lt;- col4$G2M.Score
+cell.cycle.fx$clust &lt;- col4$seurat_clusters != 4
+g2m.good &lt;- cell.cycle.fx[cell.cycle.fx$clust==T, &quot;g2m&quot;]
+g2m.bad &lt;- cell.cycle.fx[cell.cycle.fx$clust==F, &quot;g2m&quot;]
+ccdiff.good &lt;- cell.cycle.fx[cell.cycle.fx$clust==T, &quot;cc.diff&quot;]
+ccdiff.bad &lt;- cell.cycle.fx[cell.cycle.fx$clust==F, &quot;cc.diff&quot;]
+
+t.ccdiff &lt;- t.test(ccdiff.good, ccdiff.bad)
+t.ccdiff</code></pre>
+<pre><code>
+    Welch Two Sample t-test
+
+data:  ccdiff.good and ccdiff.bad
+t = 12.785, df = 1192.4, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.06415708 0.08741727
+sample estimates:
+  mean of x   mean of y 
+ 0.06396106 -0.01182611 </code></pre>
+<pre class="r"><code>t.ccdiff$p.value</code></pre>
+<pre><code>[1] 3.609126e-35</code></pre>
+<pre class="r"><code>t.g2m &lt;- t.test(g2m.good, g2m.bad, alternative = &quot;less&quot;)
+t.g2m</code></pre>
+<pre><code>
+    Welch Two Sample t-test
+
+data:  g2m.good and g2m.bad
+t = -26.094, df = 1308.4, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+      -Inf -0.109458
+sample estimates:
+  mean of x   mean of y 
+-0.06021870  0.05660881 </code></pre>
+<pre class="r"><code>t.g2m$p.value</code></pre>
+<pre><code>[1] 1.728545e-121</code></pre>
+<pre class="r"><code>ggplot(cell.cycle.fx, aes(x=cc.diff, fill=clust)) + geom_density(alpha=.3)</code></pre>
+<p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(cell.cycle.fx, aes(x=g2m, fill=clust)) + geom_density(alpha=.3)</code></pre>
+<p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-23-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>GSEA</p>
+<pre class="r"><code>Idents(col4) &lt;- col4$seurat_clusters
+markers &lt;- FindMarkers(col4, ident.1=4)
+hiq.markers &lt;- rownames(markers)[markers$avg_logFC&lt;0]
+loq.markers &lt;- rownames(markers)[markers$avg_logFC&gt;0]
+bg &lt;- rownames(col4)[!rownames(col4) %in% rownames(markers)]
+write.table(hiq.markers, file=&quot;../data/col4_hiqual_markers.txt&quot;, row.names=F, col.names=F, quote=F)
+write.table(loq.markers, file=&quot;../data/col4_loqual_markers.txt&quot;, row.names=F, col.names=F, quote=F)
+write.table(bg, file=&quot;../data/col4_bg_genes.txt&quot;, row.names=F, col.names=F, quote=F)</code></pre>
+<pre class="r"><code>qual.enrichment &lt;- read.table(&quot;./output/gsea/cd3col4/low/sc.txt&quot;, skip=3, sep=&quot;\t&quot;, header=T)
+qual.enrichment &lt;- qual.enrichment[order(qual.enrichment$bonferroni.adjusted),]
+qual.enrichment[qual.enrichment$bonferroni.adjusted&lt;=0.05,]</code></pre>
+<pre><code>                                                                           X
+162                               Menon_Fetal_Kidney_0_Cap_Mesenchyme_Cells 
+17                                            Fan_Embryonic_CTX_Microglia_1 
+87                                                    Hay_Bone_Marrow_Pro_B 
+166                                                 Fan_Embryonic_CTX_NSC_2 
+89                                       Manno_Midbrain_Neurotypes_hProgFPL 
+254                                                        Zhong_PFC_C1_OPC 
+19                                        Manno_Midbrain_Neurotypes_hProgBP 
+90                                       Manno_Midbrain_Neurotypes_hProgFPM 
+137   Zheng_Cord_Blood_C7_Putative_Lymphoid_Primed_Multipotent_Progenitor_1 
+196                                                     Hu_Fetal_Retina_RPE 
+73                           Menon_Fetal_Kidney_7_Loopof_Henle_Cells_Distal 
+164             Lake_Adult_Kidney_C3_Proximal_Tubule_Epithelial_Cells_S1_S2 
+241                                              Aizarani_Liver_C20_LSECs_3 
+195                                              Zhong_PFC_Major_Types_NPCs 
+29                                                 Zhong_PFC_C2_Unknown_NPC 
+186                                               Muraro_Pancreas_Beta_Cell 
+124                                          Menon_Fetal_Kidney_4_Podocytes 
+256           Lake_Adult_Kidney_C18_Collecting_Duct_Principal_Cells_medulla 
+139                            Menon_Fetal_Kidney_8_Connecting_Tubule_Cells 
+171     Lake_Adult_Kidney_C5_Proximal_Tubule_Epithelial_Cells_Stress_Inflam 
+216                          Menon_Fetal_Kidney_1_Embryonic_Red_Blood_Cells 
+114                                         Manno_Midbrain_Neurotypes_hGaba 
+125                                                  Zhong_PFC_C1_Microglia 
+203                                               Aizarani_Liver_C9_LSECs_1 
+204                                        Manno_Midbrain_Neurotypes_hNProg 
+65                    Zheng_Cord_Blood_C9_Granulocyte_Macrophage_Progenitor 
+206                                Lake_Adult_Kidney_C8_Decending_thin_Limb 
+106                                                     Hu_Fetal_Retina_RPC 
+209                                      Menon_Fetal_Kidney_3_Stromal_Cells 
+33                                Lake_Adult_Kidney_C10_Thin_ascending_limb 
+24                                           Lake_Adult_Kidney_C2_Podocytes 
+220                     Lake_Adult_Kidney_C24_Endothelial_Cells_AEA_and_DVR 
+83                                       Aizarani_Liver_C31_Kupffer_Cells_5 
+115 Lake_Adult_Kidney_C6_Proximal_Tubule_Epithelial_Cells_Fibrinogen_pos_S3 
+145                                   Lake_Adult_Kidney_C26_Mesangial_Cells 
+75   Lake_Adult_Kidney_C20_Collecting_Duct_Intercalated_Cells_Type_A_cortex 
+22                                           Zhong_PFC_C8_oRG_Proliferating 
+102                          Gao_Large_Intestine_24W_C2_MKI67pos_Progenitor 
+218                                        Manno_Midbrain_Neurotypes_hProgM 
+144                            Gao_Large_Intestine_Adult_CH_MKI67high_Cells 
+170                  Zheng_Cord_Blood_C3_Megakaryocyte_Erythroid_Progenitor 
+104                               Lake_Adult_Kidney_C11_Thin_ascending_limb 
+18         Lake_Adult_Kidney_C27_Vascular_Smooth_Muscle_Cells_and_pericytes 
+149 Lake_Adult_Kidney_C19_Collecting_Duct_Intercalated_Cells_Type_A_medulla 
+141                                        Manno_Midbrain_Neurotypes_hRgl2b 
+49                                      Aizarani_Liver_C33_Stellate_cells_2 
+250                                       Aizarani_Liver_C2_Kupffer_Cells_1 
+97                                       Hay_Bone_Marrow_Early_Erythroblast 
+    test_inset test_notinset background_inset background_notinset
+162         27           313               50               21171
+17          23           317               98               21123
+87          52           288              785               20436
+166         26           314              162               21059
+89          30           310              239               20982
+254         26           314              175               21046
+19          26           314              215               21006
+90          26           314              255               20966
+137         15           325               61               21160
+196         24           316              220               21001
+73          18           322              116               21105
+164         21           319              177               21044
+241         23           317              245               20976
+195         15           325               89               21132
+29          12           328               52               21169
+186         40           300              790               20431
+124         17           323              138               21083
+256         16           324              132               21089
+139         16           324              136               21085
+171         24           316              338               20883
+216          9           331               34               21187
+114         38           302              953               20268
+125         15           325              179               21042
+203         17           323              250               20971
+204         14           326              169               21052
+65           8           332               44               21177
+206         11           329              101               21120
+106          9           331               62               21159
+209          8           332               49               21172
+33          13           327              160               21061
+24          14           326              192               21029
+220         10           330               96               21125
+83           9           331               79               21142
+115         11           329              125               21096
+145         12           328              152               21069
+75          11           329              133               21088
+22           7           333               46               21175
+102          9           331               86               21135
+218         15           325              247               20974
+144          9           331               89               21132
+170          8           332               68               21153
+104         11           329              148               21073
+18          10           330              135               21086
+149         10           330              137               21084
+141         17           323              367               20854
+49           8           332               90               21131
+250          9           331              117               21104
+97          21           319              530               20691
+    oddsratio       pvalue bonferroni.adjusted
+162 36.525048 1.669649e-29        4.274302e-27
+17  15.638608 1.381530e-18        3.536718e-16
+87   4.700425 2.078750e-17        5.321601e-15
+166 10.763820 2.898337e-17        7.419743e-15
+89   8.495883 4.451920e-17        1.139692e-14
+254  9.958071 1.549767e-16        3.967402e-14
+19   8.090001 1.316198e-14        3.369468e-12
+90   6.807993 4.960890e-13        1.269988e-10
+137 16.010088 8.118575e-13        2.078355e-10
+196  7.250058 1.072882e-12        2.746578e-10
+73  10.170540 4.062614e-12        1.040029e-09
+164  7.826789 6.808554e-12        1.742990e-09
+241  6.211910 5.274473e-11        1.350265e-08
+195 10.958686 9.155558e-11        2.343823e-08
+29  14.893762 3.069196e-10        7.857141e-08
+186  3.448270 3.652949e-10        9.351548e-08
+124  8.040809 4.204055e-10        1.076238e-07
+256  7.889637 1.712037e-09        4.382814e-07
+139  7.656137 2.535469e-09        6.490800e-07
+171  4.692457 3.810385e-09        9.754586e-07
+216 16.943576 1.908485e-08        4.885721e-06
+114  2.676053 4.248156e-07        1.087528e-04
+125  5.425526 4.867097e-07        1.245977e-04
+203  4.414947 1.304984e-06        3.340760e-04
+204  5.349548 1.331673e-06        3.409084e-04
+65  11.597481 1.448350e-06        3.707775e-04
+206  6.991483 1.621051e-06        4.149891e-04
+106  9.279359 1.710362e-06        4.378527e-04
+209 10.411606 2.969762e-06        7.602590e-04
+33   5.233047 3.878728e-06        9.929543e-04
+24   4.703572 5.349141e-06        1.369380e-03
+220  6.668245 6.950643e-06        1.779365e-03
+83   7.276684 1.037601e-05        2.656260e-03
+115  5.642699 1.075240e-05        2.752614e-03
+145  5.071165 1.196987e-05        3.064287e-03
+75   5.301278 1.846388e-05        4.726754e-03
+22   9.676524 1.884744e-05        4.824946e-03
+102  6.682182 1.937517e-05        4.960045e-03
+218  3.919153 1.950507e-05        4.993298e-03
+144  6.456024 2.489831e-05        6.373968e-03
+170  7.495748 2.613642e-05        6.690923e-03
+104  4.760597 4.626401e-05        1.184359e-02
+18   4.733109 1.047216e-04        2.680874e-02
+149  4.663570 1.173350e-04        3.003777e-02
+141  2.990678 1.402342e-04        3.589996e-02
+49   5.657564 1.616364e-04        4.137891e-02
+250  4.904485 1.772777e-04        4.538309e-02
+97   2.570007 1.951209e-04        4.995095e-02
+                                                                                                                                                                                                                                                                                                                 testgenes_in_set
+162                                                                                                                                                         BPTF,MKI67,NOP56,GABPB1-AS1,ANKRD11,CHD4,NAP1L1,DNMT1,SMC4,ZC3H13,RBM25,GOLGA4,BDP1,LUC7L3,TOP2A,RIF1,CCDC88A,SUPT16H,CENPF,RSF1,BAZ1B,TPR,ATRX,SYNE2,NKTR,EIF3A,ILF3
+17                                                                                                                                                                                       MKI67,BUB1B,TTF2,KIF14,EZH2,ASPM,CLSPN,SMC4,PRR11,DLGAP5,CCDC18,TOP2A,HMMR,BRCA2,CENPF,CENPE,CEP152,ATAD5,SGO2,TACC3,DEPDC1,KIF20B,CKAP5
+87  BPTF,MKI67,MFGE8,CLSPN,CEP57,SLC7A3,KIF14,EZH2,SMARCA4,JADE1,CHD4,ASPM,SMC4,PHIP,NIPBL,TERF1,TRIML2,CDCA7,CENPF,CCDC18,TOP2A,HELLS,QSER1,ZNF43,MIS18BP1,KPNB1,R3HDM1,CCDC152,CCDC150,BAZ1B,TPR,NFATC2IP,ATRX,BRD7,SETD5,ZNF66,STRBP,RBBP8,HDGFL3,SLTM,SGO2,ZNF738,TACC3,ROCK1,PIF1,PRR11,DBF4,ZNF92,ZNF93,N4BP2,FAM111B,LCORL
+166                                                                                                                                                                   MKI67,BUB1B,TTF2,KIF14,EZH2,LRRCC1,JADE1,ASPM,SMC4,DEPDC1,CENPF,CCDC18,TOP2A,HMMR,NSRP1,MIS18BP1,CENPE,DLGAP5,ATAD5,SGO2,TACC3,PIF1,PRR11,DBF4,KIF20B,CKAP5
+89                                                                                                                                              MKI67,BUB1B,KIF14,EZH2,KIF2A,PLEKHA5,AASS,ASPM,CLSPN,SMC4,PRR11,CENPF,TOP2A,HMMR,HELLS,BRCA2,TET1,MIS18BP1,CENPE,DLGAP5,MCM3,CEP152,ATAD5,SGO2,TACC3,RAI14,GULP1,PIF1,DEPDC1,DBF4
+254                                                                                                                                                         MKI67,BUB1B,KIF14,HAUS6,ASPM,SMC4,DEPDC1,CDC42BPA,CENPF,CCDC18,TOP2A,HMMR,QSER1,MIS18BP1,CENPE,DLGAP5,CCDC150,CEP152,CNTLN,SGO2,TACC3,PLEKHA5,PIF1,PRR11,KIF20B,CKAP5
+19                                                                                                                                                                     MKI67,BUB1B,KIF14,KIF2A,ASPM,CLSPN,SMC4,PRR11,CENPF,TOP2A,HMMR,HELLS,BRCA2,TET1,MIS18BP1,CENPE,DLGAP5,BCAT1,ZGRF1,GULP1,SGO2,ZNF738,TACC3,PIF1,DEPDC1,DBF4
+90                                                                                                                                                                 MKI67,BUB1B,KIF14,KIF2A,ASPM,CLSPN,SMC4,PRR11,CENPF,TOP2A,HMMR,HELLS,BRCA2,MIS18BP1,CENPE,DLGAP5,SYNE2,CEP152,GULP1,SGO2,TACC3,PLEKHA5,PIF1,DEPDC1,DBF4,NAP1L1
+137                                                                                                                                                                                                                     FAM161A,CHD1,BRCA2,MT-ND5,MT-ND6,ZRANB2,PABPC1,NAP1L1,KPNB1,TCERG1,HSP90B1,MT-RNR2,GTF3A,MT-ATP8,MIS18BP1
+196                                                                                                                                               MT-CO1,MT-CO2,MTATP6P1,MTCO1P40,MT-RNR1,ITGA6,MT-RNR2,OSBPL1A,MT-CO3,MT-ND1,MT-ND2,MT-ND3,MT-ND4,MT-ND5,MT-ND6,MT-ATP8,GOLGA4,MT-ATP6,PHACTR2,MT-CYB,MTCO1P12,SLC3A2,GULP1,UTRN
+73                                                                                                                                                                                            MT-CO1,MT-CO2,MT-CO3,MT-ND4,MT-ND5,MT-ND6,MT-ND1,MT-CYB,MT-RNR1,MT-ND2,AKAP9,MT-RNR2,MT-ND4L,MT-ND3,MT-ATP8,MINDY2,MT-ATP6,MTATP6P1
+164                                                                                                                                                                                         GOLGB1,SNHG14,CHD9,PUM3,PRRC2C,FTX,SRRM2,LPP,PLEKHA5,ZC3H13,RBM25,GOLGA4,TNRC6A,PNISR,THOC2,SYNE2,ANKRD11,VPS13A,WDR60,LUC7L3,CWF19L2
+241                                                                                                                                                                                MACF1,TCERG1,SLC4A7,RAI14,EIF5B,YES1,ANKRD11,CHD7,GOLGA4,BDP1,RRBP1,SEMA6A,MAP1B,DAAM1,JMJD1C,WDR60,FGFR1,DDX21,RBBP6,ROCK2,RBM25,GOLGB1,MYO10
+195                                                                                                                                                                                                                                     ASPM,MKI67,MIS18BP1,CNTLN,CLSPN,CENPF,TACC3,SMC4,PRR11,MCM3,CDCA7,DLGAP5,SGO2,HELLS,TOP2A
+29                                                                                                                                                                                                                                                      MKI67,MIS18BP1,PRR11,CENPF,SGO2,ASPM,CENPE,TACC3,PIF1,DEPDC1,DLGAP5,TOP2A
+186                                                                     KTN1,PCM1,DYNC1H1,ROCK1,GCC2,USP9X,ANKRD12,CHD7,CHD9,NAP1L1,GOLGA4,CDC42BPA,FASN,MTRNR2L1,ZNF106,RANBP2,MAP1B,HUWE1,PHACTR2,MIS18BP1,DST,U2SURP,OSBPL8,RAB3B,IPO7,ATRX,SYNE2,BRD7,EPRS,FOXN3,RBBP8,KIF1A,EIF4G3,KIF5C,SLC4A7,UTRN,GOLGB1,ALCAM,APC,ZNF292
+124                                                                                                                                                                                                                      KMT2A,CHD4,KTN1,PRRC2C,ALCAM,DST,SRRM2,RFC1,HSP90B1,PODXL,GOLGB1,PHIP,KMT2E,WDR60,ANKRD12,LUC7L3,ANKRD11
+256                                                                                                                                                                                                                          TPR,RBBP8,SLC38A1,KTN1,PABPC1,CD46,SF3B1,HSP90B1,NAP1L1,MTATP6P1,ACSL4,PCM1,EPRS,MYO10,IQGAP1,RANBP2
+139                                                                                                                                                                                                                        MT-CO1,MT-CO2,MT-CO3,NSRP1,MT-ND6,SNHG14,MT-RNR1,QKI,PLEKHA5,ZC3H13,MT-ND3,PTPRF,PAWR,MYO10,JADE1,GCC2
+171                                                                                                                                                                  MDN1,USP8,PNISR,OSBPL1A,CNTNAP2,TNRC6A,CCAR1,EIF5B,ANKRD11,CHD6,HIP1,PRRC2C,ZC3H13,MTRNR2L1,ZFC3H1,LUC7L3,HOOK2,BAZ1B,THOC2,WDR60,SRRM2,PLEKHA5,RBM25,GOLGB1
+216                                                                                                                                                                                                                                                                MT-ND1,MT-ND2,MTATP6P1,MT-ND5,MKI67,MT-CYB,SMC4,MTCO1P12,TOP2A
+114                                                                          MDN1,TNRC6A,GABPB1-AS1,TCERG1,CNTNAP2,CAPRIN2,AP1S2,RB1CC1,ANKRD12,CCDC186,VASH2,CCDC88A,KIF1A,BRWD1,SUGP2,N4BP2,MAP1B,NLGN4X,SLC38A1,KMT2E,DAAM1,BDP1,R3HDM1,ARFGEF1,ATRX,FOXN3,GNAQ,SYT1,VCAN,KIF5C,CCDC112,AKAP9,ACSL4,BOD1L1,RBM26,APC,NLN,RAB3B
+125                                                                                                                                                                                                                                   HMMR,HELLS,BRCA2,CENPF,SGO2,KIF20B,TACC3,DDX46,DEPDC1,MCM3,NFATC2IP,WDHD1,CCDC18,ASPM,TOP2A
+203                                                                                                                                                                                                                 MAP1B,CHD7,PHACTR2,EIF4G3,DAAM1,MACF1,DDX21,HSP90B1,ANKRD11,MYO10,GOLGB1,JMJD1C,RRBP1,FGFR1,WDR60,YES1,SEMA6A
+204                                                                                                                                                                                                                                          MKI67,KIF14,CENPF,BUB1B,GULP1,ASPM,TACC3,CCDC152,PIF1,DEPDC1,DLGAP5,TOP2A,SGO2,FOXN3
+65                                                                                                                                                                                                                                                                           MKI67,MT-ND4,EIF3A,CENPF,HSP90B1,PRR11,NAP1L1,RB1CC1
+206                                                                                                                                                                                                                                                         CHD1,SLC38A1,KTN1,TAF1D,PABPC1,SF3B1,ACSL4,HSP90B1,NAP1L1,EPRS,IQGAP1
+106                                                                                                                                                                                                                                                                        HELLS,CHD7,MIS18BP1,AHI1,NAP1L1,MCM3,CDCA7,CENPF,TOP2A
+209                                                                                                                                                                                                                                                                                 ALCAM,DST,MACF1,VCAN,RAI14,NKTR,CCDC88A,RRBP1
+33                                                                                                                                                                                                                                           EPRS,PABPC1,CD46,SF3B1,HSP90B1,IQGAP1,CDC42BPA,SLC4A7,GCC2,ITPR2,RRBP1,ACSL4,CCDC186
+24                                                                                                                                                                                                                                               QKI,GULP1,FTX,DST,MACF1,ROCK1,RAI14,PODXL,UTRN,LUC7L3,PAWR,ANKRD12,BICD1,ANKRD11
+220                                                                                                                                                                                                                                                                CD46,PABPC1,DST,MACF1,HSP90B1,PODXL,UTRN,CDC42BPA,ROCK2,IQGAP1
+83                                                                                                                                                                                                                                                                      CCDC88A,VCAN,JARID2,ROCK1,ZC3H13,RBM25,TNRC6A,LUC7L3,NKTR
+115                                                                                                                                                                                                                                                            CHD1,TAF1D,GULP1,MACF1,AHI1,ASCC3,SYNE2,ZNF292,VPS13A,RRBP1,SEMA6A
+145                                                                                                                                                                                                                                                        FTX,DST,ROCK1,ROCK2,LPP,UTRN,CDC42BPA,ASCC3,AKAP9,ANKRD11,ANKRD12,NKTR
+75                                                                                                                                                                                                                                                              SNHG14,GNAQ,GULP1,PNISR,AKAP9,ITGA6,RBM25,BDP1,ITPR2,LUC7L3,MYO10
+22                                                                                                                                                                                                                                                                                        CENPF,BUB1B,ASPM,CENPE,TACC3,PRR11,SGO2
+102                                                                                                                                                                                                                                                                         MKI67,CENPF,ASPM,HIP1,TACC3,PODXL,DLGAP5,KIF20B,TOP2A
+218                                                                                                                                                                                                                                    HMMR,CEP152,BUB1B,GULP1,ALCAM,CENPE,TACC3,ITGA6,PLEKHA5,MCM3,RAI14,CENPF,KIF2A,JADE1,TOP2A
+144                                                                                                                                                                                                                                                                        HMMR,MKI67,BUB1B,CENPF,TACC3,PIF1,DEPDC1,FAM111B,TOP2A
+170                                                                                                                                                                                                                                                                            CENPF,PNN,CCDC112,ACSL4,CDC42BPA,KIF20B,FLNA,EIF5B
+104                                                                                                                                                                                                                                                              QKI,NIPBL,EIF4G3,AHI1,LPP,ASCC3,SLC4A7,GCC2,ITPR2,BRWD1,CDC42BPA
+18                                                                                                                                                                                                                                                                           FTX,DST,ROCK1,ROCK2,LPP,UTRN,CDC42BPA,FLNA,PAWR,HIP1
+149                                                                                                                                                                                                                                                             RBBP8,SLC38A1,KMT2E,CD46,SF3B1,ITGA6,MTATP6P1,HSP90B1,EPRS,RANBP2
+141                                                                                                                                                                                                                          MKI67,QKI,TACC3,KIF1A,MFGE8,BUB1B,SGO2,CENPE,NLGN4X,ITGA6,PTPRZ1,KIF14,PIF1,DEPDC1,FASN,ITPR2,SEMA6A
+49                                                                                                                                                                                                                                                                                  MAP1B,PCM1,DST,LPP,BAZ1B,CDC42BPA,FLNA,LUC7L3
+250                                                                                                                                                                                                                                                                  NAP1L1,GNAQ,PABPC1,CCDC88A,JARID2,ROCK1,BCAT1,AP1S2,MIS18BP1
+97                                                                                                                                                                                       HSD17B12,DDX21,HUWE1,MAT2A,SDAD1,KTN1,OSBPL1A,SLC16A1,FASN,GTF3A,POLR3G,ICE1,ZNF638,FIRRE,TMEM184C,THOC2,PDCD11,CEP83,KIAA1143,RBM28,NLN</code></pre>
+<p>Bingo! Does using Seurat’s regression tools help get rid of this?</p>
+<pre class="r"><code>col4_cc &lt;- FindVariableFeatures(col4)
+col4_cc &lt;- ScaleData(col4_cc, vars.to.regress = &quot;CC.Difference&quot;)
+col4_cc &lt;- RunPCA(col4_cc)
+col4_cc &lt;- FindNeighbors(col4_cc, reduction = &quot;pca&quot;)
+col4_cc &lt;- FindClusters(col4_cc)</code></pre>
+<pre><code>Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 11700
+Number of edges: 386810
+
+Running Louvain algorithm...
+Maximum modularity in 10 random starts: 0.8546
+Number of communities: 12
+Elapsed time: 1 seconds</code></pre>
+<pre class="r"><code>col4_cc &lt;- RunUMAP(col4_cc, dims=1:10)
+DimPlot(col4_cc, group.by=&quot;diffday&quot;)</code></pre>
+<p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Nope, how about just regressing out G2M score</p>
+<pre class="r"><code>col4_cc &lt;- FindVariableFeatures(col4)
+col4_cc &lt;- ScaleData(col4_cc, vars.to.regress = c(&quot;G2M.Score&quot;))
+col4_cc &lt;- RunPCA(col4_cc)
+col4_cc &lt;- FindNeighbors(col4_cc, reduction = &quot;pca&quot;)
+col4_cc &lt;- FindClusters(col4_cc)</code></pre>
+<pre><code>Modularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck
+
+Number of nodes: 11700
+Number of edges: 384800
+
+Running Louvain algorithm...
+Maximum modularity in 10 random starts: 0.8507
+Number of communities: 12
+Elapsed time: 1 seconds</code></pre>
+<pre class="r"><code>col4_cc &lt;- RunUMAP(col4_cc, dims=1:10)
+DimPlot(col4_cc, group.by=&quot;diffday&quot;)</code></pre>
+<p><img src="figure/quality_filter_analysis.Rmd/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>No - this just doesn’t seem to be working. But I expect the enrichment for G2M markers stems from these arcs, which appear in each collection on collection day 3 (makes sense, we’re mixing highly proliferative iPSCs and cardiomyocytes)</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
